@@ -1,9 +1,9 @@
-CREATE TABLE Country (
+CREATE TABLE IF NOT EXISTS Country (
     name varchar(128),
     PRIMARY KEY (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE City (
+CREATE TABLE IF NOT EXISTS City (
     city_id INT NOT NULL AUTO_INCREMENT,
     country VARCHAR(128) NOT NULL,
     name VARCHAR(128) NOT NULL,
@@ -12,28 +12,28 @@ CREATE TABLE City (
     FOREIGN KEY(country) REFERENCES Country(name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE Address (
+CREATE TABLE IF NOT EXISTS Address (
     address_id INT NOT NULL AUTO_INCREMENT,
     city INT NOT NULL,
     street VARCHAR(128) NOT NULL,
     number INT NOT NULL,
     PRIMARY KEY (address_id),
     FOREIGN KEY(city) REFERENCES City(city_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE Gender (
+CREATE TABLE IF NOT EXISTS Gender (
     gender CHAR NOT NULL,
     PRIMARY KEY(gender)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE User (
+CREATE TABLE IF NOT EXISTS User (
     unique_id INT NOT NULL AUTO_INCREMENT,
     address INT NOT NULL,
     gender CHAR NOT NULL,
     isAdmin BOOLEAN NOT NULL,
     firstName VARCHAR(64) NOT NULL,
     lastName VARCHAR(64) NOT NULL,
-    email VARCHAR(128),
+    email VARCHAR(128) NOT NULL,
     birthDate DATE NOT NULL,
     phoneNumber VARCHAR(32),
     PRIMARY KEY(unique_id),
@@ -41,7 +41,7 @@ CREATE TABLE User (
     FOREIGN KEY(gender) REFERENCES Gender(gender)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE Menu (
+CREATE TABLE IF NOT EXISTS Menu (
     menu_id INT NOT NULL AUTO_INCREMENT,
     user INT NOT NULL,
     year INT NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE Menu (
     FOREIGN KEY(user) REFERENCES User(unique_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE Subscription (
+CREATE TABLE IF NOT EXISTS Subscription (
     subscription_id INT NOT NULL AUTO_INCREMENT,
     user INT NOT NULL,
     dateStart DATE NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE Subscription (
     FOREIGN KEY (user) REFERENCES User(unique_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE Invoice (
+CREATE TABLE IF NOT EXISTS Invoice (
     invoice_number INT NOT NULL AUTO_INCREMENT,
     subscription INT NOT NULL,
     exclVATTotal DECIMAL(4, 2) NOT NULL,
@@ -69,12 +69,12 @@ CREATE TABLE Invoice (
     FOREIGN KEY (subscription) REFERENCES Subscription(subscription_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE Complexity (
+CREATE TABLE IF NOT EXISTS Complexity (
     complexity VARCHAR(32) NOT NULL,
     PRIMARY KEY (complexity)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE Recipe (
+CREATE TABLE IF NOT EXISTS Recipe (
     recipe_id INT NOT NULL AUTO_INCREMENT,
     complexity VARCHAR(32) NOT NULL,
     isVisible BOOLEAN NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE Recipe (
     FOREIGN KEY (complexity) REFERENCES Complexity(complexity)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE MenuItem (
+CREATE TABLE IF NOT EXISTS MenuItem (
     menu_item_id INT NOT NULL AUTO_INCREMENT,
     menu INT NOT NULL,
     recipe INT NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE MenuItem (
     FOREIGN KEY (recipe) REFERENCES Recipe(recipe_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE RecipeStep (
+CREATE TABLE IF NOT EXISTS RecipeStep (
     recipe_step_id INT NOT NULL AUTO_INCREMENT,
     recipe INT NOT NULL,
     stepCount INT NOT NULL,
@@ -103,21 +103,27 @@ CREATE TABLE RecipeStep (
     FOREIGN KEY (recipe) REFERENCES Recipe(recipe_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE Tag (
+CREATE TABLE IF NOT EXISTS Tag (
     tag_id INT NOT NULL AUTO_INCREMENT,
-    recipe INT NOT NULL,
     name VARCHAR(64) NOT NULL,
-    PRIMARY KEY (tag_id),
-    FOREIGN KEY (recipe) REFERENCES Recipe(recipe_id)
+    PRIMARY KEY (tag_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE Unit (
+CREATE TABLE IF NOT EXISTS TagLink (
+    recipe INT NOT NULL,
+    tag INT NOT NULL,
+    PRIMARY KEY (recipe, tag),
+    FOREIGN KEY (recipe) REFERENCES Recipe(recipe_id),
+    FOREIGN KEY (tag) REFERENCES Tag(tag_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS Unit (
     name VARCHAR(64) NOT NULL,
-    abbreviation VARCHAR(4),
+    abbreviation VARCHAR(4) NOT NULL,
     PRIMARY KEY (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE Ingredient (
+CREATE TABLE IF NOT EXISTS Ingredient (
     ingredient_id INT NOT NULL AUTO_INCREMENT,
     unit VARCHAR(64) NOT NULL,
     name VARCHAR(64) NOT NULL,
@@ -126,7 +132,7 @@ CREATE TABLE Ingredient (
     FOREIGN KEY (unit) REFERENCES Unit(name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IngredientStack (
+CREATE TABLE IF NOT EXISTS IngredientStack (
     recipe INT NOT NULL,
     ingredient INT NOT NULL,
     PRIMARY KEY (recipe, ingredient),
