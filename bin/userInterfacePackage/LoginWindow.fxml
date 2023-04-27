@@ -10,14 +10,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="236.0" style="-fx-background-color: ffcd81;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="215.0" fitWidth="190.0" layoutX="23.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/Foodify.png" />
+                  <Image url="@Foodify.png" />
                </image>
             </ImageView>
          </children>
@@ -31,7 +30,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <TextField layoutX="142.0" layoutY="110.0" />
+            <TextField fx:id="login_id" layoutX="142.0" layoutY="110.0" />
             <Label layoutX="39.0" layoutY="170.0" prefHeight="19.0" prefWidth="80.0" text="Mot de passe">
                <font>
                   <Font size="13.0" />
