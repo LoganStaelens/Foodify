@@ -118,9 +118,10 @@ CREATE TABLE IF NOT EXISTS TagLink (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS Unit (
+    unit_id INT NOT NULL,
     name VARCHAR(64) NOT NULL,
     abbreviation VARCHAR(4) NOT NULL,
-    PRIMARY KEY (name)
+    PRIMARY KEY (unit_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS Ingredient (
@@ -129,7 +130,7 @@ CREATE TABLE IF NOT EXISTS Ingredient (
     name VARCHAR(64) NOT NULL,
     calories INT NOT NULL,
     PRIMARY KEY (ingredient_id),
-    FOREIGN KEY (unit) REFERENCES Unit(name)
+    FOREIGN KEY (unit) REFERENCES Unit(unit_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS IngredientStack (
