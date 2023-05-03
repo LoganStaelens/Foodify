@@ -27,13 +27,14 @@ CREATE TABLE IF NOT EXISTS Gender (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS User (
-    unique_id INT NOT NULL AUTO_INCREMENT,
+    unique_id VARCHAR(36) NOT NULL,
     address INT NOT NULL,
     gender CHAR NOT NULL,
     isAdmin BOOLEAN NOT NULL,
     firstName VARCHAR(64) NOT NULL,
     lastName VARCHAR(64) NOT NULL,
     email VARCHAR(128) NOT NULL,
+    password VARCHAR(64) NOT NULL,
     birthDate DATE NOT NULL,
     phoneNumber VARCHAR(32),
     PRIMARY KEY(unique_id),
@@ -43,7 +44,7 @@ CREATE TABLE IF NOT EXISTS User (
 
 CREATE TABLE IF NOT EXISTS Menu (
     menu_id INT NOT NULL AUTO_INCREMENT,
-    user INT NOT NULL,
+    user VARCHAR(36) NOT NULL,
     year INT NOT NULL,
     week INT NOT NULL,
     PRIMARY KEY (menu_id),
@@ -52,7 +53,7 @@ CREATE TABLE IF NOT EXISTS Menu (
 
 CREATE TABLE IF NOT EXISTS Subscription (
     subscription_id INT NOT NULL AUTO_INCREMENT,
-    user INT NOT NULL,
+    user VARCHAR(36) NOT NULL,
     dateStart DATE NOT NULL,
     dateEnd DATE NOT NULL,
     PRIMARY KEY (subscription_id),
@@ -126,7 +127,7 @@ CREATE TABLE IF NOT EXISTS Unit (
 
 CREATE TABLE IF NOT EXISTS Ingredient (
     ingredient_id INT NOT NULL AUTO_INCREMENT,
-    unit VARCHAR(64) NOT NULL,
+    unit INT NOT NULL,
     name VARCHAR(64) NOT NULL,
     calories INT NOT NULL,
     PRIMARY KEY (ingredient_id),
@@ -136,6 +137,7 @@ CREATE TABLE IF NOT EXISTS Ingredient (
 CREATE TABLE IF NOT EXISTS IngredientStack (
     recipe INT NOT NULL,
     ingredient INT NOT NULL,
+    amount INT NOT NULL,
     PRIMARY KEY (recipe, ingredient),
     FOREIGN KEY (recipe) REFERENCES Recipe(recipe_id),
     FOREIGN KEY (ingredient) REFERENCES Ingredient(ingredient_id)

@@ -276,6 +276,16 @@ INSERT INTO unit (unit_id, name, abbreviation) VALUES
 (5, "Verre", ""),
 (6, "Quantitée", "");
 
+INSERT INTO city(country, name, postCode) VALUES
+("Belgique", "Rendeux", "6987");
+
+INSERT INTO address(city, street, number) VALUES
+(1, "Le Belvedere", 13);
+
+INSERT INTO user(unique_id, address, gender, isAdmin, firstName, lastName, email, password, birthDate) VALUES
+("94c535ba-40ac-4910-ba34-f63bfa896494", 1, 'x', TRUE, "admin", "admin", "admin@foodify.com", "d2152cca1d8c50aafe1e82dab574348b9f602a394b7ec4f470a0c0f9dd735d04", NOW());
+
+
 --Tout les clories sont sur une base de 100gr
 
 --fruits
