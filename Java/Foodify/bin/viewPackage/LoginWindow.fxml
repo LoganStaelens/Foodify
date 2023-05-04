@@ -37,7 +37,7 @@
                </font>
             </Label>
             <Button fx:id="button_login" layoutX="53.0" layoutY="259.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="264.0" style="-fx-background-color: ffcd81;" text="Se connecter" />
-            <Label alignment="CENTER" layoutX="19.0" layoutY="221.0" prefHeight="17.0" prefWidth="333.0" text="Connection impossible. Veuillez réessayer" textFill="#fb0f0f">
+            <Label fx:id="label" alignment="CENTER" layoutX="19.0" layoutY="221.0" prefHeight="17.0" prefWidth="333.0" text="Connection impossible. Veuillez réessayer" textFill="#3e8329" visible="false">
                <font>
                   <Font name="Consolas" size="12.0" />
                </font>

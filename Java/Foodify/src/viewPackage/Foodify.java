@@ -34,7 +34,7 @@ public class Foodify extends Application {
     }
 
     private void LoadWindows() throws IOException {
-        this.loginWindow = new LoginWindow(primaryStage, popupStage, new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginWindow.fxml")))));
+        this.loginWindow = new LoginWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("LoginWindow.fxml")));
     }
 
     private void SetLoginWindow() {
