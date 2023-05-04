@@ -1,0 +1,37 @@
+.choice-box > .open-button > .arrow {
+    -fx-background-color: #cccccc;
+}
+
+.check-box > .box > .mark{
+    -fx-background-color: #cccccc;
+}
+
+.menu-button > .arrow-button > .arrow {
+    -fx-background-color: #cccccc;
+}
+
+.context-menu {
+    -fx-background-color: #555;
+}
+
+.check-menu-item:checked
+{
+    -fx-mark-color: #ffcd81;
+}
+
+.check-menu-item
+{
+    -fx-background-color: #555;
+    -fx-text-fill: black;
+}
+
+.check-menu-item:hover
+{
+    -fx-background-color: #666;
+    -fx-color: #ddd;
+}
+
+
+
+
+

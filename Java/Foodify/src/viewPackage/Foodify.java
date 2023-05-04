@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.UUID;
 
 public class Foodify extends Application {
     private Stage primaryStage;
@@ -32,6 +33,8 @@ public class Foodify extends Application {
             LoadWindows();
 
             SetLoginWindow();
+
+            UUID.randomUUID().toString();
 
         } catch (IOException e) {
             e.printStackTrace();

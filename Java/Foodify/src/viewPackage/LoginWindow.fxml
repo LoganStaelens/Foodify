@@ -30,7 +30,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="textfield_login_id" layoutX="142.0" layoutY="110.0" />
+            <TextField fx:id="textfield_login_id" layoutX="142.0" layoutY="110.0" promptText="exemple@foodify.com" />
             <Label layoutX="39.0" layoutY="170.0" prefHeight="19.0" prefWidth="80.0" text="Mot de passe">
                <font>
                   <Font size="13.0" />
