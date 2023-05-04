@@ -18,6 +18,7 @@ public class UserDBAccess implements IUserDataAccess{
             return statement.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
+            //TODO: Throw new error
         }
         return null;
     }

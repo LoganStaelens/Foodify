@@ -3,23 +3,28 @@ package viewPackage;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class Foodify extends Application {
     private Stage primaryStage;
     private Stage popupStage;
 
     private Window loginWindow;
+    private Window registerWindow;
+
+    private static Foodify instance;
+
+    public static Foodify getInstance() {
+        return instance;
+    }
 
     @Override
     public void start(Stage stage)
     {
+        instance = this;
+
         this.primaryStage = stage;
         this.popupStage = new Stage(primaryStage.getStyle());
         
@@ -35,11 +40,17 @@ public class Foodify extends Application {
 
     private void LoadWindows() throws IOException {
         this.loginWindow = new LoginWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("LoginWindow.fxml")));
+        this.registerWindow = new RegisterWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("RegisterWindow.fxml")));
     }
 
-    private void SetLoginWindow() {
+    public void SetLoginWindow() {
         this.loginWindow.show();     
     }
+
+    public void SetRegisterWindow() {
+        this.registerWindow.show();
+    }
+
 
     public static void main (String[] args) {
         launch(args);

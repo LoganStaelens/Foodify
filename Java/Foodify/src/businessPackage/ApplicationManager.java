@@ -7,7 +7,7 @@ import controllerPackage.ILoginController;
 import controllerPackage.LoginEventArgs;
 import javafx.event.EventHandler;
 
-public class ApplicationManager extends Thread implements ILoginController{
+public class ApplicationManager extends Thread implements ILoginController {
 
     Queue<Task<?>> tasksQueue;
 
@@ -41,5 +41,6 @@ public class ApplicationManager extends Thread implements ILoginController{
     public void Login(String user, String passwd, EventHandler<LoginEventArgs> handler) {
         tasksQueue.add(new LoginTask(user, passwd, handler));
     }
+
     
 }

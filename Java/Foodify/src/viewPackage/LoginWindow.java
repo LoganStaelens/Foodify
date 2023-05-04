@@ -8,6 +8,7 @@ import controllerPackage.ILoginController;
 import controllerPackage.LoginController;
 import controllerPackage.LoginEventArgs;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
-public class LoginWindow extends Window{
+public class LoginWindow extends Window {
 
     @FXML
     private TextField textfield_login_id;
@@ -52,9 +53,16 @@ public class LoginWindow extends Window{
         mainStage.setResizable(false);
         mainStage.setScene(this.fxmlWindow);
         mainStage.show();
-        button_login.setOnAction(event -> {
-            loginController.Login(textfield_login_id.getText(), textfield_passwd.getText(), new LoginEventHandler());
-        });
+    }
+
+    @FXML
+    public void loginAction(ActionEvent event) {
+        loginController.Login(textfield_login_id.getText(), textfield_passwd.getText(), new LoginEventHandler());
+    }
+
+    @FXML
+    public void switchRegisterAction(ActionEvent event) {
+        Foodify.getInstance().SetRegisterWindow();
     }
 
     class LoginEventHandler implements EventHandler<LoginEventArgs> {

@@ -50,15 +50,10 @@ public class LoginTask extends Task<LoginEventArgs> {
             else {
                 onActionPerformed.handle(new LoginEventArgs(LoginStatus.LOGIN_INCORRECT)); 
             }
-        } catch (SQLException e) {
+        } catch (SQLException | HashException e) {
             onActionPerformed.handle(new LoginEventArgs(LoginStatus.ERROR)); 
             e.printStackTrace();
         }
-        catch (HashException e) {
-            onActionPerformed.handle(new LoginEventArgs(LoginStatus.ERROR)); 
-            e.printStackTrace();
-        }
-
         
     }
 }
