@@ -36,13 +36,13 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <Button fx:id="button_login" layoutX="53.0" layoutY="259.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="264.0" style="-fx-background-color: ffcd81;" text="Se connecter" />
-            <Label alignment="CENTER" layoutX="19.0" layoutY="221.0" prefHeight="17.0" prefWidth="333.0" text="Connection impossible. Veuillez réessayer" textFill="#fb0f0f">
+            <Button fx:id="button_login" layoutX="53.0" layoutY="259.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="33.0" prefWidth="264.0" style="-fx-background-color: ffcd81;" text="Se connecter" />
+            <Label fx:id="label" alignment="CENTER" layoutX="19.0" layoutY="221.0" prefHeight="17.0" prefWidth="333.0" text="Connection impossible. Veuillez réessayer" textFill="#3e8329" visible="false">
                <font>
                   <Font name="Consolas" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="button_register" layoutX="53.0" layoutY="306.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="264.0" style="-fx-background-color: ffcd81;" text="Créer un compte" />
+            <Button fx:id="button_register" layoutX="53.0" layoutY="306.0" mnemonicParsing="false" onAction="#switchRegisterAction" prefHeight="33.0" prefWidth="264.0" style="-fx-background-color: ffcd81;" text="Créer un compte" />
             <PasswordField fx:id="textfield_passwd" layoutX="142.0" layoutY="167.0" />
          </children>
       </AnchorPane>

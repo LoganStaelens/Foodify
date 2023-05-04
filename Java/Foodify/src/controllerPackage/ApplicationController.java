@@ -23,5 +23,6 @@ public class ApplicationController {
     public String HashPassword(String pwd) throws HashException {
         return this.hashingAlgorithm.Hash(pwd);
     }
+
     
 }

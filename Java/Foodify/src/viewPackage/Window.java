@@ -9,10 +9,9 @@ public abstract class Window {
     protected Stage mainStage, popupStage;
 
 
-    public Window(Stage mainStage, Stage popupStage, Scene fxmlWindow) {
+    public Window(Stage mainStage, Stage popupStage) {
         this.mainStage = mainStage;
         this.popupStage = popupStage;
-        this.fxmlWindow = fxmlWindow;
     }
 
     public abstract void show();
