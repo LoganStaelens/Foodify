@@ -1,4 +1,4 @@
-package controllerPackage;
+package modelPackage;
 
 public enum LoginStatus {
     SUCCESS,

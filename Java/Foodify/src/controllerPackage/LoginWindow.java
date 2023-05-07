@@ -1,12 +1,9 @@
-package viewPackage;
+package controllerPackage;
 
 import java.io.IOException;
 
 import javax.security.auth.login.LoginContext;
 
-import controllerPackage.ILoginController;
-import controllerPackage.LoginController;
-import controllerPackage.LoginEventArgs;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,6 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import modelPackage.LoginEventArgs;
+import viewPackage.Foodify;
 
 public class LoginWindow extends Window {
 
@@ -62,7 +61,7 @@ public class LoginWindow extends Window {
 
     @FXML
     public void switchRegisterAction(ActionEvent event) {
-        Foodify.getInstance().SetRegisterWindow();
+        Foodify.getInstance().setRegisterWindow();
     }
 
     class LoginEventHandler implements EventHandler<LoginEventArgs> {
@@ -76,6 +75,7 @@ public class LoginWindow extends Window {
                     case SUCCESS:
                         label.setTextFill(Paint.valueOf("3e8329"));
                         label.setText("Connection etablie");
+                        Foodify.getInstance().setAdminWindow();
                         break;
                     
                     case LOGIN_INCORRECT:
@@ -90,6 +90,7 @@ public class LoginWindow extends Window {
                         label.setText("Une erreur est survenue");
                         break;
                 }
+                
             });
             
         }

@@ -1,17 +1,21 @@
 package controllerPackage;
 
 import businessPackage.ApplicationManager;
+import businessPackage.ILoginManager;
 import javafx.event.EventHandler;
+import modelPackage.LoginEventArgs;
 
 public class LoginController implements ILoginController {
 
-    public LoginController() {
+    private ILoginManager loginManager; 
 
+    public LoginController() {
+        loginManager = ApplicationManager.getInstance();
     }
 
     @Override
     public void Login(String user, String passwd, EventHandler<LoginEventArgs> handler) {
-        ApplicationManager.getInstance().Login(user, passwd, handler);
+        loginManager.Login(user, passwd, handler);
     }
     
 }

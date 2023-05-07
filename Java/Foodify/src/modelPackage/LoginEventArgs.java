@@ -1,4 +1,4 @@
-package controllerPackage;
+package modelPackage;
 
 import javafx.event.ActionEvent;
 

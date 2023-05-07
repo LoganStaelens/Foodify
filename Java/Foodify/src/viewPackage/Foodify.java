@@ -8,12 +8,17 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.UUID;
 
+import controllerPackage.AdminWindow;
+import controllerPackage.LoginWindow;
+import controllerPackage.Window;
+
 public class Foodify extends Application {
     private Stage primaryStage;
     private Stage popupStage;
 
     private Window loginWindow;
     private Window registerWindow;
+    private Window adminWindow;
 
     private static Foodify instance;
 
@@ -30,9 +35,9 @@ public class Foodify extends Application {
         this.popupStage = new Stage(primaryStage.getStyle());
         
         try {
-            LoadWindows();
+            loadWindows();
 
-            SetLoginWindow();
+            setAdminWindow();
 
             UUID.randomUUID().toString();
 
@@ -41,17 +46,22 @@ public class Foodify extends Application {
         }  
     }
 
-    private void LoadWindows() throws IOException {
+    private void loadWindows() throws IOException {
         this.loginWindow = new LoginWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("LoginWindow.fxml")));
         this.registerWindow = new RegisterWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("RegisterWindow.fxml")));
+        this.adminWindow = new AdminWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("AdminWindow.fxml")));
     }
 
-    public void SetLoginWindow() {
+    public void setLoginWindow() {
         this.loginWindow.show();     
     }
 
-    public void SetRegisterWindow() {
+    public void setRegisterWindow() {
         this.registerWindow.show();
+    }
+
+    public void setAdminWindow() {
+        this.adminWindow.show();
     }
 
 

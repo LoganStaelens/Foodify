@@ -7,7 +7,7 @@ public abstract class Task<T extends ActionEvent> {
 
     protected EventHandler<T> onActionPerformed;
 
-    public Task( EventHandler<T> onActionPerformed) {
+    public Task(EventHandler<T> onActionPerformed) {
         this.onActionPerformed = onActionPerformed;
     }
 

@@ -2,6 +2,7 @@ package viewPackage;
 
 import java.io.IOException;
 
+import controllerPackage.Window;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;

@@ -3,12 +3,16 @@ package dataAccessPackage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.SQLTimeoutException;
+
+import exceptionPackage.DBConnectionException;
+import exceptionPackage.DBConnectionExceptionTypes;
 
 public class DBConnection {
 
     private static DBConnection INSTANCE;
 
-    public static DBConnection getInstance() throws SQLException {
+    public static DBConnection getInstance() throws DBConnectionException {
         if(INSTANCE == null)
             INSTANCE = new DBConnection();
 
@@ -22,17 +26,33 @@ public class DBConnection {
 
     private Connection connection;
 
-    private DBConnection() throws SQLException {
+    private DBConnection() throws DBConnectionException  {
 
-        this.connection = DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/foodify?useSSL=false",
-            USER,
-            PASSWD
-            );
+        try {
+            this.connection = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/foodify?useSSL=false",
+                USER,
+                PASSWD
+                );
+        } 
+        catch (SQLTimeoutException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.TIMEOUT_EXCEPTION);
+        } 
+        catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
 
     }
 
     public Connection getConnection() {
         return connection;
+    }
+
+    public void closeConnection() throws DBConnectionException {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CLOSE_EXCEPTION);
+        }
     }
 }

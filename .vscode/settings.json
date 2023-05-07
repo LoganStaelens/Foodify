@@ -9,7 +9,8 @@
         "Lib/javafx-sdk-20.0.1/lib/javafx.swing.jar",
         "Lib/javafx-sdk-20.0.1/lib/javafx.web.jar",
         "Lib/javafx-sdk-20.0.1/lib/javafx-swt.jar",
-        "Lib/mysql-connector-j-8.0.33.jar"
+        "Lib/mysql-connector-j-8.0.33.jar",
+        "Lib/charm-glisten-4.4.1.jar"
     ],
     "java.project.sourcePaths": ["Java/Foodify/src"],
     "java.project.outputPath": "Java/Foodify/bin",

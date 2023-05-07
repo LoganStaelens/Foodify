@@ -3,13 +3,12 @@ package businessPackage;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import controllerPackage.ILoginController;
-import controllerPackage.LoginEventArgs;
 import javafx.event.EventHandler;
+import modelPackage.LoginEventArgs;
 
-public class ApplicationManager extends Thread implements ILoginController {
+public class ApplicationManager extends Thread implements ILoginManager {
 
-    Queue<Task<?>> tasksQueue;
+    private Queue<Task<?>> tasksQueue;
 
     private static ApplicationManager instance;
     public static ApplicationManager getInstance() {

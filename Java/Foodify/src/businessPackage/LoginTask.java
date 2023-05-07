@@ -2,12 +2,14 @@ package businessPackage;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import controllerPackage.LoginEventArgs;
-import controllerPackage.LoginStatus;
+
 import dataAccessPackage.IUserDataAccess;
 import dataAccessPackage.UserDBAccess;
+import exceptionPackage.DBConnectionException;
 import exceptionPackage.HashException;
 import javafx.event.EventHandler;
+import modelPackage.LoginEventArgs;
+import modelPackage.LoginStatus;
 
 public class LoginTask extends Task<LoginEventArgs> {
 
@@ -27,9 +29,11 @@ public class LoginTask extends Task<LoginEventArgs> {
 
     @Override
     public void run() {
-        ResultSet data = userDataAccess.FindUserByEmail(user);
+        ResultSet data;
 
         try {
+            data = userDataAccess.FindUserByEmail(user);
+
             if(data.next()) {
                 String uuid = data.getString("unique_id");
                 String email = data.getString("email");
@@ -50,7 +54,11 @@ public class LoginTask extends Task<LoginEventArgs> {
             else {
                 onActionPerformed.handle(new LoginEventArgs(LoginStatus.LOGIN_INCORRECT)); 
             }
-        } catch (SQLException | HashException e) {
+        } catch (HashException e) {
+            //TODO: Remonter l'erreur -- temporaire
+            onActionPerformed.handle(new LoginEventArgs(LoginStatus.ERROR)); 
+            e.printStackTrace();
+        } catch (SQLException | DBConnectionException e) {
             onActionPerformed.handle(new LoginEventArgs(LoginStatus.ERROR)); 
             e.printStackTrace();
         }
