@@ -21,9 +21,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import modelPackage.IngredientView;
+import modelPackage.User;
 
 
-public class AdminWindow extends Window implements Initializable {
+public class AdminWindow extends Window implements Initializable, IAddPopupListener {
 
     //Create Recipe Section
     @FXML
@@ -135,6 +136,13 @@ public class AdminWindow extends Window implements Initializable {
         public int getDuration() {
             return duration;
         }      
+    }
+
+
+    @Override
+    public void onPopupClosed(IngredientView args) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'onPopupClosed'");
     }
 
 
