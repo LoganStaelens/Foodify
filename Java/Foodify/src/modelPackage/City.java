@@ -7,11 +7,13 @@ public class City {
     private static final int POSTCODE_MAX_LENGTH = 128;
 
     private Country country;
+    private int cityID;
     private String name;
     private String postCode;
 
-    public City(Country country, String name, String postCode) throws StringTooLongException {
+    public City(int cityID, String name, String postCode, Country country) throws StringTooLongException {
         this.country = country;
+        this.cityID = cityID;
         setName(name);
         setPostCode(postCode);
     }
@@ -40,5 +42,9 @@ public class City {
 
     public String getPostCode() {
         return this.postCode;
+    }
+
+    public int getCityID() {
+        return this.cityID;
     }
 }

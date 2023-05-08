@@ -98,7 +98,7 @@
                               <Font name="Arial Rounded MT Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Button layoutX="765.0" layoutY="16.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Enregistrer">
+                        <Button layoutX="765.0" layoutY="16.0" mnemonicParsing="false" onAction="#onButtonSave" prefHeight="40.0" prefWidth="100.0" text="Enregistrer">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="13.0" />
                            </font>
@@ -113,7 +113,7 @@
                               <Font name="Arial Rounded MT Bold" size="13.0" />
                            </font>
                            <graphic>
-                              <CheckBox contentDisplay="TOP" mnemonicParsing="false" prefHeight="19.0" prefWidth="18.0" selected="true">
+                              <CheckBox contentDisplay="TOP" mnemonicParsing="false" prefHeight="19.0" prefWidth="18.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -124,16 +124,13 @@
                            <left>
                               <Pane prefHeight="301.0" prefWidth="414.0" style="-fx-border-width: 2;" BorderPane.alignment="CENTER">
                                  <children>
-                                    <TableView fx:id="cr_tableview_ingredients" fixedCellSize="1.0" layoutX="2.0" layoutY="2.0" prefHeight="276.0" prefWidth="410.0">
+                                    <TableView fx:id="cr_tableview_ingredients" editable="true" layoutX="3.0" layoutY="2.0" prefHeight="276.0" prefWidth="410.0">
                                       <columns>
-                                        <TableColumn editable="false" maxWidth="181.0" prefWidth="163.0" resizable="false" sortable="false" text="Nom" />
-                                          <TableColumn editable="false" maxWidth="226.0" minWidth="0.0" prefWidth="68.0" resizable="false" sortable="false" text="Kcal" />
-                                        <TableColumn editable="false" maxWidth="308.0" prefWidth="101.0" resizable="false" sortable="false" text="Unitee" />
-                                          <TableColumn editable="false" maxWidth="327.0" minWidth="0.0" prefWidth="81.0" resizable="false" sortable="false" text="Quantitee" />
+                                        <TableColumn fx:id="cr_ing_name_column" editable="false" prefWidth="156.0" resizable="false" text="name" />
+                                        <TableColumn fx:id="cr_ing_kcal_column" editable="false" prefWidth="72.0" resizable="false" text="kcal" />
+                                          <TableColumn fx:id="cr_ing_unit_column" editable="false" prefWidth="93.0" resizable="false" text="unit" />
+                                          <TableColumn fx:id="cr_ing_quantity_column" editable="false" prefWidth="88.0" resizable="false" text="quantity" />
                                       </columns>
-                                       <columnResizePolicy>
-                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                       </columnResizePolicy>
                                     </TableView>
                                  </children>
                               </Pane>
@@ -161,7 +158,7 @@
                               <Font name="Arial Rounded MT Bold" size="16.0" />
                            </font>
                            <graphic>
-                              <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" text="Ajouter">
+                              <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onButtonAddIngredient" prefHeight="32.0" prefWidth="32.0" text="Ajouter">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="13.0" />
                                  </font>
@@ -180,7 +177,7 @@
                               <Font name="Arial Rounded MT Bold" size="16.0" />
                            </font>
                            <graphic>
-                              <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" text="Ajouter">
+                              <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onButtonAddStep" prefHeight="32.0" prefWidth="32.0" text="Ajouter">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="13.0" />
                                  </font>

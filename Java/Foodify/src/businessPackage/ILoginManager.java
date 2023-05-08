@@ -1,8 +1,9 @@
 package businessPackage;
 
-import javafx.event.EventHandler;
-import modelPackage.LoginEventArgs;
+import exceptionPackage.DBConnectionException;
+import exceptionPackage.HashException;
+import exceptionPackage.StringTooLongException;
 
 public interface ILoginManager {
-    void Login(String user, String passwd, EventHandler<LoginEventArgs> handler);
+    LoginResult Login(String user, String passwd) throws HashException, DBConnectionException, StringTooLongException;
 }

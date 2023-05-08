@@ -1,25 +1,29 @@
 package controllerPackage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import modelPackage.IngredientView;
 
 
-public class AdminWindow extends Window {
+public class AdminWindow extends Window implements Initializable {
 
     //Create Recipe Section
     @FXML
@@ -38,22 +42,40 @@ public class AdminWindow extends Window {
     private TableView<IngredientView> cr_tableview_ingredients;
 
     @FXML
+    private TableColumn<IngredientView, String> cr_ing_kcal_column;
+
+    @FXML
+    private TableColumn<IngredientView, String> cr_ing_name_column;
+
+    @FXML
+    private TableColumn<IngredientView, String> cr_ing_quantity_column;
+
+    @FXML
+    private TableColumn<IngredientView, String> cr_ing_unit_column;
+
+    @FXML
     private TableView<StepView> cr_tableview_steps;
 
-    private List<IngredientView> cr_ingredientsList;
-    private ObservableList<IngredientView> cr_ingredientsObservableList;
-
-    //Find Recipe Section
-
-    //Delete Recipe Section
+    private ObservableList<IngredientView> list = FXCollections.observableArrayList(
+        new IngredientView("Concombre", "100", "gramme", "250")  
+    );
 
     public AdminWindow(Stage mainStage, Stage popupStage, FXMLLoader fxmlLoader) throws IOException {
         super(mainStage, popupStage);
         fxmlLoader.setController(this);
         this.fxmlWindow = new Scene(fxmlLoader.load());  
-        this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/theme_dark.gls").toExternalForm());
-        cr_ingredientsList = new ArrayList<>();
-        cr_ingredientsObservableList = FXCollections.observableArrayList(cr_ingredientsList);
+        this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        cr_ing_name_column.setCellValueFactory(new PropertyValueFactory<IngredientView, String>("name"));
+        cr_ing_kcal_column.setCellValueFactory(new PropertyValueFactory<IngredientView, String>("kcal"));
+        cr_ing_unit_column.setCellValueFactory(new PropertyValueFactory<IngredientView, String>("unit"));
+        cr_ing_quantity_column.setCellValueFactory(new PropertyValueFactory<IngredientView, String>("quantity"));
+        
+        cr_tableview_ingredients.setItems(list);
+        System.out.println("Here");
     }
 
     @Override
@@ -63,8 +85,7 @@ public class AdminWindow extends Window {
         mainStage.setResizable(false);
         
         mainStage.setScene(this.fxmlWindow);
-        mainStage.show();
-
+        mainStage.show();  
     }
 
     @FXML
@@ -74,45 +95,14 @@ public class AdminWindow extends Window {
 
     @FXML
     private void onButtonAddIngredient(ActionEvent event) {
-        cr_ingredientsObservableList.add(new IngredientView("Concombre", 89, "gramme", 250));
-        cr_tableview_ingredients.setItems(cr_ingredientsObservableList);
+        IngredientView ingredient = new IngredientView("Concombre", "89", "gramme", "250");
+        cr_tableview_ingredients.getItems().add(ingredient);
+        System.out.println(cr_tableview_ingredients.getItems().get(0).getName());
     }
 
     @FXML
     private void onButtonAddStep(ActionEvent event) { 
         
-    }
-
-
-    class IngredientView {
-        private String name;
-        private int kcal;
-        private String unit;
-        private float quatity;
-
-        
-        public IngredientView(String name, int kcal, String unit, float quatity) {
-            this.name = name;
-            this.kcal = kcal;
-            this.unit = unit;
-            this.quatity = quatity;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public int getKcal() {
-            return kcal;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public float getQuatity() {
-            return quatity;
-        }    
     }
 
 
@@ -146,5 +136,8 @@ public class AdminWindow extends Window {
             return duration;
         }      
     }
+
+
+    
     
 }

@@ -1,8 +1,7 @@
-package modelPackage;
+package businessPackage;
 
 public enum LoginStatus {
     SUCCESS,
     PASSWD_INCORRECT,
-    LOGIN_INCORRECT,
-    ERROR
+    EMAIL_INCORRECT
 }

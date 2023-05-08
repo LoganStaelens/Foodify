@@ -37,7 +37,8 @@ public class Foodify extends Application {
         try {
             loadWindows();
 
-            setAdminWindow();
+            setLoginWindow();
+            
 
             UUID.randomUUID().toString();
 

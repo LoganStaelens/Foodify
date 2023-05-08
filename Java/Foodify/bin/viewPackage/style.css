@@ -90,7 +90,12 @@
     CheckBox
 */
 .check-box > .box > .mark{
+    -fx-opacity: 0;
     -fx-background-color: #000;
+}
+
+.check-box:selected > .box > .mark{
+    -fx-opacity: 1;
 }
 
 
