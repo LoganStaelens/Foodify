@@ -10,15 +10,19 @@ import java.util.UUID;
 
 import controllerPackage.AdminWindow;
 import controllerPackage.LoginWindow;
-import controllerPackage.Window;
+import controllerPackage.PopupMessageDialogWindow;
+import controllerPackage.PopupMessageTypes;
 
 public class Foodify extends Application {
     private Stage primaryStage;
     private Stage popupStage;
+    private Stage popupDialogStage;
 
-    private Window loginWindow;
-    private Window registerWindow;
-    private Window adminWindow;
+    private LoginWindow loginWindow;
+    private RegisterWindow registerWindow;
+    private AdminWindow adminWindow;
+
+    private PopupMessageDialogWindow popupMessageDialogWindow;
 
     private static Foodify instance;
 
@@ -33,6 +37,7 @@ public class Foodify extends Application {
 
         this.primaryStage = stage;
         this.popupStage = new Stage(primaryStage.getStyle());
+        this.popupDialogStage = new Stage(primaryStage.getStyle());
         
         try {
             loadWindows();
@@ -51,6 +56,7 @@ public class Foodify extends Application {
         this.loginWindow = new LoginWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("LoginWindow.fxml")));
         this.registerWindow = new RegisterWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("RegisterWindow.fxml")));
         this.adminWindow = new AdminWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("AdminWindow.fxml")));
+        this.popupMessageDialogWindow = new PopupMessageDialogWindow(popupDialogStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupMessageDialog.fxml")));
     }
 
     public void setLoginWindow() {
@@ -65,6 +71,11 @@ public class Foodify extends Application {
         this.adminWindow.show();
     }
 
+    public void setPopupMessageDialogWindow(PopupMessageTypes messageType, String message) {
+        this.popupMessageDialogWindow.setMessageType(messageType);
+        this.popupMessageDialogWindow.setMessage(message);
+        this.popupMessageDialogWindow.show();
+    }
 
     public static void main (String[] args) {
         launch(args);

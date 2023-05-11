@@ -5,9 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.UUID;
-
-import javax.swing.text.html.Option;
-
 import dataAccessPackage.IUserDataAccess;
 import dataAccessPackage.UserDBAccess;
 import exceptionPackage.DBConnectionException;

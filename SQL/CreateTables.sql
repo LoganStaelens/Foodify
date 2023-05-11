@@ -79,6 +79,7 @@ CREATE TABLE IF NOT EXISTS Recipe (
     recipe_id INT NOT NULL AUTO_INCREMENT,
     complexity VARCHAR(32) NOT NULL,
     isVisible BOOLEAN NOT NULL,
+    title VARCHAR(64) NOT NULL,
     PRIMARY KEY (recipe_id),
     FOREIGN KEY (complexity) REFERENCES Complexity(complexity)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

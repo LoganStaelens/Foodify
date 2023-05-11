@@ -15,4 +15,7 @@ public abstract class Window {
     }
 
     public abstract void show();
+
+    public void hide() {
+    }
 }
