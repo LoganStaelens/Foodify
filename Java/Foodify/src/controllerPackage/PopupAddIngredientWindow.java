@@ -71,7 +71,7 @@ public class PopupAddIngredientWindow extends Window implements Initializable {
         column_kcal.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("kcal"));
     
         try {
-            ingredientList = FXCollections.observableArrayList(this.recipeManager.GetAllIngredients());
+            ingredientList = FXCollections.observableArrayList(this.recipeManager.getAllIngredients());
         } catch (DBConnectionException e) {
             e.printStackTrace();
         }
@@ -103,7 +103,7 @@ public class PopupAddIngredientWindow extends Window implements Initializable {
         Ingredient ingredient = table.getSelectionModel().getSelectedItem();
         
         try {
-            float quantity = Float.parseFloat(input_quantity.getText());
+            int quantity = Integer.parseInt(input_quantity.getText());
             ingredient.setQuantity(quantity);
             this.hide();
             popupListener.onAddIngredient(ingredient);

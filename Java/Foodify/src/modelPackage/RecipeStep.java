@@ -1,6 +1,7 @@
 package modelPackage;
 
 public class RecipeStep {
+    private int recipeStepID;
     private String title;
     private String description;
     private int duration;
@@ -10,7 +11,19 @@ public class RecipeStep {
         this.title = title;
         this.description = description;
         this.duration = duration;
+        this.recipeStepID = -1;
     }
+
+    public RecipeStep(String title, String description, int duration, int recipeStepID) {
+        this.title = title;
+        this.description = description;
+        this.duration = duration;
+        this.recipeStepID = recipeStepID;
+    }
+
+    public void setRecipeStepID(int recipeStepID) {
+        this.recipeStepID = recipeStepID;
+    } 
 
     public void setStepCount(int stepCount) {
         this.stepCount = stepCount;

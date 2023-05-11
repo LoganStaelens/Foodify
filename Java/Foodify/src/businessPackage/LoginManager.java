@@ -3,7 +3,6 @@ package businessPackage;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Optional;
 import java.util.UUID;
 import dataAccessPackage.IUserDataAccess;
 import dataAccessPackage.UserDBAccess;
@@ -28,16 +27,16 @@ public class LoginManager implements ILoginManager {
     }
 
     @Override
-    public LoginResult Login(String emailInput, String passwdInput) throws HashException, DBConnectionException, StringTooLongException {
+    public LoginResult login(String emailInput, String passwdInput) throws HashException, DBConnectionException, StringTooLongException {
         ResultSet data;
 
         try {
-            data = userDataAccess.FindUserByEmail(emailInput);
+            data = userDataAccess.findUserByEmail(emailInput);
 
             if(data.next()) {
                 String password = data.getString("User.password");
                 
-                String inputPasswordHash = this.hashingAlgorithm.Hash(passwdInput);
+                String inputPasswordHash = this.hashingAlgorithm.hash(passwdInput);
                 if(inputPasswordHash.equals(password)) {
                     UUID uuid = UUID.fromString(data.getString("User.unique_id"));
                     Gender gender = Gender.X;

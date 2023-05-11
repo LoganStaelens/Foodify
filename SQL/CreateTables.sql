@@ -51,25 +51,6 @@ CREATE TABLE IF NOT EXISTS Menu (
     FOREIGN KEY(user) REFERENCES User(unique_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS Subscription (
-    subscription_id INT NOT NULL AUTO_INCREMENT,
-    user VARCHAR(36) NOT NULL,
-    dateStart DATE NOT NULL,
-    dateEnd DATE NOT NULL,
-    PRIMARY KEY (subscription_id),
-    FOREIGN KEY (user) REFERENCES User(unique_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE IF NOT EXISTS Invoice (
-    invoice_number INT NOT NULL AUTO_INCREMENT,
-    subscription INT NOT NULL,
-    exclVATTotal DECIMAL(4, 2) NOT NULL,
-    inclVATTotal DECIMAL(4, 2) NOT NULL,
-    isPaid BOOLEAN NOT NULL,
-    PRIMARY KEY (invoice_number),
-    FOREIGN KEY (subscription) REFERENCES Subscription(subscription_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE IF NOT EXISTS Complexity (
     complexity VARCHAR(32) NOT NULL,
     PRIMARY KEY (complexity)
@@ -80,6 +61,9 @@ CREATE TABLE IF NOT EXISTS Recipe (
     complexity VARCHAR(32) NOT NULL,
     isVisible BOOLEAN NOT NULL,
     title VARCHAR(64) NOT NULL,
+    lastUpdate DATETIME NOT NULL,
+    creatorFirstName VARCHAR(64),
+    creatorLastName VARCHAR(64),
     PRIMARY KEY (recipe_id),
     FOREIGN KEY (complexity) REFERENCES Complexity(complexity)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -106,17 +90,16 @@ CREATE TABLE IF NOT EXISTS RecipeStep (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS Tag (
-    tag_id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(64) NOT NULL,
-    PRIMARY KEY (tag_id)
+    PRIMARY KEY (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS TagLink (
     recipe INT NOT NULL,
-    tag INT NOT NULL,
+    tag VARCHAR(64) NOT NULL,
     PRIMARY KEY (recipe, tag),
     FOREIGN KEY (recipe) REFERENCES Recipe(recipe_id),
-    FOREIGN KEY (tag) REFERENCES Tag(tag_id)
+    FOREIGN KEY (tag) REFERENCES Tag(name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS Unit (

@@ -926,11 +926,16 @@ INSERT INTO Ingredient (unit, name, calories) VALUES
 (1, "Truffe", 92),
 (1, "Concentré de tomates", 92);
 
-INSERT INTO Recipe (complexity, isVisible, title) VALUES
-("FACILE", true, "Spaghetti bolognaise");
+
+INSERT INTO Ingredient (unit, name, calories) VALUES
+(1, "Sucre blanc", 398),
+(1, "Sucre Vanillé", 380);
+
+INSERT INTO Recipe (complexity, isVisible, title, lastUpdate) VALUES
+("FACILE", true, "Spaghetti bolognaise", NOW());
 
 INSERT INTO Taglink (recipe, tag) VALUES
-(1, 12);
+(1, "ITALIEN");
 
 INSERT INTO RecipeStep (recipe, stepCount, title, description, duration) VALUES
 (1, 1, "Découpe légumes", "Emincez les légumes", 10),
@@ -955,8 +960,8 @@ INSERT INTO IngredientStack (recipe, ingredient, amount) VALUES
 (1, 54, 150);
 
 
-INSERT INTO Recipe (complexity, isVisible, title) VALUES
-("FACILE", true, "Scampis poêlés, poivrons, champignons et riz");
+INSERT INTO Recipe (complexity, isVisible, title, lastUpdate) VALUES
+("FACILE", true, "Scampis poêlés, poivrons, champignons et riz", NOW());
 
 INSERT INTO Taglink (recipe, tag) VALUES
 (2, 4);

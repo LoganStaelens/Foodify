@@ -59,7 +59,7 @@ public class LoginWindow extends Window {
     public void loginAction(ActionEvent event) {
         
         try {
-            LoginResult result = loginManager.Login(textfield_login_id.getText(), textfield_passwd.getText());
+            LoginResult result = loginManager.login(textfield_login_id.getText(), textfield_passwd.getText());
 
             label.setVisible(true);
             label.setTextFill(Paint.valueOf("fb0f0f"));
