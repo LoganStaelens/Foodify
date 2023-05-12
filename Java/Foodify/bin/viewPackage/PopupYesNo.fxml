@@ -10,7 +10,7 @@
    <top>
       <Pane prefHeight="73.0" prefWidth="390.0" style="-fx-background-color: #ffcd81;" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="label_message_type" alignment="CENTER" layoutX="78.0" layoutY="19.0" prefHeight="35.0" prefWidth="235.0" text="[Message Type]" textAlignment="CENTER">
+            <Label alignment="CENTER" layoutX="78.0" layoutY="19.0" prefHeight="35.0" prefWidth="235.0" text="Foodify" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -21,15 +21,20 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #444;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="148.0" layoutY="129.0" mnemonicParsing="false" onAction="#onCloseButton" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: a39087;" text="Fermer">
+            <Button layoutX="205.0" layoutY="129.0" mnemonicParsing="false" onAction="#onYesButton" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #ffcd81; -fx-text-fill: #000;" text="Oui">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font></Button>
-            <Label fx:id="label_message" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="24.0" prefHeight="87.0" prefWidth="342.0" text="[MESSAGE]" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="label_message" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="24.0" prefHeight="87.0" prefWidth="342.0" text="[MESSAGE]" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </Label>
+            <Button layoutX="92.0" layoutY="129.0" mnemonicParsing="false" onAction="#onNoButton" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: a39087;" text="Non">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </center>

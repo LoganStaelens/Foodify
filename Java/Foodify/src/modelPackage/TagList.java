@@ -11,7 +11,8 @@ public class TagList extends ArrayList<String> {
         while(itemIterator.hasNext()) {
             builder.append(itemIterator.next() + ", ");
         }
-        
-        return builder.substring(0, builder.length() - 2);
+        if(builder.length() > 0)
+            return builder.substring(0, builder.length() - 2);
+        return "";
     }
 }

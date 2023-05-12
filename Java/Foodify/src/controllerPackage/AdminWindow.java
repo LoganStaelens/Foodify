@@ -22,6 +22,7 @@ import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -34,7 +35,7 @@ import modelPackage.RecipeStep;
 import viewPackage.Foodify;
 
 
-public class AdminWindow extends Window implements Initializable, IAddIngredientPopupListener, IAddStepPopupListener {
+public class AdminWindow extends Window implements Initializable, IAddIngredientPopupListener, IAddStepPopupListener, IModifyRecipePopupListener {
 
     //Create Recipe Section
     @FXML
@@ -80,35 +81,43 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
     private TableView<Recipe> lr_tableview;
 
     @FXML
-    private TableColumn<Recipe, String> lr_column_complexity;
-
-    @FXML
-    private TableColumn<Recipe, String> lr_column_first_name;
-
-    @FXML
     private TableColumn<Recipe, Integer> lr_column_id;
 
     @FXML
-    private TableColumn<Recipe, Boolean> lr_column_is_visible;
+    private TableColumn<Recipe, String> lr_column_title;
 
     @FXML
-    private TableColumn<Recipe, String> lr_column_last_name;
-
-    @FXML
-    private TableColumn<Recipe, LocalDate> lr_column_last_update;
+    private TableColumn<Recipe, String> lr_column_complexity;
 
     @FXML
     private TableColumn<Recipe, String> lr_column_tags;
 
     @FXML
-    private TableColumn<Recipe, String> lr_column_title;
+    private TableColumn<Recipe, LocalDate> lr_column_last_update;
+    
+    @FXML
+    private TableColumn<Recipe, Boolean> lr_column_is_visible;
+
+    @FXML
+    private TableColumn<Recipe, String> lr_column_first_name;
+
+    @FXML
+    private TableColumn<Recipe, String> lr_column_last_name;
+
+    private ObservableList<Recipe> lr_recipes;
+
+
+    @FXML
+    private Tab cr_tab;
+
+    @FXML
+    private Tab lr_tab;
 
     private PopupAddIngredientWindow popupAddIngredientWindow;
     private PopupAddStepWindow popupAddStepWindow;
+    private PopupModifyRecipeWindow popupModifyRecipeWindow;
 
     private IRecipeManager recipeManager;
-
-    private static final int RECIPE_TITLE_MAX_LENGTH = 64;
 
     public AdminWindow(Stage mainStage, Stage popupStage, FXMLLoader fxmlLoader) throws IOException {
         super(mainStage, popupStage);
@@ -120,10 +129,11 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
         
         this.popupAddIngredientWindow = new PopupAddIngredientWindow(mainStage, popupStage, new FXMLLoader(getClass().getResource("../viewPackage/PopupAddIngredient.fxml")), this);
         this.popupAddStepWindow = new PopupAddStepWindow(mainStage, popupStage, new FXMLLoader(getClass().getResource("../viewPackage/PopupAddStep.fxml")), this);
+        this.popupModifyRecipeWindow = new PopupModifyRecipeWindow(mainStage, popupStage, new FXMLLoader(getClass().getResource("../viewPackage/PopupModifyRecipe.fxml")), this);
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+
+    void onTabCreateRecipe() {
         cr_ing_name_column.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("name"));
         cr_ing_kcal_column.setCellValueFactory(new PropertyValueFactory<Ingredient, Integer>("kcal"));
         cr_ing_unit_column.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("unit"));
@@ -136,22 +146,59 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
         cr_recipe_step_title_column.setCellValueFactory(new PropertyValueFactory<RecipeStep, String>("title"));
         cr_tableview_steps.setItems(FXCollections.observableArrayList());
 
-       
         try {
             List<String> complexities = this.recipeManager.getDifficulties();
+            cr_choice_box_complexity.getItems().clear();
             for (String complexity : complexities) {
                 cr_choice_box_complexity.getItems().add(complexity);
             }
             cr_choice_box_complexity.setValue(complexities.get(0));
 
             List<String> tags = this.recipeManager.getTags();
+            cr_menu_button_tags.getItems().clear();
             for (String tag : tags) {
                 cr_menu_button_tags.getItems().add(new CheckMenuItem(tag));
             }
 
         } catch (DBConnectionException e) {
             e.printStackTrace();
-        }        
+        }       
+    }
+
+    void onTabListRecipe() {
+        lr_column_id.setCellValueFactory(new PropertyValueFactory<Recipe, Integer>("recipeID"));
+        lr_column_title.setCellValueFactory(new PropertyValueFactory<Recipe, String>("title"));
+        lr_column_complexity.setCellValueFactory(new PropertyValueFactory<Recipe, String>("complexity"));
+        lr_column_tags.setCellValueFactory(new PropertyValueFactory<Recipe, String>("tags"));
+        lr_column_last_update.setCellValueFactory(new PropertyValueFactory<Recipe, LocalDate>("lastUpdate"));
+        lr_column_is_visible.setCellValueFactory(new PropertyValueFactory<Recipe, Boolean>("isVisible"));
+        lr_column_first_name.setCellValueFactory(new PropertyValueFactory<Recipe, String>("creatorFirstName"));
+        lr_column_last_name.setCellValueFactory(new PropertyValueFactory<Recipe, String>("creatorLastName"));
+
+        lr_recipes = FXCollections.observableArrayList();
+
+        lr_input_search_bar.setText("");
+
+        try {
+            List<Recipe> recipes = this.recipeManager.getAllRecipes();
+            for (Recipe recipe : recipes) {
+                lr_recipes.add(recipe);
+            }
+
+            lr_tableview.setItems(lr_recipes);
+
+        } catch (DBConnectionException e) {
+            e.printStackTrace();
+        }     
+        
+        lr_input_search_bar.textProperty().addListener((obs, oldValue, newValue) -> {lr_onInputTextFieldChanged();});
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        onTabCreateRecipe();
+        cr_tab.setOnSelectionChanged(e -> onTabCreateRecipe());
+        lr_tab.setOnSelectionChanged(e -> onTabListRecipe());
     }
 
     @Override
@@ -193,8 +240,18 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
             return;
         }
 
-        if(cr_textfield_recipe_name.getLength() >= RECIPE_TITLE_MAX_LENGTH) {
-            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le titre de la recette est trop long, la longueur maximale est de " + RECIPE_TITLE_MAX_LENGTH + " caractères.");
+        if(cr_textfield_recipe_name.getLength() >= Recipe.TITLE_MAX_LENGTH) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le titre de la recette est trop long, la longueur maximale est de " + Recipe.TITLE_MAX_LENGTH + " caractères.");
+            return;
+        }
+
+        if(cr_textfield_recipe_creator_first_name.getLength() >= Recipe.CREATOR_FIRST_NAME_MAX_LENGTH) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le prenom de l'auteur de la recette est trop long, la longueur maximale est de " + Recipe.CREATOR_FIRST_NAME_MAX_LENGTH + " caractères.");
+            return;
+        }
+
+        if(cr_textfield_recipe_creator_last_name.getLength() >= Recipe.CREATOR_LAST_NAME_MAX_LENGTH) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le nom de l'auteur de la recette est trop long, la longueur maximale est de " + Recipe.CREATOR_LAST_NAME_MAX_LENGTH + " caractères.");
             return;
         }
 
@@ -249,14 +306,56 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
         cr_tableview_steps.getItems().add(step);
     }
 
-    @FXML
-    void lr_onButtonDelete(ActionEvent event) {
-
+    private void lr_onInputTextFieldChanged() {
+        lr_tableview.setItems(this.recipeManager.filterListByTitle(lr_recipes, lr_input_search_bar.getText()));
     }
 
     @FXML
-    void lr_onButtonInfo(ActionEvent event) {
+    void lr_onButtonDelete(ActionEvent event) {
+        if(lr_tableview.getSelectionModel().getSelectedItem() != null) {
+            Foodify.getInstance().setPopupYesNoWindow("Etes vous sure de vouloir supprimer cette recette ?", new IYesNoPopupListener() {
 
+                @Override
+                public void onPopupYesNoHandled(PopupYesNoResult result) {
+                    if(result == PopupYesNoResult.YES)
+                        lr_DeleteRecipe();
+                }
+                
+            });
+        }
+        
+    }
+
+    private void lr_DeleteRecipe() {
+        Recipe recipeToDelete = lr_tableview.getSelectionModel().getSelectedItem();
+
+        try {
+            this.recipeManager.deleteRecipe(recipeToDelete);
+            onTabListRecipe();
+            
+        } catch (DBConnectionException e) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la suppression de la recette");
+        }
+    }
+
+    @FXML
+    void lr_onButtonModify(ActionEvent event) {
+        Recipe recipeToModify = lr_tableview.getSelectionModel().getSelectedItem();
+        if(recipeToModify != null) {
+            this.popupModifyRecipeWindow.setRecipe(recipeToModify);
+            this.popupModifyRecipeWindow.show();
+        }     
+    }
+
+
+    @Override
+    public void onRecipeModified(Recipe oldversion, Recipe newVersion) {
+        try {
+            this.recipeManager.modifyRecipe(newVersion);
+            onTabListRecipe();
+        } catch (DBConnectionException e) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la modification de la recette");
+        }
     }
   
 }

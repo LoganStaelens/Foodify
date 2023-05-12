@@ -26,15 +26,18 @@
          <children>
             <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="41.0" layoutY="20.0" text="Quantitée">
                <font>
-                  <Font size="13.0" />
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
                <graphic>
-                  <TextField fx:id="input_quantity" alignment="BOTTOM_LEFT" />
+                  <TextField fx:id="input_quantity" alignment="BOTTOM_LEFT">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font></TextField>
                </graphic>
             </Label>
             <Button layoutX="401.0" layoutY="10.0" mnemonicParsing="false" onAction="#onAddIngredient" prefHeight="46.0" prefWidth="179.0" text="Ajouter">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Button>
             <Label fx:id="label_unit" contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="276.0" layoutY="23.0">
@@ -50,7 +53,7 @@
          <top>
             <TextField fx:id="input_search_bar" prefHeight="39.0" prefWidth="600.0" promptText="Ecrivez pour rechercher ..." BorderPane.alignment="CENTER">
                <font>
-                  <Font size="13.0" />
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </TextField>
          </top>

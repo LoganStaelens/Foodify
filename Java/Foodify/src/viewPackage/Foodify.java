@@ -9,9 +9,12 @@ import java.io.IOException;
 import java.util.UUID;
 
 import controllerPackage.AdminWindow;
+import controllerPackage.IYesNoPopupListener;
 import controllerPackage.LoginWindow;
 import controllerPackage.PopupMessageDialogWindow;
 import controllerPackage.PopupMessageTypes;
+import controllerPackage.PopupYesNoResult;
+import controllerPackage.PopupYesNoWindow;
 
 public class Foodify extends Application {
     private Stage primaryStage;
@@ -23,6 +26,7 @@ public class Foodify extends Application {
     private AdminWindow adminWindow;
 
     private PopupMessageDialogWindow popupMessageDialogWindow;
+    private PopupYesNoWindow popupYesNoWindow;
 
     private static Foodify instance;
 
@@ -57,6 +61,7 @@ public class Foodify extends Application {
         this.registerWindow = new RegisterWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("RegisterWindow.fxml")));
         this.adminWindow = new AdminWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("AdminWindow.fxml")));
         this.popupMessageDialogWindow = new PopupMessageDialogWindow(popupDialogStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupMessageDialog.fxml")));
+        this.popupYesNoWindow = new PopupYesNoWindow(popupDialogStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupYesNo.fxml")));
     }
 
     public void setLoginWindow() {
@@ -75,6 +80,12 @@ public class Foodify extends Application {
         this.popupMessageDialogWindow.setMessageType(messageType);
         this.popupMessageDialogWindow.setMessage(message);
         this.popupMessageDialogWindow.show();
+    }
+
+    public void setPopupYesNoWindow(String message, IYesNoPopupListener listener) {
+        this.popupYesNoWindow.setMessage(message);
+        this.popupYesNoWindow.setListener(listener);
+        this.popupYesNoWindow.show();
     }
 
     public static void main (String[] args) {

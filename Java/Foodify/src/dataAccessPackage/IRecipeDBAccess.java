@@ -3,6 +3,7 @@ package dataAccessPackage;
 import java.sql.ResultSet;
 
 import exceptionPackage.DBConnectionException;
+import modelPackage.Recipe;
 
 public interface IRecipeDBAccess {
     ResultSet getAllIngredients() throws DBConnectionException;
@@ -22,4 +23,14 @@ public interface IRecipeDBAccess {
     ResultSet getAllRecipes() throws DBConnectionException;
 
     ResultSet getTagsForRecipe(int recipeID) throws DBConnectionException;
+
+    void deleteTagByRecipeID(int recipeID) throws DBConnectionException;
+
+    void deleteIngredientsByRecipeID(int recipeID) throws DBConnectionException;
+
+    void deleteRecipeStepsByRecipeID(int recipeID) throws DBConnectionException;
+    
+    void deleteRecipeByRecipeID(int recipeID) throws DBConnectionException;
+
+    void modifyRecipe(Recipe newRecipe) throws DBConnectionException;
 }

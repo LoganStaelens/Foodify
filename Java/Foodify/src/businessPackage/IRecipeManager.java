@@ -3,6 +3,8 @@ package businessPackage;
 import java.util.List;
 
 import exceptionPackage.DBConnectionException;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import modelPackage.Ingredient;
 import modelPackage.Recipe;
 import modelPackage.RecipeStep;
@@ -16,5 +18,12 @@ public interface IRecipeManager {
 
     void createNewRecipe(String title, String complexity, List<String> selectedTags, boolean isVisible, List<Ingredient> ingredients, List<RecipeStep> steps, String creatorFirstName, String creatorLastName) throws DBConnectionException;
 
-    List<Recipe> GetAllRecipes() throws DBConnectionException;
+    List<Recipe> getAllRecipes() throws DBConnectionException;
+
+    FilteredList<Recipe> filterListByTitle(ObservableList<Recipe> recipes, String filter);
+
+    void deleteRecipe(Recipe recipe) throws DBConnectionException;
+
+    void modifyRecipe(Recipe newRecipe) throws DBConnectionException;
+    
 }

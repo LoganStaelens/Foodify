@@ -27,8 +27,7 @@ public class PopupAddStepWindow extends Window {
     @FXML
     private TextField input_title;
 
-    private static final int RECIPE_STEP_TITLE_MAX_LENGTH = 64;
-    private static final int RECIPE_STEP_DESCRIPTION_MAX_LENGTH = 2048;
+    
     
     private IAddStepPopupListener popupListener;
 
@@ -47,13 +46,13 @@ public class PopupAddStepWindow extends Window {
         String title = input_title.getText();
         String description = input_description.getText();
         
-        if(title.length() >= RECIPE_STEP_TITLE_MAX_LENGTH) {
-            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le titre de l'étape de la recette est trop long, la longueur maximale est de " + RECIPE_STEP_TITLE_MAX_LENGTH + " caractères");
+        if(title.length() >= RecipeStep.STEP_TITLE_MAX_LENGTH) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le titre de l'étape de la recette est trop long, la longueur maximale est de " + RecipeStep.STEP_TITLE_MAX_LENGTH + " caractères");
             return;
         }
 
-        if(description.length() >= RECIPE_STEP_DESCRIPTION_MAX_LENGTH) {
-            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le titre de la description de la recette est trop long, la longueur maximale est de " + RECIPE_STEP_DESCRIPTION_MAX_LENGTH + " caractères.");
+        if(description.length() >= RecipeStep.STEP_DESCRIPTION_MAX_LENGTH) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le titre de la description de la recette est trop long, la longueur maximale est de " + RecipeStep.STEP_DESCRIPTION_MAX_LENGTH + " caractères.");
             return;
         }
 

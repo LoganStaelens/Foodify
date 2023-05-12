@@ -2,6 +2,6 @@ package controllerPackage;
 
 import modelPackage.Ingredient;
 
-public interface IAddIngredientPopupListener{
+public interface IAddIngredientPopupListener {
     void onAddIngredient(Ingredient ingredient);
 }

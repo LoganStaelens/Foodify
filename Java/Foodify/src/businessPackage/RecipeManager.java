@@ -5,10 +5,14 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
+
 import dataAccessPackage.IRecipeDBAccess;
 import dataAccessPackage.RecipeDBAccess;
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import modelPackage.Ingredient;
 import modelPackage.Recipe;
 import modelPackage.RecipeStep;
@@ -109,8 +113,8 @@ public class RecipeManager implements IRecipeManager {
     }
 
     @Override
-    public List<Recipe> GetAllRecipes() throws DBConnectionException {
-        ResultSet result = recipeDataAccess.getAllIngredients();
+    public List<Recipe> getAllRecipes() throws DBConnectionException {
+        ResultSet result = recipeDataAccess.getAllRecipes();
         List<Recipe> data = new ArrayList<>();
 
         try {
@@ -141,6 +145,33 @@ public class RecipeManager implements IRecipeManager {
         
 
         return data;
+    }
+
+    @Override
+    public FilteredList<Recipe> filterListByTitle(ObservableList<Recipe> recipes, String filter) {
+        FilteredList<Recipe> filteredList = new FilteredList<>(recipes);
+        filteredList.setPredicate(p -> p.getTitle().toLowerCase().contains(filter.toLowerCase().trim()));
+        return filteredList;
+    }
+
+    @Override
+    public void deleteRecipe(Recipe recipe) throws DBConnectionException {
+        this.recipeDataAccess.deleteTagByRecipeID(recipe.getRecipeID());
+        this.recipeDataAccess.deleteIngredientsByRecipeID(recipe.getRecipeID());
+        this.recipeDataAccess.deleteRecipeStepsByRecipeID(recipe.getRecipeID());
+        this.recipeDataAccess.deleteRecipeByRecipeID(recipe.getRecipeID());
+    }
+
+    @Override
+    public void modifyRecipe(Recipe newRecipe) throws DBConnectionException {
+        this.recipeDataAccess.modifyRecipe(newRecipe);
+
+        this.recipeDataAccess.deleteTagByRecipeID(newRecipe.getRecipeID());
+        
+        ListIterator<String> tagsIterator = newRecipe.getTagsItterator(); 
+        while(tagsIterator.hasNext()) {
+            recipeDataAccess.addTagToRecipe(newRecipe.getRecipeID(), tagsIterator.next());
+        }
     }
     
 }

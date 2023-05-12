@@ -1,6 +1,10 @@
 package modelPackage;
 
 public class RecipeStep {
+
+    public static final int STEP_TITLE_MAX_LENGTH = 64;
+    public static final int STEP_DESCRIPTION_MAX_LENGTH = 2048;
+
     private int recipeStepID;
     private String title;
     private String description;

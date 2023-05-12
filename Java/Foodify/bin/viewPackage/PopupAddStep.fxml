@@ -9,7 +9,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <Pane prefHeight="73.0" prefWidth="600.0" style="-fx-background-color: #ffcd81;" BorderPane.alignment="CENTER">
@@ -27,46 +26,46 @@
          <children>
             <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="29.0" layoutY="25.0" prefHeight="61.0" prefWidth="415.0" text="Titre">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
                <graphic>
                   <TextField fx:id="input_title" prefHeight="30.0" prefWidth="352.0">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font>
                   </TextField>
                </graphic>
             </Label>
             <Button layoutX="484.0" layoutY="36.0" mnemonicParsing="false" onAction="#onAddStep" prefHeight="40.0" prefWidth="92.0" text="Ajouter">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Button>
             <Label contentDisplay="BOTTOM" graphicTextGap="20.0" layoutX="29.0" layoutY="163.0" prefHeight="28.0" prefWidth="100.0" text="Description">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </Label>
             <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="29.0" layoutY="86.0" prefHeight="61.0" prefWidth="175.0" text="Durée">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
                <graphic>
                   <TextField fx:id="input_duration" prefHeight="30.0" prefWidth="96.0">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font>
                   </TextField>
                </graphic>
             </Label>
             <Text layoutX="204.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minute(s)" wrappingWidth="83.73677062988281">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </Text>
             <TextArea fx:id="input_description" layoutX="26.0" layoutY="198.0" prefHeight="129.0" prefWidth="549.0">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </TextArea>
          </children>

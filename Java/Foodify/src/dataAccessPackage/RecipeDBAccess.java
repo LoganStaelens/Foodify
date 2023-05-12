@@ -1,11 +1,13 @@
 package dataAccessPackage;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
+import modelPackage.Recipe;
 
 public class RecipeDBAccess implements IRecipeDBAccess {
     
@@ -61,13 +63,13 @@ public class RecipeDBAccess implements IRecipeDBAccess {
             insertStatement.setString(2, complexity);
             insertStatement.setBoolean(3, isVisible);
 
-            if(creatorFirstname.isEmpty()) 
+            if(creatorFirstname == null || creatorFirstname.isEmpty()) 
                 insertStatement.setString(4, null);
             else 
                 insertStatement.setString(4, creatorFirstname);
          
 
-            if(creatorLastName.isEmpty()) 
+            if(creatorLastName == null || creatorLastName.isEmpty()) 
                 insertStatement.setString(5, null);       
             else 
                 insertStatement.setString(5, creatorLastName);
@@ -167,7 +169,92 @@ public class RecipeDBAccess implements IRecipeDBAccess {
         PreparedStatement statement;
         try {
             statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+            statement.setInt(1, recipeID);
             return statement.executeQuery();
+        } catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
+    }
+
+    @Override
+    public void deleteTagByRecipeID(int recipeID) throws DBConnectionException {
+        String sql = "DELETE FROM TagLink Where recipe = ?";
+
+        PreparedStatement statement;
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+            statement.setInt(1, recipeID);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
+    }
+
+    @Override
+    public void deleteIngredientsByRecipeID(int recipeID) throws DBConnectionException {
+        String sql = "DELETE FROM IngredientStack Where recipe = ?";
+
+        PreparedStatement statement;
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+            statement.setInt(1, recipeID);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
+    }
+
+    @Override
+    public void deleteRecipeStepsByRecipeID(int recipeID) throws DBConnectionException {
+        String sql = "DELETE FROM RecipeStep Where recipe = ?";
+
+        PreparedStatement statement;
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+            statement.setInt(1, recipeID);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
+    }
+
+    @Override
+    public void deleteRecipeByRecipeID(int recipeID) throws DBConnectionException {
+        String sql = "DELETE FROM Recipe Where recipe_id = ?";
+
+        PreparedStatement statement;
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+            statement.setInt(1, recipeID);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
+    }
+
+    @Override
+    public void modifyRecipe(Recipe newRecipe) throws DBConnectionException {
+        String sql = "UPDATE Recipe SET complexity = ?, isVisible = ?, title = ?, lastUpdate = ?, creatorFirstName = ?, creatorLastName = ? Where recipe_id = ?";
+
+        PreparedStatement statement;
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+            statement.setString(1, newRecipe.getComplexity());
+            statement.setBoolean(2, newRecipe.getIsVisible());
+            statement.setString(3, newRecipe.getTitle());
+            statement.setDate(4, Date.valueOf(newRecipe.getLastUpdate()));
+            
+            if(newRecipe.getCreatorFirstName() == null  || newRecipe.getCreatorFirstName().isEmpty()) 
+                statement.setString(5, null);
+            else 
+                statement.setString(5, newRecipe.getCreatorFirstName());
+    
+            if(newRecipe.getCreatorLastName() == null || newRecipe.getCreatorLastName().isEmpty()) 
+                statement.setString(6, null);       
+            else 
+                statement.setString(6, newRecipe.getCreatorLastName());
+            statement.setInt(7, newRecipe.getRecipeID());
+            statement.executeUpdate();
         } catch (SQLException e) {
             throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
         }

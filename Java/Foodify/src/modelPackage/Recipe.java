@@ -1,9 +1,16 @@
 package modelPackage;
 
 import java.time.LocalDate;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class Recipe {
+
+    public static final int TITLE_MAX_LENGTH = 64;
+    public static final int CREATOR_FIRST_NAME_MAX_LENGTH = 64;
+    public static final int CREATOR_LAST_NAME_MAX_LENGTH = 64;
+
     private int recipeID;
     private String title;
     private String complexity;
@@ -42,7 +49,7 @@ public class Recipe {
         return complexity;
     }
 
-    public boolean isVisible() {
+    public boolean getIsVisible() {
         return isVisible;
     }
 
@@ -60,6 +67,10 @@ public class Recipe {
 
     public String getTags() {
         return this.tags.toString();
+    }
+
+    public ListIterator<String> getTagsItterator() {
+        return this.tags.listIterator();
     }
 
         

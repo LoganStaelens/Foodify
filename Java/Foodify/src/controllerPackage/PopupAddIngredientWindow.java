@@ -6,8 +6,6 @@ import java.util.ResourceBundle;
 
 import businessPackage.IRecipeManager;
 import businessPackage.RecipeManager;
-import dataAccessPackage.IRecipeDBAccess;
-import dataAccessPackage.RecipeDBAccess;
 import exceptionPackage.DBConnectionException;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -24,7 +22,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.input.InputMethodEvent;
 import javafx.stage.Stage;
 import modelPackage.Ingredient;
 import viewPackage.Foodify;

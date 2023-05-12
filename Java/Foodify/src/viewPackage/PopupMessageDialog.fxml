@@ -21,10 +21,13 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #444;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="148.0" layoutY="129.0" mnemonicParsing="false" onAction="#onCloseButton" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: a39087;" text="Fermer" />
+            <Button layoutX="148.0" layoutY="129.0" mnemonicParsing="false" onAction="#onCloseButton" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: a39087;" text="Fermer">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font></Button>
             <Label fx:id="label_message" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="24.0" prefHeight="87.0" prefWidth="342.0" text="[MESSAGE]" textAlignment="CENTER" wrapText="true">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </Label>
          </children>
