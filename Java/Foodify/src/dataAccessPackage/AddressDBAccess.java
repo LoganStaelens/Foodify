@@ -11,7 +11,7 @@ public class AddressDBAccess implements IAddressDBAccess {
 
     public int checkAddress(int city, String street, int number) throws DBConnectionException {
         
-        String sql = "SELECT Address.city, Address.street, Address.number FROM Address WHERE city = ? AND street = ? AND number = ?";
+        String sql = "SELECT Address.address_id, Address.city, Address.street, Address.number FROM Address WHERE city = ? AND street = ? AND number = ?";
 
         PreparedStatement statement;
 
@@ -48,6 +48,7 @@ public class AddressDBAccess implements IAddressDBAccess {
             insertStatement.setInt(1, city);
             insertStatement.setString(2, street);
             insertStatement.setInt(3, number);
+            insertStatement.executeUpdate();
 
             sql = "SELECT LAST_INSERT_ID() as 'last_id'";
             

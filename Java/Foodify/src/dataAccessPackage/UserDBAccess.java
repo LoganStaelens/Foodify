@@ -29,7 +29,7 @@ public class UserDBAccess implements IUserDBAccess {
 
     public void createNewUser(String uniqueID, boolean isAdmin, String firstName, String lastName, Gender gender, String email, LocalDate birthDate, String phoneNumber, int address, String password) throws DBConnectionException {
         
-        String sql = "INSERT INTO User (uniqueID, address, gender, isAdmin, firstName, lastName, email, password, birthDate, phoneNumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO User (unique_id, address, gender, isAdmin, firstName, lastName, email, password, birthDate, phoneNumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement insertStatement;
 
@@ -38,20 +38,24 @@ public class UserDBAccess implements IUserDBAccess {
 
             insertStatement.setString(1, uniqueID);
             insertStatement.setInt(2, address);
-            insertStatement.setBoolean(3, isAdmin);
-            insertStatement.setString(4, lastName);
+            System.out.println(gender.toString().toLowerCase());
+            insertStatement.setString(3, gender.toString().toLowerCase());
+            insertStatement.setBoolean(4, isAdmin);
             insertStatement.setString(5, firstName);
-            insertStatement.setString(6, gender.toString().toLowerCase());
+            insertStatement.setString(6, lastName);
+            
             insertStatement.setString(7, email);
             insertStatement.setString(8, password);
             insertStatement.setDate(9, Date.valueOf(birthDate));
             
-            if (phoneNumber.isEmpty()) {
+            if (phoneNumber == null || phoneNumber.isEmpty()) {
                 insertStatement.setString(10, null);
             }
             else {
                 insertStatement.setString(10, phoneNumber);
             }
+
+            insertStatement.executeUpdate();
         }
         catch (SQLException e) {
             e.printStackTrace();

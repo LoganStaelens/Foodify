@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +13,7 @@
       <Button layoutX="325.0" layoutY="534.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="26.0" prefWidth="109.0" text="Annuler" />
       <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="32.0" layoutY="54.0" prefHeight="63.0" prefWidth="215.0" text="Prénom" wrapText="true">
          <graphic>
-            <TextField fx:id="cr_textfield_first_name" prefHeight="30.0" prefWidth="133.0">
+            <TextField fx:id="input_textfield_first_name" prefHeight="30.0" prefWidth="133.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
@@ -27,7 +28,7 @@
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
          <graphic>
-            <TextField fx:id="cr_textfield_last_name" prefHeight="30.0" prefWidth="133.0">
+            <TextField fx:id="input_textfield_last_name" prefHeight="30.0" prefWidth="133.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
@@ -39,7 +40,7 @@
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
          <graphic>
-            <TextField fx:id="cr_textfield_email" prefHeight="30.0" prefWidth="133.0">
+            <TextField fx:id="input_textfield_email" prefHeight="30.0" prefWidth="133.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
@@ -51,7 +52,7 @@
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
          <graphic>
-            <TextField fx:id="cr_textfield_phone_number" prefHeight="30.0" prefWidth="133.0">
+            <TextField fx:id="input_textfield_phone_number" prefHeight="30.0" prefWidth="133.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
@@ -63,7 +64,7 @@
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
          <graphic>
-            <TextField fx:id="cr_textfield_password" prefHeight="30.0" prefWidth="144.0">
+            <TextField fx:id="input_textfield_password" prefHeight="30.0" prefWidth="144.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
@@ -75,13 +76,71 @@
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
          <graphic>
-            <TextField fx:id="cr_textfield_verify_password" prefHeight="30.0" prefWidth="138.0">
+            <TextField fx:id="input_textfield_verify_password" prefHeight="30.0" prefWidth="138.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </TextField>
          </graphic>
       </Label>
-      <ChoiceBox fx:id="cr_choice_box_gender" layoutX="465.0" layoutY="73.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="input_choice_boc_gender" layoutX="465.0" layoutY="73.0" prefWidth="150.0" />
+      <DatePicker fx:id="input_date_picker_birthDate" layoutX="465.0" layoutY="136.0" />
+      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="452.0" layoutY="201.0" prefHeight="63.0" prefWidth="215.0" text="Route" wrapText="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+         <graphic>
+            <TextField fx:id="input_textfield_street" prefHeight="30.0" prefWidth="133.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </TextField>
+         </graphic>
+      </Label>
+      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="452.0" layoutY="243.0" prefHeight="63.0" prefWidth="215.0" text="Numero" wrapText="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+         <graphic>
+            <TextField fx:id="input_textfield_number" prefHeight="30.0" prefWidth="133.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </TextField>
+         </graphic>
+      </Label>
+      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="452.0" layoutY="300.0" prefHeight="63.0" prefWidth="215.0" text="Ville" wrapText="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+         <graphic>
+            <TextField fx:id="input_textfield_city" prefHeight="30.0" prefWidth="133.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </TextField>
+         </graphic>
+      </Label>
+      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="452.0" layoutY="363.0" prefHeight="63.0" prefWidth="215.0" text="Code postal" wrapText="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+         <graphic>
+            <TextField fx:id="input_textfield_post_code" prefHeight="30.0" prefWidth="133.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </TextField>
+         </graphic>
+      </Label>
+      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="452.0" layoutY="426.0" prefHeight="63.0" prefWidth="215.0" text="Pays" wrapText="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+         <graphic>
+            <ChoiceBox fx:id="input_choicebox_country" prefWidth="150.0" />
+         </graphic>
+      </Label>
+      <Button layoutX="452.0" layoutY="534.0" mnemonicParsing="false" onAction="#onButtonCreate" prefHeight="26.0" prefWidth="109.0" text="Create" />
    </children>
 </AnchorPane>

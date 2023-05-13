@@ -32,6 +32,7 @@ public class CityDBAccess implements ICityDBAccess {
             }
         }
         catch (SQLException e) {
+            e.printStackTrace();
             throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
@@ -48,7 +49,9 @@ public class CityDBAccess implements ICityDBAccess {
             insertStatement.setString(1, country);
             insertStatement.setString(2, name);
             insertStatement.setString(3, postCode);
+            insertStatement.executeUpdate();
 
+            
             sql = "SELECT LAST_INSERT_ID() as 'last_id'";
             
             PreparedStatement lastIDStatement = DBConnection.getInstance().getConnection().prepareStatement(sql);
@@ -56,13 +59,14 @@ public class CityDBAccess implements ICityDBAccess {
             ResultSet result = lastIDStatement.executeQuery();
 
             result.next();
+
             int lastID = result.getInt("last_id");
+            
             result.close();
 
             return lastID;
         }
         catch (SQLException e) {
-            e.printStackTrace();
             throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
         }
     }

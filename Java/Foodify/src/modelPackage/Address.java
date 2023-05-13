@@ -17,6 +17,13 @@ public class Address {
         this.number = number;
     }
 
+    public Address(String street, int number, City city) throws StringTooLongException {
+        this.addressID = 0;
+        setStreet(street);
+        this.city = city;
+        this.number = number;
+    }
+
     public void setStreet(String street) throws StringTooLongException {
         if(street.length() > STREET_MAX_LENGTH) 
             throw new StringTooLongException("La rue", street.length(), STREET_MAX_LENGTH);  
