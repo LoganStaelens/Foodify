@@ -9,7 +9,7 @@ import exceptionPackage.DBConnectionExceptionTypes;
 
 public class AddressDBAccess implements IAddressDBAccess {
 
-    public boolean checkAddress(int city, String street, int number) throws DBConnectionException {
+    public int checkAddress(int city, String street, int number) throws DBConnectionException {
         
         String sql = "SELECT Address.city, Address.street, Address.number FROM Address WHERE city = ? AND street = ? AND number = ?";
 
@@ -24,7 +24,12 @@ public class AddressDBAccess implements IAddressDBAccess {
             
             ResultSet resultSet = statement.executeQuery();
 
-            return resultSet.next();
+            if (resultSet.next()) {
+                return resultSet.getInt("Address.address_id");
+            }
+            else {
+                return -1;
+            }
         }
         catch (SQLException e) {
             throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);

@@ -9,9 +9,9 @@ import exceptionPackage.DBConnectionExceptionTypes;
 
 public class CityDBAccess implements ICityDBAccess {
 
-    public boolean checkCity(String country, String name, String postCode) throws DBConnectionException {
+    public int checkCity(String country, String name, String postCode) throws DBConnectionException {
         
-        String sql = "SELECT City.country, City.name, City.postCode FROM City WHERE country = ? AND name = ? AND postCode = ?";
+        String sql = "SELECT City.city_id, City.country, City.name, City.postCode FROM City WHERE country = ? AND name = ? AND postCode = ?";
 
         PreparedStatement statement;
 
@@ -24,7 +24,12 @@ public class CityDBAccess implements ICityDBAccess {
             
             ResultSet resultSet = statement.executeQuery();
 
-            return resultSet.next();
+            if (resultSet.next()) {
+                return resultSet.getInt("City.city_id");
+            }
+            else {
+                return -1;
+            }
         }
         catch (SQLException e) {
             throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);

@@ -84,7 +84,27 @@ public class RegisterWindow extends Window implements Initializable {
     }
 
     @FXML
-    public void cancelButton(ActionEvent event) {
+    public void cancelButton (ActionEvent event) {
         Foodify.getInstance().setLoginWindow();
+    }
+
+    @FXML
+    public void cr_onButtonCreate (ActionEvent event) {
+        
+        try {
+            this.userManager.createNewUser(
+                cr_texetfield_first_name.getText(),
+                cr_texetfield_last_name.getText(),
+                cr_choice_box_gender.getValue(),
+                cr_texetfield_email.getText(),
+                // Birthdate,
+                cr_texetfield_phone_number.getText(),
+                // Address,
+                cr_texetfield_verify_password.getText()
+            );
+        }
+        catch (DBConnectionException e) {
+
+        }
     }
 }
