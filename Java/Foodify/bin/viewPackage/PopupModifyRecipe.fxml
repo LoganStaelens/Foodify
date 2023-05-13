@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Pane prefHeight="73.0" prefWidth="600.0" style="-fx-background-color: #ffcd81;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="34.0" layoutY="19.0" text="Modifier une recette">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <Pane prefHeight="369.0" prefWidth="600.0" style="-fx-background-color: #ebdbcc;" BorderPane.alignment="CENTER">
+         <children>
+            <Label contentDisplay="RIGHT" graphicTextGap="180.0" layoutX="31.0" layoutY="43.0" prefHeight="30.0" prefWidth="530.0" text="Nom de la recette">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+               <graphic>
+                  <TextField fx:id="input_recipe_title" prefHeight="30.0" prefWidth="198.0">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font></TextField>
+               </graphic>
+            </Label>
+            <Label contentDisplay="RIGHT" graphicTextGap="253.0" layoutX="31.0" layoutY="93.0" text="Prenom">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+               <graphic>
+                  <TextField fx:id="input_recipe_creator_first_name" prefHeight="30.0" prefWidth="110.0">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font></TextField>
+               </graphic>
+            </Label>
+            <Label contentDisplay="RIGHT" graphicTextGap="276.0" layoutX="31.0" layoutY="142.0" text="Nom">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+               <graphic>
+                  <TextField fx:id="input_recipe_creator_last_name" prefHeight="30.0" prefWidth="110.0">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font></TextField>
+               </graphic>
+            </Label>
+            <MenuButton fx:id="menu_button_tags" layoutX="340.0" layoutY="242.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="181.0" text="Tags">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </MenuButton>
+            <Label contentDisplay="RIGHT" graphicTextGap="243.0" layoutX="31.0" layoutY="192.0" text="Difficulte">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+               <graphic>
+                  <ChoiceBox fx:id="choice_box_complexity" prefHeight="30.0" prefWidth="154.0" />
+               </graphic>
+            </Label>
+            <Label contentDisplay="RIGHT" graphicTextGap="232.0" layoutX="31.0" layoutY="293.0" prefHeight="30.0" prefWidth="406.0" text="Est Visible">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+               <graphic>
+                  <CheckBox fx:id="check_box_is_visible" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="41.0" text="CheckBox">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </CheckBox>
+               </graphic>
+            </Label>
+         </children>
+      </Pane>
+   </center>
+   <bottom>
+      <Pane prefHeight="85.0" prefWidth="600.0" style="-fx-background-color: #444;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="114.0" layoutY="18.0" mnemonicParsing="false" onAction="#onButtonCancel" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #a39087;" text="Annuler">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="337.0" layoutY="18.0" mnemonicParsing="false" onAction="#onButtonModify" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #ffcd81; -fx-text-fill: #000;" text="Modifier">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </bottom>
+</BorderPane>

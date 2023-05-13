@@ -1,9 +1,9 @@
-INSERT INTO complexity (complexity) VALUES 
-("DEBUTANT"),
-("FACILE"),
-("MOYEN"),
-("DIFFICILE"),
-("PRO");
+INSERT INTO complexity (complexity, degree) VALUES 
+("DEBUTANT", 0),
+("FACILE", 1),
+("MOYEN", 2),
+("DIFFICILE", 3),
+("PRO", 4);
 
 
 INSERT INTO gender (gender) VALUES 
@@ -263,8 +263,8 @@ INSERT INTO tag (name) VALUES
 ("JAPONAIS"),
 ("CHINOIS"),
 ("FRANCAIS"),
-("PEU_CALORIQUE"),
-("SAND PORC"),
+("PEU CALORIQUE"),
+("SANS PORC"),
 ("HALLAL"),
 ("ITALIEN");
 
@@ -923,4 +923,38 @@ INSERT INTO Ingredient (unit, name, calories) VALUES
 (6, 'Vinaigre de vin rouge', 19),
 (6, "Zeste d'orange", 97),
 (4, "Huile de truffe", 800),
-(1, "Truffe", 92);
+(1, "Truffe", 92),
+(1, "Concentré de tomates", 92);
+
+
+INSERT INTO Ingredient (unit, name, calories) VALUES
+(1, "Sucre blanc", 398),
+(1, "Sucre Vanillé", 380);
+
+INSERT INTO Recipe (complexity, isVisible, title, lastUpdate) VALUES
+("FACILE", true, "Spaghetti bolognaise", NOW());
+
+INSERT INTO Taglink (recipe, tag) VALUES
+(1, "ITALIEN");
+
+INSERT INTO RecipeStep (recipe, stepCount, title, description, duration) VALUES
+(1, 1, "Découpe légumes", "Emincez les légumes", 10),
+(1, 2, "Cuisson oignons", "Faites chauffer 1 c. à soupe d'huile d'olive dans une casserole et faites-y revenir l'oignon et l'ail émincés, tout en remuant, jusqu'à ce qu'ils deviennent transparents.", 5),
+(1, 3, "Cuisson légumes", "Ajoutez les autres légumes et laissez mijoter pendant ± 4 min. à feu doux et à découvert.", 4),
+(1, 4, "Cuisson hachis", "Faites chauffer 1 c. à soupe d'huile d'olive dans une poêle et faites-y cuire le hachis jusqu'à obtention d'une viande granuleuse (émiettez-le à l'aide d'une fourchette).", 5),
+(1, 5, "Ajouter tout", "Ajoutez le hachis, le concentré de tomates ainsi que les tomates pelées aux légumes et remuez bien. Assaisonnez de sel, de poivre et de poivre de Cayenne, et d'autres épices selon votre goût.", 6),
+(1, 6, "Mijoter", "Couvrez et laissez mijoter pendant ± 1 h à feu doux. Entre-temps, ajoutez-y aussi un soupçon de bouillon de poule ou de vin rouge.", 60),
+(1, 7, "Servez", "Servez la sauce avec des spaghettis.", 2);
+
+INSERT INTO IngredientStack (recipe, ingredient, amount) VALUES
+(1, 250, 300),
+(1, 184, 300),
+(1, 94, 800),
+(1, 635, 70),
+(1, 564, 10),
+(1, 79, 80),
+(1, 498, 15),
+(1, 53, 250),
+(1, 69, 60),
+(1, 89, 150),
+(1, 54, 150);
