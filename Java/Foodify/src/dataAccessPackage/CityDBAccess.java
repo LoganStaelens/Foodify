@@ -8,6 +8,28 @@ import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
 
 public class CityDBAccess implements ICityDBAccess {
+
+    public boolean checkCity(String country, String name, String postCode) throws DBConnectionException {
+        
+        String sql = "SELECT City.country, City.name, City.postCode FROM City WHERE country = ? AND name = ? AND postCode = ?";
+
+        PreparedStatement statement;
+
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+
+            statement.setString(1, country);
+            statement.setString(2, name);
+            statement.setString(3, postCode);
+            
+            ResultSet resultSet = statement.executeQuery();
+
+            return resultSet.next();
+        }
+        catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
+    }
     
     public int createNewCity(String country, String name, String postCode) throws DBConnectionException {
 

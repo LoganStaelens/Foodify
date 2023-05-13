@@ -5,11 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.UUID;
 
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
-import modelPackage.Address;
 import modelPackage.Gender;
 
 public class UserDBAccess implements IUserDBAccess {
@@ -57,6 +55,21 @@ public class UserDBAccess implements IUserDBAccess {
         }
         catch (SQLException e) {
             e.printStackTrace();
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
+    }
+
+    public ResultSet getGenders() throws DBConnectionException {
+        
+        String sql = "SELECT Gender.gender from Gender;";
+
+        PreparedStatement statement;
+        
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+            return statement.executeQuery();
+        } 
+        catch (SQLException e) {
             throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
         }
     }

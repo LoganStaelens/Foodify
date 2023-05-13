@@ -8,6 +8,29 @@ import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
 
 public class AddressDBAccess implements IAddressDBAccess {
+
+    public boolean checkAddress(int city, String street, int number) throws DBConnectionException {
+        
+        String sql = "SELECT Address.city, Address.street, Address.number FROM Address WHERE city = ? AND street = ? AND number = ?";
+
+        PreparedStatement statement;
+
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+
+            statement.setInt(1, city);
+            statement.setString(2, street);
+            statement.setInt(3, number);
+            
+            ResultSet resultSet = statement.executeQuery();
+
+            return resultSet.next();
+        }
+        catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
+    }
+
     public int createNewAddress(String street, int city, int number) throws DBConnectionException {
         
         String sql = "INSERT INTO Address (city, street, number) VALUES (?, ?, ?)";

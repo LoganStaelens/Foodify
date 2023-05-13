@@ -13,7 +13,6 @@ import controllerPackage.IYesNoPopupListener;
 import controllerPackage.LoginWindow;
 import controllerPackage.PopupMessageDialogWindow;
 import controllerPackage.PopupMessageTypes;
-import controllerPackage.PopupYesNoResult;
 import controllerPackage.PopupYesNoWindow;
 import controllerPackage.RegisterWindow;
 
