@@ -15,6 +15,7 @@ import controllerPackage.PopupMessageDialogWindow;
 import controllerPackage.PopupMessageTypes;
 import controllerPackage.PopupYesNoResult;
 import controllerPackage.PopupYesNoWindow;
+import controllerPackage.RegisterWindow;
 
 public class Foodify extends Application {
     private Stage primaryStage;

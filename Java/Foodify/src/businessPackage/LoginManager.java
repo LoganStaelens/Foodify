@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
-import dataAccessPackage.IUserDataAccess;
+import dataAccessPackage.IUserDBAccess;
 import dataAccessPackage.UserDBAccess;
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
@@ -18,7 +18,7 @@ import modelPackage.User;
 
 public class LoginManager implements ILoginManager {
 
-    IUserDataAccess userDataAccess;
+    IUserDBAccess userDataAccess;
     IHash hashingAlgorithm;
 
     public LoginManager() {
