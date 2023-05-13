@@ -27,7 +27,7 @@ public class RecipeDBAccess implements IRecipeDBAccess {
 
     @Override
     public ResultSet getDifficulties() throws DBConnectionException {
-        String sql = "SELECT * from complexity;";
+        String sql = "SELECT Complexity.complexity from Complexity ORDER BY Complexity.degree ASC;";
 
         PreparedStatement statement;
         try {
@@ -272,6 +272,20 @@ public class RecipeDBAccess implements IRecipeDBAccess {
         } catch (SQLException e) {
             throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
         }
+    }
+
+    @Override
+    public ResultSet getRecipeStepsForRecipe(int recipeID) throws DBConnectionException {
+        String sql = "SELECT RecipeStep.stepCount as stepCount, RecipeStep.title as title, RecipeStep.description as description, RecipeStep.duration as duration FROM RecipeStep WHERE RecipeStep.recipe = ? ORDER BY RecipeStep.stepCount ASC;";
+    
+        PreparedStatement statement;
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+            statement.setInt(1, recipeID);
+            return statement.executeQuery();
+        } catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        } 
     }
 
 }

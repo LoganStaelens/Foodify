@@ -27,4 +27,6 @@ public interface IRecipeManager {
     void modifyRecipe(Recipe newRecipe) throws DBConnectionException;
     
     List<Ingredient> getIngredientsForRecipe(Recipe recipe) throws DBConnectionException;
+
+    List<RecipeStep> getRecipeStepsForRecipe(Recipe recipe) throws DBConnectionException;
 }

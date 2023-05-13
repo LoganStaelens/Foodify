@@ -69,7 +69,7 @@
                </font>
             </Label>
             <Button contentDisplay="GRAPHIC_ONLY" layoutX="811.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: #00000000;" />
-            <ImageView cache="true" fitHeight="35.0" fitWidth="39.0" layoutX="817.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView cache="true" fitHeight="80.0" fitWidth="80.0" layoutX="806.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@user-silhouette.png" />
                </image>

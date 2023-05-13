@@ -1,9 +1,9 @@
-INSERT INTO complexity (complexity) VALUES 
-("DEBUTANT"),
-("FACILE"),
-("MOYEN"),
-("DIFFICILE"),
-("PRO");
+INSERT INTO complexity (complexity, degree) VALUES 
+("DEBUTANT", 0),
+("FACILE", 1),
+("MOYEN", 2),
+("DIFFICILE", 3),
+("PRO", 4);
 
 
 INSERT INTO gender (gender) VALUES 
@@ -958,16 +958,3 @@ INSERT INTO IngredientStack (recipe, ingredient, amount) VALUES
 (1, 69, 60),
 (1, 89, 150),
 (1, 54, 150);
-
-
-INSERT INTO Recipe (complexity, isVisible, title, lastUpdate) VALUES
-("FACILE", true, "Scampis poêlés, poivrons, champignons et riz", NOW());
-
-INSERT INTO Taglink (recipe, tag) VALUES
-(2, 4);
-(2, 10);
-
-INSERT INTO RecipeStep (recipe, stepCount, title, description, duration) VALUES
-#TODO ajouter les etapes
-INSERT INTO IngredientStack (recipe, ingredient, amount) VALUES
-#TODO ajouter les ingrédients

@@ -197,5 +197,30 @@ public class RecipeManager implements IRecipeManager {
         
         return data;
     }
+
+    @Override
+    public List<RecipeStep> getRecipeStepsForRecipe(Recipe recipe) throws DBConnectionException {
+        ResultSet result = recipeDataAccess.getRecipeStepsForRecipe(recipe.getRecipeID());
+        List<RecipeStep> data = new ArrayList<>();
+
+        try {
+            while(result.next()) {
+                String title = result.getString("title");
+                int duration = result.getInt("duration");
+                int stepCount = result.getInt("stepCount");
+                String description = result.getString("description");
+                RecipeStep step = new RecipeStep(title, description, duration);
+                step.setStepCount(stepCount);
+                data.add(step);
+            }
+
+            result.close();
+          
+        } catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+        }
+        
+        return data;
+    }
     
 }

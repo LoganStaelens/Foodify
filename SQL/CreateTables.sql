@@ -53,6 +53,7 @@ CREATE TABLE IF NOT EXISTS Menu (
 
 CREATE TABLE IF NOT EXISTS Complexity (
     complexity VARCHAR(32) NOT NULL,
+    degree INT NOT NULL,
     PRIMARY KEY (complexity)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

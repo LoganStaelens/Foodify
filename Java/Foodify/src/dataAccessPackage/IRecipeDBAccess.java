@@ -35,4 +35,6 @@ public interface IRecipeDBAccess {
     void modifyRecipe(Recipe newRecipe) throws DBConnectionException;
 
     ResultSet getIngredientsForRecipe(int recipeID) throws DBConnectionException;
+
+    ResultSet getRecipeStepsForRecipe(int recipeID) throws DBConnectionException;
 }

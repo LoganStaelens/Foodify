@@ -51,12 +51,12 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <TableView fx:id="table1" layoutY="456.0" prefHeight="339.0" prefWidth="600.0">
+                        <TableView fx:id="table_view_step" layoutY="456.0" prefHeight="339.0" prefWidth="600.0">
                            <columns>
-                              <TableColumn fx:id="column_name1" editable="false" prefWidth="49.0" text="Etape" />
-                              <TableColumn fx:id="column_name11" editable="false" prefWidth="125.0" text="Titre" />
-                              <TableColumn fx:id="column_kcal1" editable="false" prefWidth="217.0" text="Description" />
-                              <TableColumn fx:id="column_name111" editable="false" prefWidth="208.0" text="Duree" />
+                              <TableColumn fx:id="column_step_step_count" editable="false" prefWidth="49.0" text="Etape" />
+                              <TableColumn fx:id="column_step_title" editable="false" prefWidth="125.0" text="Titre" />
+                              <TableColumn fx:id="column_step_description" editable="false" prefWidth="217.0" text="Description" />
+                              <TableColumn fx:id="column_step_duration" editable="false" prefWidth="208.0" text="Duree" />
                            </columns>
                         </TableView>
                         <Label layoutX="35.0" layoutY="14.0" text="Ingredients">

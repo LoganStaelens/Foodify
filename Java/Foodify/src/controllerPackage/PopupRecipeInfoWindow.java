@@ -21,6 +21,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import modelPackage.Ingredient;
 import modelPackage.Recipe;
+import modelPackage.RecipeStep;
 import viewPackage.Foodify;
 
 public class PopupRecipeInfoWindow extends Window implements Initializable{
@@ -39,6 +40,21 @@ public class PopupRecipeInfoWindow extends Window implements Initializable{
 
     @FXML
     private TableColumn<Ingredient, String> column_ingredient_unit;
+
+    @FXML
+    private TableColumn<RecipeStep, String> column_step_description;
+
+    @FXML
+    private TableColumn<RecipeStep, Integer> column_step_duration;
+
+    @FXML
+    private TableColumn<RecipeStep, Integer> column_step_step_count;
+
+    @FXML
+    private TableColumn<RecipeStep, String> column_step_title;
+
+    @FXML
+    private TableView<RecipeStep> table_view_step;
 
     private IRecipeManager recipeManager;
     private Recipe recipe;
@@ -59,12 +75,17 @@ public class PopupRecipeInfoWindow extends Window implements Initializable{
         column_ingredient_unit.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("unit"));
         column_ingredient_amount.setCellValueFactory(new PropertyValueFactory<Ingredient, Integer>("quantity"));
         
+        column_step_description.setCellValueFactory(new PropertyValueFactory<RecipeStep, String>("description"));
+        column_step_duration.setCellValueFactory(new PropertyValueFactory<RecipeStep, Integer>("duration"));
+        column_step_step_count.setCellValueFactory(new PropertyValueFactory<RecipeStep, Integer>("stepCount"));
+        column_step_title.setCellValueFactory(new PropertyValueFactory<RecipeStep, String>("title"));
         reset();
     }
 
     private void reset() {
         this.recipe = null;
         table_view_ingredient.setItems(FXCollections.observableArrayList());
+        table_view_step.setItems(FXCollections.observableArrayList());
 
     }
 
@@ -85,6 +106,15 @@ public class PopupRecipeInfoWindow extends Window implements Initializable{
             }
             catch (DBConnectionException e) {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la recuperation des ingredients de la recette");
+            }
+
+            try {
+                List<RecipeStep> recipeSteps = this.recipeManager.getRecipeStepsForRecipe(recipe);
+
+                table_view_step.setItems(FXCollections.observableArrayList(recipeSteps));
+            }
+            catch (DBConnectionException e) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la recuperation des etapes de la recette");
             }
         }
     }
