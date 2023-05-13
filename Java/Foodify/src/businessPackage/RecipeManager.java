@@ -173,5 +173,29 @@ public class RecipeManager implements IRecipeManager {
             recipeDataAccess.addTagToRecipe(newRecipe.getRecipeID(), tagsIterator.next());
         }
     }
+
+    @Override
+    public List<Ingredient> getIngredientsForRecipe(Recipe recipe) throws DBConnectionException {
+     
+        ResultSet result = recipeDataAccess.getIngredientsForRecipe(recipe.getRecipeID());
+        List<Ingredient> data = new ArrayList<>();
+
+        try {
+            while(result.next()) {
+                String ingredientName = result.getString("ingredient");
+                int kcal = result.getInt("kcal");
+                int amount = result.getInt("amount");
+                String unit = result.getString("unit");
+                data.add(new Ingredient(ingredientName, kcal, unit, amount));
+            }
+
+            result.close();
+          
+        } catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+        }
+        
+        return data;
+    }
     
 }

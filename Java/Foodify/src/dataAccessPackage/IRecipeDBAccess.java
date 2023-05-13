@@ -33,4 +33,6 @@ public interface IRecipeDBAccess {
     void deleteRecipeByRecipeID(int recipeID) throws DBConnectionException;
 
     void modifyRecipe(Recipe newRecipe) throws DBConnectionException;
+
+    ResultSet getIngredientsForRecipe(int recipeID) throws DBConnectionException;
 }

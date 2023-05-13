@@ -44,6 +44,7 @@ public class LoginWindow extends Window {
         fxmlLoader.setController(this);
         this.fxmlWindow = new Scene(fxmlLoader.load());
         this.loginManager = new LoginManager();
+        this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());
     }
 
     @Override

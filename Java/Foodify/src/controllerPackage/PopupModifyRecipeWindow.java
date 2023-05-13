@@ -133,7 +133,7 @@ public class PopupModifyRecipeWindow extends Window implements Initializable{
     }
 
     @FXML
-    void onButtonCancel(ActionEvent event) {v
+    void onButtonCancel(ActionEvent event) {
         hide();
     }
 

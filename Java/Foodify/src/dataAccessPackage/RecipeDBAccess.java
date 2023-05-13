@@ -260,4 +260,18 @@ public class RecipeDBAccess implements IRecipeDBAccess {
         }
     }
 
+    @Override
+    public ResultSet getIngredientsForRecipe(int recipeID) throws DBConnectionException {
+        String sql = "SELECT IngredientStack.amount as amount, Ingredient.name as ingredient, Ingredient.calories as kcal, Unit.name as unit FROM IngredientStack INNER JOIN Ingredient On IngredientStack.ingredient = Ingredient.ingredient_id INNER JOIN Unit On Ingredient.unit = Unit.unit_id WHERE IngredientStack.recipe = ?;";
+    
+        PreparedStatement statement;
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+            statement.setInt(1, recipeID);
+            return statement.executeQuery();
+        } catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
+    }
+
 }

@@ -116,6 +116,7 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
     private PopupAddIngredientWindow popupAddIngredientWindow;
     private PopupAddStepWindow popupAddStepWindow;
     private PopupModifyRecipeWindow popupModifyRecipeWindow;
+    private PopupRecipeInfoWindow popupRecipeInfoWindow;
 
     private IRecipeManager recipeManager;
 
@@ -130,6 +131,7 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
         this.popupAddIngredientWindow = new PopupAddIngredientWindow(mainStage, popupStage, new FXMLLoader(getClass().getResource("../viewPackage/PopupAddIngredient.fxml")), this);
         this.popupAddStepWindow = new PopupAddStepWindow(mainStage, popupStage, new FXMLLoader(getClass().getResource("../viewPackage/PopupAddStep.fxml")), this);
         this.popupModifyRecipeWindow = new PopupModifyRecipeWindow(mainStage, popupStage, new FXMLLoader(getClass().getResource("../viewPackage/PopupModifyRecipe.fxml")), this);
+        this.popupRecipeInfoWindow = new PopupRecipeInfoWindow(mainStage, popupStage, new FXMLLoader(getClass().getResource("../viewPackage/PopupRecipeInfo.fxml")));
     }
 
 
@@ -346,6 +348,17 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
             this.popupModifyRecipeWindow.show();
         }     
     }
+
+    @FXML
+    void lr_onButtonInfo(ActionEvent event) {
+        Recipe recipeToModify = lr_tableview.getSelectionModel().getSelectedItem();
+        if(recipeToModify != null) {
+            this.popupRecipeInfoWindow.setRecipe(recipeToModify);
+            this.popupRecipeInfoWindow.show();
+        }     
+    }
+
+    
 
 
     @Override
