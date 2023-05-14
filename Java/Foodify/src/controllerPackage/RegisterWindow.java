@@ -10,7 +10,6 @@ import businessPackage.UserManager;
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.HashException;
 import exceptionPackage.StringTooLongException;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

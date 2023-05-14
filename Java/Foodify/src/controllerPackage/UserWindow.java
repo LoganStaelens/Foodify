@@ -1,6 +1,10 @@
 package controllerPackage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 import businessPackage.IRecipeManager;
 import businessPackage.RecipeManager;
@@ -8,20 +12,31 @@ import exceptionPackage.DBConnectionException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckMenuItem;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import modelPackage.Recipe;
+import viewPackage.Foodify;
 
-public class UserWindow extends Window {
+public class UserWindow extends Window implements Initializable {
 
     @FXML
     private TextField input_search_recipe;
 
     @FXML
     private Button button_search;
+
+    @FXML
+    private Button button_create_menu;
+
+    @FXML
+    private MenuButton menu_button_monday_tag;
 
     IRecipeManager recipeManager;
 
@@ -57,4 +72,37 @@ public class UserWindow extends Window {
         }
     }
     
+    public void createAction(ActionEvent event) throws DBConnectionException {
+
+        List<String> selectedTags = new ArrayList<>();
+
+        for (MenuItem item : menu_button_monday_tag.getItems()) {
+            
+            CheckMenuItem menuItem = (CheckMenuItem)item;
+            
+            if (menuItem.isSelected())
+                selectedTags.add(menuItem.getText());
+        }
+    }
+
+    void loadWindow() {
+        
+        try {
+            List<String> tags = this.recipeManager.getTags();
+        
+            menu_button_monday_tag.getItems().clear();
+            
+            for (String tag : tags) {
+                menu_button_monday_tag.getItems().add(new CheckMenuItem(tag));
+            }
+        }
+        catch (DBConnectionException e) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la recuperation des tags");
+        }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        loadWindow();
+    }
 }

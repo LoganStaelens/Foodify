@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
 
-public class MenuDBAccess {
+public class MenuDBAccess implements IMenuDBAccess {
     
     public int createNewMenu(String user, int year, int week) throws DBConnectionException {
         
