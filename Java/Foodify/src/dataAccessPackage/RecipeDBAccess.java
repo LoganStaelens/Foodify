@@ -288,4 +288,22 @@ public class RecipeDBAccess implements IRecipeDBAccess {
         } 
     }
 
+    public ResultSet findRecipeByName(String name) throws DBConnectionException {
+        
+        String sql = "SELECT * from Recipe WHERE title = ?";
+
+        PreparedStatement statement;
+
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+
+            statement.setString(1, name);
+
+            return statement.executeQuery();
+        }
+        catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
+    }
+
 }

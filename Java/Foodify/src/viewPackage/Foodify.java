@@ -15,6 +15,7 @@ import controllerPackage.PopupMessageDialogWindow;
 import controllerPackage.PopupMessageTypes;
 import controllerPackage.PopupYesNoWindow;
 import controllerPackage.RegisterWindow;
+import controllerPackage.UserWindow;
 
 public class Foodify extends Application {
     private Stage primaryStage;
@@ -23,6 +24,7 @@ public class Foodify extends Application {
 
     private LoginWindow loginWindow;
     private RegisterWindow registerWindow;
+    private UserWindow userWindow;
     private AdminWindow adminWindow;
 
     private PopupMessageDialogWindow popupMessageDialogWindow;
@@ -47,7 +49,6 @@ public class Foodify extends Application {
             loadWindows();
 
             setLoginWindow();
-            
 
             UUID.randomUUID().toString();
 
@@ -60,6 +61,7 @@ public class Foodify extends Application {
         this.loginWindow = new LoginWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("LoginWindow.fxml")));
         this.registerWindow = new RegisterWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("RegisterWindow.fxml")));
         this.adminWindow = new AdminWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("AdminWindow.fxml")));
+        this.userWindow = new UserWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("UserWindow.fxml")));
         this.popupMessageDialogWindow = new PopupMessageDialogWindow(popupDialogStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupMessageDialog.fxml")));
         this.popupYesNoWindow = new PopupYesNoWindow(popupDialogStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupYesNo.fxml")));
     }
@@ -70,6 +72,10 @@ public class Foodify extends Application {
 
     public void setRegisterWindow() {
         this.registerWindow.show();
+    }
+
+    public void setUserWindow() {
+        this.userWindow.show();
     }
 
     public void setAdminWindow() {
