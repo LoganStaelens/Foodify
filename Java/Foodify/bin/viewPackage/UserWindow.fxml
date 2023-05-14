@@ -44,7 +44,7 @@
    <bottom>
       <TabPane prefHeight="624.0" prefWidth="900.0" style="-fx-background-color: #111;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab fx:id="cm_tab" text="Create Menu">
+          <Tab fx:id="cmTab" text="Create Menu">
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ebdbcc;">
                      <children>
@@ -53,7 +53,7 @@
                               <Font name="Arial Rounded MT Bold" size="14.0" />
                            </font>
                            <graphic>
-                              <ChoiceBox fx:id="cm_input_choicebox_monday" prefHeight="24.0" prefWidth="193.0" />
+                              <ChoiceBox fx:id="cmInputChoiceboxMonday" prefHeight="24.0" prefWidth="193.0" />
                            </graphic>
                         </Label>
                         <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="5.0" layoutX="339.0" layoutY="78.0" prefHeight="46.0" prefWidth="222.0" text="Mardi" textAlignment="CENTER">
@@ -61,7 +61,7 @@
                               <Font name="Arial Rounded MT Bold" size="14.0" />
                            </font>
                            <graphic>
-                              <ChoiceBox fx:id="cm_input_choicebox_tuesday" prefHeight="24.0" prefWidth="193.0" />
+                              <ChoiceBox fx:id="cmInputChoiceboxTuesday" prefHeight="24.0" prefWidth="193.0" />
                            </graphic>
                         </Label>
                         <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="5.0" layoutX="339.0" layoutY="135.0" prefHeight="46.0" prefWidth="222.0" text="Mercredi" textAlignment="CENTER">
@@ -69,7 +69,7 @@
                               <Font name="Arial Rounded MT Bold" size="14.0" />
                            </font>
                            <graphic>
-                              <ChoiceBox fx:id="cm_input_choicebox_wednesday" prefHeight="24.0" prefWidth="193.0" />
+                              <ChoiceBox fx:id="cmInputChoiceboxWednesday" prefHeight="24.0" prefWidth="193.0" />
                            </graphic>
                         </Label>
                         <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="5.0" layoutX="339.0" layoutY="194.0" prefHeight="46.0" prefWidth="222.0" text="Jeudi" textAlignment="CENTER">
@@ -77,7 +77,7 @@
                               <Font name="Arial Rounded MT Bold" size="14.0" />
                            </font>
                            <graphic>
-                              <ChoiceBox fx:id="cm_input_choicebox_thursday" prefHeight="24.0" prefWidth="193.0" />
+                              <ChoiceBox fx:id="cmInputChoiceboxThursday" prefHeight="24.0" prefWidth="193.0" />
                            </graphic>
                         </Label>
                         <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="5.0" layoutX="339.0" layoutY="251.0" prefHeight="46.0" prefWidth="222.0" text="Vendredi" textAlignment="CENTER">
@@ -85,7 +85,7 @@
                               <Font name="Arial Rounded MT Bold" size="14.0" />
                            </font>
                            <graphic>
-                              <ChoiceBox fx:id="cm_input_choicebox_friday" prefHeight="24.0" prefWidth="193.0" />
+                              <ChoiceBox fx:id="cmInputChoiceboxFriday" prefHeight="24.0" prefWidth="193.0" />
                            </graphic>
                         </Label>
                         <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="5.0" layoutX="339.0" layoutY="312.0" prefHeight="46.0" prefWidth="222.0" text="Samedi" textAlignment="CENTER">
@@ -93,7 +93,7 @@
                               <Font name="Arial Rounded MT Bold" size="14.0" />
                            </font>
                            <graphic>
-                              <ChoiceBox fx:id="cm_input_choicebox_saturday" prefHeight="24.0" prefWidth="193.0" />
+                              <ChoiceBox fx:id="cmInputChoiceboxSaturday" prefHeight="24.0" prefWidth="193.0" />
                            </graphic>
                         </Label>
                         <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="5.0" layoutX="339.0" layoutY="370.0" prefHeight="46.0" prefWidth="222.0" text="Dimanche" textAlignment="CENTER">
@@ -101,7 +101,7 @@
                               <Font name="Arial Rounded MT Bold" size="14.0" />
                            </font>
                            <graphic>
-                              <ChoiceBox fx:id="cm_input_choicebox_sunday" prefHeight="24.0" prefWidth="193.0" />
+                              <ChoiceBox fx:id="cmInputChoiceboxSunday" prefHeight="24.0" prefWidth="193.0" />
                            </graphic>
                         </Label>
                         <Button layoutX="746.0" layoutY="148.0" mnemonicParsing="false" onAction="#cm_onButtonCreate" prefHeight="157.0" prefWidth="81.0" text="Creer" />
@@ -109,7 +109,7 @@
                   </Pane>
                </content>
             </Tab>
-            <Tab fx:id="mm_tab" text="Mon Menu">
+            <Tab fx:id="mmTab" text="Mon Menu">
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ebdbcc;">
                      <children>
@@ -118,15 +118,15 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="mm_tableview" layoutX="131.0" layoutY="68.0" prefHeight="275.0" prefWidth="639.0">
+                        <TableView fx:id="mmTableview" layoutX="131.0" layoutY="68.0" prefHeight="275.0" prefWidth="639.0">
                           <columns>
-                              <TableColumn fx:id="mm_column_year" prefWidth="60.0" text="Annee" />
-                              <TableColumn fx:id="mm_column_week" prefWidth="53.0" text="Semaine" />
-                            <TableColumn fx:id="mm_column_day" prefWidth="104.0" text="Jour" />
-                            <TableColumn fx:id="mm_column_recipe" minWidth="0.0" prefWidth="421.0" text="Recette" />
+                              <TableColumn fx:id="mmColumnYear" prefWidth="60.0" text="Annee" />
+                              <TableColumn fx:id="mmColumnWeek" prefWidth="53.0" text="Semaine" />
+                            <TableColumn fx:id="mmColumnDay" prefWidth="104.0" text="Jour" />
+                            <TableColumn fx:id="mmColumnRecipe" minWidth="0.0" prefWidth="421.0" text="Recette" />
                           </columns>
                         </TableView>
-                        <Button fx:id="mm_buttonRecipeInfo" layoutX="351.0" layoutY="366.0" mnemonicParsing="false" onAction="#mm_onButtonRecipeInfo" prefHeight="62.0" prefWidth="200.0" text="Info">
+                        <Button fx:id="mmButtonRecipeInfo" layoutX="351.0" layoutY="366.0" mnemonicParsing="false" onAction="#mm_onButtonRecipeInfo" prefHeight="62.0" prefWidth="200.0" text="Info">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font>
