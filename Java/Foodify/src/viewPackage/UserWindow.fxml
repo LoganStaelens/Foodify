@@ -1,22 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <TextField fx:id="input_search_recipe" layoutX="95.0" layoutY="69.0" />
-      <Button fx:id="button_search" layoutX="132.0" layoutY="110.0" mnemonicParsing="false" onAction="#searchAction" text="Rechercher" />
-      <MenuButton fx:id="menu_button_monday_tag" layoutX="397.0" layoutY="69.0" mnemonicParsing="false" text="Tags">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </MenuButton>
-      <Button fx:id="button_create_menu" layoutX="403.0" layoutY="110.0" mnemonicParsing="false" onAction="#createAction" text="Créer" />
-   </children>
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Pane prefHeight="80.0" prefWidth="900.0" style="-fx-background-color: ffcd81;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="96.0" fitWidth="94.0" layoutX="7.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Foodify.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="115.0" layoutY="14.0" prefHeight="53.0" prefWidth="254.0" text="Foodify">
+               <font>
+                  <Font name="Forte" size="40.0" />
+               </font>
+            </Label>
+            <Label layoutX="732.0" layoutY="15.0" prefHeight="53.0" prefWidth="124.0" text="User">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="23.0" />
+               </font>
+            </Label>
+            <Button contentDisplay="GRAPHIC_ONLY" layoutX="811.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: #00000000;" />
+            <ImageView cache="true" fitHeight="80.0" fitWidth="80.0" layoutX="806.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@user-silhouette.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </top>
+   <bottom>
+      <TabPane prefHeight="624.0" prefWidth="900.0" style="-fx-background-color: #111;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="cm_tab" text="Create Menu">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ebdbcc;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="5.0" layoutX="339.0" layoutY="18.0" prefHeight="46.0" prefWidth="222.0" text="Lundi" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ChoiceBox fx:id="cm_input_choicebox_monday" prefHeight="24.0" prefWidth="193.0" />
+                           </graphic>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="5.0" layoutX="339.0" layoutY="78.0" prefHeight="46.0" prefWidth="222.0" text="Mardi" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ChoiceBox fx:id="cm_input_choicebox_tuesday" prefHeight="24.0" prefWidth="193.0" />
+                           </graphic>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="5.0" layoutX="339.0" layoutY="135.0" prefHeight="46.0" prefWidth="222.0" text="Mercredi" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ChoiceBox fx:id="cm_input_choicebox_wednesday" prefHeight="24.0" prefWidth="193.0" />
+                           </graphic>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="5.0" layoutX="339.0" layoutY="194.0" prefHeight="46.0" prefWidth="222.0" text="Jeudi" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ChoiceBox fx:id="cm_input_choicebox_thursday" prefHeight="24.0" prefWidth="193.0" />
+                           </graphic>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="5.0" layoutX="339.0" layoutY="251.0" prefHeight="46.0" prefWidth="222.0" text="Vendredi" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ChoiceBox fx:id="cm_input_choicebox_friday" prefHeight="24.0" prefWidth="193.0" />
+                           </graphic>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="5.0" layoutX="339.0" layoutY="312.0" prefHeight="46.0" prefWidth="222.0" text="Samedi" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ChoiceBox fx:id="cm_input_choicebox_saturday" prefHeight="24.0" prefWidth="193.0" />
+                           </graphic>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="5.0" layoutX="339.0" layoutY="370.0" prefHeight="46.0" prefWidth="222.0" text="Dimanche" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ChoiceBox fx:id="cm_input_choicebox_sunday" prefHeight="24.0" prefWidth="193.0" />
+                           </graphic>
+                        </Label>
+                        <Button layoutX="746.0" layoutY="148.0" mnemonicParsing="false" onAction="#cm_onButtonCreate" prefHeight="157.0" prefWidth="81.0" text="Creer" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab fx:id="mm_tab" text="Mon Menu">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ebdbcc;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="207.0" layoutY="151.0" prefHeight="35.0" prefWidth="502.0" text="Vous n'avez pas de menu pour la semaine" textAlignment="CENTER" textFill="RED">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="mm_tableview" layoutX="131.0" layoutY="68.0" prefHeight="275.0" prefWidth="639.0">
+                          <columns>
+                              <TableColumn fx:id="mm_column_year" prefWidth="60.0" text="Annee" />
+                              <TableColumn fx:id="mm_column_week" prefWidth="53.0" text="Semaine" />
+                            <TableColumn fx:id="mm_column_day" prefWidth="104.0" text="Jour" />
+                            <TableColumn fx:id="mm_column_recipe" minWidth="0.0" prefWidth="421.0" text="Recette" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="mm_buttonRecipeInfo" layoutX="351.0" layoutY="366.0" mnemonicParsing="false" onAction="#mm_onButtonRecipeInfo" prefHeight="62.0" prefWidth="200.0" text="Info">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </bottom>
+</BorderPane>

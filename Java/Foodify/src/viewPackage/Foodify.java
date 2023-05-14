@@ -4,6 +4,7 @@ package viewPackage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import modelPackage.User;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -29,6 +30,8 @@ public class Foodify extends Application {
 
     private PopupMessageDialogWindow popupMessageDialogWindow;
     private PopupYesNoWindow popupYesNoWindow;
+
+    private User user;
 
     private static Foodify instance;
 
@@ -92,6 +95,14 @@ public class Foodify extends Application {
         this.popupYesNoWindow.setMessage(message);
         this.popupYesNoWindow.setListener(listener);
         this.popupYesNoWindow.show();
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return this.user;
     }
 
     public static void main (String[] args) {

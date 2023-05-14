@@ -77,6 +77,7 @@ public class RegisterWindow extends Window implements Initializable {
         this.userManager = new UserManager();
 
         this.fxmlWindow = new Scene(fxmlWindow.load());
+        this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());
     }
 
     void loadWindow() {
