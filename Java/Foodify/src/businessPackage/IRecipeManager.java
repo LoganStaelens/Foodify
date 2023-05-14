@@ -31,4 +31,6 @@ public interface IRecipeManager {
     List<RecipeStep> getRecipeStepsForRecipe(Recipe recipe) throws DBConnectionException;
 
     Recipe findRecipeByName(String name) throws DBConnectionException;
+
+    Recipe findRecipeByTag(String tag) throws DBConnectionException;
 }

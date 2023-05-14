@@ -83,6 +83,15 @@ public class UserWindow extends Window implements Initializable {
             if (menuItem.isSelected())
                 selectedTags.add(menuItem.getText());
         }
+
+        System.out.println(selectedTags.get(0));
+
+        Recipe recipe = recipeManager.findRecipeByTag(selectedTags.get(0));
+        
+        if (recipe != null) {
+            this.popupRecipeInfoWindow.setRecipe(recipe);
+            this.popupRecipeInfoWindow.show();
+        }
     }
 
     void loadWindow() {

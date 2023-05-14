@@ -106,7 +106,6 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
 
     private ObservableList<Recipe> lr_recipes;
 
-
     @FXML
     private Tab cr_tab;
 
