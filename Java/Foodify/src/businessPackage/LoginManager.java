@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
-import dataAccessPackage.IUserDataAccess;
+import dataAccessPackage.IUserDBAccess;
 import dataAccessPackage.UserDBAccess;
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
@@ -18,7 +18,7 @@ import modelPackage.User;
 
 public class LoginManager implements ILoginManager {
 
-    IUserDataAccess userDataAccess;
+    IUserDBAccess userDataAccess;
     IHash hashingAlgorithm;
 
     public LoginManager() {
@@ -63,9 +63,14 @@ public class LoginManager implements ILoginManager {
                     String postCode = data.getString("City.postCode");
                     Country country = new Country(data.getString("City.country"));
                     City city = new City(cityID, cityName, postCode, country);
-                    Address address = new Address(addressID, street, city);
+                    Address address = new Address(addressID, street, city, number);
                     User user = new User(uuid, gender, isAdmin, firstName, lastName, email, birthDatePrimal.toLocalDate(), phoneNumber, address);
                     data.close();
+                    
+                    if (isAdmin) {
+                        return new LoginResult(user, LoginStatus.SUCCESS_ADMIN);
+                    }
+
                     return new LoginResult(user, LoginStatus.SUCCESS);
                 }
                 else {

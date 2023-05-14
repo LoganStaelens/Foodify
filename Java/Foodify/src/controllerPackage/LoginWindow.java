@@ -68,8 +68,16 @@ public class LoginWindow extends Window {
             switch(result.getStatus()) {
                 case SUCCESS:
                     label.setTextFill(Paint.valueOf("3e8329"));
-                    label.setText("Connection etablie");
+                    label.setText("Connection utilisateur etablie");
+                    Foodify.getInstance().setUserWindow();
+                    Foodify.getInstance().setUser(result.getUser());
+                break;
+
+                case SUCCESS_ADMIN:
+                    label.setTextFill(Paint.valueOf("3e8329"));
+                    label.setText("Connection administrateur etablie");
                     Foodify.getInstance().setAdminWindow();
+                    
                 break;
 
                 case EMAIL_INCORRECT:
@@ -81,11 +89,8 @@ public class LoginWindow extends Window {
                 break;
             }
         } catch (HashException | DBConnectionException | StringTooLongException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    
-        
+        }    
     }
 
     @FXML

@@ -288,4 +288,57 @@ public class RecipeDBAccess implements IRecipeDBAccess {
         } 
     }
 
+    public ResultSet findRecipeByName(String name) throws DBConnectionException {
+        
+        String sql = "SELECT * from Recipe WHERE title = ?";
+
+        PreparedStatement statement;
+
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+
+            statement.setString(1, name);
+
+            return statement.executeQuery();
+        }
+        catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
+    }
+
+    public ResultSet findRecipesByTag(String tag) throws DBConnectionException {
+        
+        String sql = "SELECT TagLink.recipe from TagLink WHERE tag = ?";
+
+        PreparedStatement statement;
+
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+
+            statement.setString(1, tag);
+
+            return statement.executeQuery();
+        }
+        catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
+    }
+
+    public ResultSet findRecipeById(int recipeID) throws DBConnectionException {
+
+        String sql = "SELECT * from Recipe WHERE recipe_id = ?";
+
+        PreparedStatement statement;
+
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+
+            statement.setInt(1, recipeID);
+
+            return statement.executeQuery();
+        }
+        catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
+    }
 }

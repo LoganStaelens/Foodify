@@ -8,11 +8,20 @@ public class Address {
     private City city;
     private int addressID;
     private String street;
+    private int number;
 
-    public Address(int addressID, String street, City city) throws StringTooLongException {
+    public Address(int addressID, String street, City city, int number) throws StringTooLongException {
         this.addressID = addressID;
         setStreet(street);
         this.city = city;
+        this.number = number;
+    }
+
+    public Address(String street, int number, City city) throws StringTooLongException {
+        this.addressID = 0;
+        setStreet(street);
+        this.city = city;
+        this.number = number;
     }
 
     public void setStreet(String street) throws StringTooLongException {
@@ -32,5 +41,9 @@ public class Address {
 
     public String getStreet() {
         return this.street;
+    }
+
+    public int getNumber() {
+        return this.number;
     }
 }

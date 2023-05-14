@@ -18,6 +18,20 @@ public class City {
         setPostCode(postCode);
     }
 
+    public City(String name, String postCode, Country country) throws StringTooLongException {
+        this.country = country;
+        this.cityID = 0;
+        setName(name);
+        setPostCode(postCode);
+    }
+
+    public City(String name, String postCode, String country) throws StringTooLongException {
+        this.country = new Country(country);
+        this.cityID = 0;
+        setName(name);
+        setPostCode(postCode);
+    }
+
     private void setName(String name) throws StringTooLongException {
         if(name.length() > NAME_MAX_LENGTH) 
             throw new StringTooLongException("Le nom de la ville", name.length(), NAME_MAX_LENGTH);  

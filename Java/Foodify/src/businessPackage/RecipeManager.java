@@ -142,8 +142,7 @@ public class RecipeManager implements IRecipeManager {
         } catch (SQLException e) {
             throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
         }
-        
-
+    
         return data;
     }
 
@@ -223,4 +222,63 @@ public class RecipeManager implements IRecipeManager {
         return data;
     }
     
+    public Recipe findRecipeByName(String name) throws DBConnectionException {
+
+        ResultSet result = recipeDataAccess.findRecipeByName(name);
+
+        try {
+            if (result.next()) {
+                Recipe recipe = new Recipe(result.getInt("recipe_id"), 
+                                result.getString("title"), 
+                                result.getString("complexity"), 
+                                result.getBoolean("isVisible"), 
+                                result.getDate("lastUpdate").toLocalDate(), 
+                                result.getString("creatorFirstName"), 
+                                result.getString("creatorLastName"));
+            
+            result.close();
+            return recipe;
+            }
+            
+            return null;
+        }
+        catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+        }
+    }
+
+    public Recipe findRecipeByTag(String tag) throws DBConnectionException {
+        
+        ResultSet result = recipeDataAccess.findRecipesByTag(tag);
+        List<Integer> data = new ArrayList<>();
+
+        try {
+            
+            while(result.next()) {
+                data.add(result.getInt("recipe"));
+            }
+            
+            result.close();
+
+            int index = (int)(Math.random() * data.size());
+
+            result = recipeDataAccess.findRecipeById(data.get(index));
+
+            if (result.next()) {
+                Recipe recipe = new Recipe(result.getInt("recipe_id"), 
+                                result.getString("title"), 
+                                result.getString("complexity"), 
+                                result.getBoolean("isVisible"), 
+                                result.getDate("lastUpdate").toLocalDate(), 
+                                result.getString("creatorFirstName"), 
+                                result.getString("creatorLastName"));
+                result.close();
+                return recipe;
+            }
+        }
+        catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+        }
+        return null;
+    }
 }

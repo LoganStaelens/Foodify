@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Foodify",
+            "request": "launch",
+            "mainClass": "viewPackage.Foodify",
+            "projectName": "Foodify_79bc5594"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

@@ -37,4 +37,10 @@ public interface IRecipeDBAccess {
     ResultSet getIngredientsForRecipe(int recipeID) throws DBConnectionException;
 
     ResultSet getRecipeStepsForRecipe(int recipeID) throws DBConnectionException;
+
+    ResultSet findRecipeByName(String name) throws DBConnectionException;
+
+    ResultSet findRecipesByTag(String tag) throws DBConnectionException;
+
+    ResultSet findRecipeById(int recipeID) throws DBConnectionException;
 }

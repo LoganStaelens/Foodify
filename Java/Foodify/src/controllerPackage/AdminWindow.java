@@ -106,7 +106,6 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
 
     private ObservableList<Recipe> lr_recipes;
 
-
     @FXML
     private Tab cr_tab;
 
@@ -352,14 +351,12 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
     @FXML
     void lr_onButtonInfo(ActionEvent event) {
         Recipe recipeToModify = lr_tableview.getSelectionModel().getSelectedItem();
-        if(recipeToModify != null) {
+        
+        if (recipeToModify != null) {
             this.popupRecipeInfoWindow.setRecipe(recipeToModify);
             this.popupRecipeInfoWindow.show();
-        }     
+        }  
     }
-
-    
-
 
     @Override
     public void onRecipeModified(Recipe oldversion, Recipe newVersion) {
