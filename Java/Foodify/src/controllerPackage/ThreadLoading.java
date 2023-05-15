@@ -13,6 +13,7 @@ public class ThreadLoading extends Thread {
     @Override
     public void run() {
         synchronized(commonZone) {
+            System.out.println("Test");
             double x = Math.PI / 2.0;
             this.commonZone.getKettleImage().setVisible(true);
             this.commonZone.getLidImage().setVisible(true);

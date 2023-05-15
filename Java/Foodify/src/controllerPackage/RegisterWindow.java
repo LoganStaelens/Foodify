@@ -2,6 +2,7 @@ package controllerPackage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -133,20 +134,75 @@ public class RegisterWindow extends Window implements Initializable {
     public void onButtonCreate (ActionEvent event) {
         
         try {
-            String passwdHash = this.userManager.hashPassword(input_textfield_password.getText());
-            String passwdVerifyHash = this.userManager.hashPassword(input_textfield_verify_password.getText());
+            String firstName = input_textfield_first_name.getText();
+            String lastName = input_textfield_last_name.getText();
+            String passwd = input_textfield_password.getText();
+            String passwdVerify = input_textfield_verify_password.getText();
+            String passwdHash = this.userManager.hashPassword(passwd);
+            String passwdVerifyHash = this.userManager.hashPassword(passwdVerify);
             String email = input_textfield_email.getText();
+            LocalDate birthDate = input_date_picker_birthDate.getValue();
+            String phoneNumber = input_textfield_phone_number.getText();
+            String street = input_textfield_street.getText();
+            String numberHouse = input_textfield_number.getText();
+            String city = input_textfield_city.getText();
+            String postCode = input_textfield_post_code.getText();
             boolean emailFound = this.userManager.findUserByEmail(email);
+
+            if (firstName.isEmpty()) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucun prénom n'a été choisi.");
+                return;
+            }
+
+            if (lastName.isEmpty()) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucun nom n'a été choisi.");
+                return;
+            }
+
+            if (passwd.isEmpty() || passwdVerify.isEmpty()) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucun mot de passe n'a été choisi.");
+                return;
+            }
+
+            if (email.isEmpty()) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucun email n'a été choisi.");
+                return;
+            }
+
+            if (birthDate == null) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucune date de naissance n'a été choisi.");
+                return;
+            }
+
+            if (street.isEmpty()) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucune rue n'a été choisi.");
+                return;
+            }
+
+            if (numberHouse.isEmpty()) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucun numéro de rue n'a été choisi.");
+                return;
+            }
+
+            if (city.isEmpty()) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucune ville n'a été choisi.");
+                return;
+            }
+
+            if (postCode.isEmpty()) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucun code de postal n'a été choisi.");
+                return;
+            }
             
             if (this.userManager.verifyPassword(passwdHash, passwdVerifyHash) && !emailFound) {
                 this.userManager.createNewUser(
-                    input_textfield_first_name.getText(),
-                    input_textfield_last_name.getText(),
+                    firstName,
+                    lastName,
                     Gender.valueOf(input_choice_boc_gender.getValue().toUpperCase()),
                     email,
-                    input_date_picker_birthDate.getValue(),
-                    input_textfield_phone_number.getText(),
-                    new Address(input_textfield_street.getText(), Integer.parseInt(input_textfield_number.getText()), new City(input_textfield_city.getText(), input_textfield_post_code.getText(), input_choicebox_country.getValue())),
+                    birthDate,
+                    phoneNumber,
+                    new Address(street, Integer.parseInt(numberHouse), new City(city, postCode, input_choicebox_country.getValue())),
                     passwdHash
                 );
             }
