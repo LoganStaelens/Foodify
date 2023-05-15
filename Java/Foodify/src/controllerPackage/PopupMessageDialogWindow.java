@@ -39,7 +39,7 @@ public class PopupMessageDialogWindow extends Window {
     @Override
     public void show() {
         this.popupStage.setAlwaysOnTop(true);
-        this.popupStage.showAndWait();
+
         popupStage.setScene(this.fxmlWindow);
 
         Paint color = Color.WHITE;
@@ -65,7 +65,7 @@ public class PopupMessageDialogWindow extends Window {
         this.labelMessage.setText(this.message);
         this.labelMessageType.setText(messageType);
 
-        popupStage.show();  
+        this.popupStage.showAndWait();
     }
 
     @Override
