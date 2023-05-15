@@ -38,7 +38,7 @@ public class PopupMessageDialogWindow extends Window {
 
     @Override
     public void show() {
-        this.mainStage.setAlwaysOnTop(true);
+        this.popupStage.setAlwaysOnTop(true);
         popupStage.setScene(this.fxmlWindow);
 
         Paint color = Color.WHITE;
