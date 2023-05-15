@@ -167,7 +167,6 @@ public class UserManager implements IUserManager {
             return usersFound;
        
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new DBConnectionException(DBConnectionExceptionTypes.PREPARED_STATEMENT_EXCEPTION);
         } catch (StringTooLongException e) {
             // Should never happen
@@ -236,7 +235,6 @@ public class UserManager implements IUserManager {
                         return new LoginResult(null, LoginStatus.EMAIL_INCORRECT);
                     }
                 } catch (SQLException e) {
-                    e.printStackTrace();
                     throw new DBConnectionException(DBConnectionExceptionTypes.PREPARED_STATEMENT_EXCEPTION);
                 }
     }

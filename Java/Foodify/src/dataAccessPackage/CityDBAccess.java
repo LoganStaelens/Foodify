@@ -32,7 +32,6 @@ public class CityDBAccess implements ICityDataAccess {
             }
         }
         catch (SQLException e) {
-            e.printStackTrace();
             throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
         }
     }

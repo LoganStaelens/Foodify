@@ -79,7 +79,7 @@ public class PopupModifyRecipeWindow extends Window implements Initializable {
             }
 
         } catch (DBConnectionException e) {
-            e.printStackTrace();
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de l'initialisation du popup de modification de recettes");
         } 
     }
 

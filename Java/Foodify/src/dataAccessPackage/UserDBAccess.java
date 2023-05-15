@@ -56,7 +56,6 @@ public class UserDBAccess implements IUserDataAccess {
             insertStatement.executeUpdate();
         }
         catch (SQLException e) {
-            e.printStackTrace();
             throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
         }
     }

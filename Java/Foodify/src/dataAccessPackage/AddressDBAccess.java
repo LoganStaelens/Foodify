@@ -63,7 +63,6 @@ public class AddressDBAccess implements IAddressDataAccess {
             return lastID;
         }
         catch (SQLException e) {
-            e.printStackTrace();
             throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
         }
     }

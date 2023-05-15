@@ -61,12 +61,13 @@ public class Foodify extends Application {
     }
 
     private void loadWindows() throws IOException {
+        this.popupMessageDialogWindow = new PopupMessageDialogWindow(popupDialogStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupMessageDialog.fxml")));
+        this.popupYesNoWindow = new PopupYesNoWindow(popupDialogStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupYesNo.fxml")));
         this.loginWindow = new LoginWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("LoginWindow.fxml")));
         this.registerWindow = new RegisterWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("RegisterWindow.fxml")));
         this.adminWindow = new AdminWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("AdminWindow.fxml")));
         this.userWindow = new UserWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("UserWindow.fxml")));
-        this.popupMessageDialogWindow = new PopupMessageDialogWindow(popupDialogStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupMessageDialog.fxml")));
-        this.popupYesNoWindow = new PopupYesNoWindow(popupDialogStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupYesNo.fxml")));
+
     }
 
     public void setLoginWindow() {

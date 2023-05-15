@@ -94,7 +94,6 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             return last_id;
 
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
         }
     }

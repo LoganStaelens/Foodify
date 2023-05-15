@@ -6,6 +6,98 @@
   <component name="ChangeListManager">
     <list default="true" id="d6fd7381-a243-4153-b6bd-69dd69184a64" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/IHash.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/IMenuManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/IRecipeManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/IUserManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/LoginResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/LoginStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/MenuManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/RecipeManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/SHA256Algorithm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/UserManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/IAddIngredientPopupListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/IAddStepPopupListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/IModifyRecipePopupListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/IYesNoPopupListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoadingCommonZone.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoginWindow$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoginWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupAddIngredientWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupAddStepWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupModifyRecipeWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupRecipeInfoWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupYesNoResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupYesNoWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/RegisterWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/ThreadLoading.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/UserWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/Window.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/AddressDBAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/CityDBAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/CountryDBAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/DBConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/IAddressDataAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/ICityDataAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/ICountryDataAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/IMenuDataAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/IRecipeDataAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/IUserDataAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/MenuDBAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/RecipeDBAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/UserDBAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/DBConnectionException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/DBConnectionExceptionTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/HashException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/InvalidInputException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/StringTooLongException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Address.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/City.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Country.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Gender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Ingredient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/MenuItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/MenuView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Recipe.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/RecipeStep.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/TagList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/AdminWindow.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/Foodify.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/Foodify.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/LoadingBas.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/LoadingCouvercle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/LoadingFire.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/LoginWindow.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/PopupAddIngredient.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/PopupAddStep.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/PopupMessageDialog.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/PopupModifyRecipe.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/PopupRecipeInfo.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/PopupYesNo.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/RegisterWindow.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/UserWindow.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/add_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/add_icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/folder_icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/user-silhouette.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/businessPackage/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/businessPackage/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllerPackage/AdminWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/AdminWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllerPackage/PopupAddIngredientWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/PopupAddIngredientWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllerPackage/PopupModifyRecipeWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/PopupModifyRecipeWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataAccessPackage/AddressDBAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataAccessPackage/AddressDBAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataAccessPackage/CityDBAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataAccessPackage/CityDBAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataAccessPackage/RecipeDBAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataAccessPackage/RecipeDBAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataAccessPackage/UserDBAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataAccessPackage/UserDBAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewPackage/Foodify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewPackage/Foodify.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +139,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "jdk.selected.JAVA_MODULE": "openjdk-20",
     "last_opened_file_path": "D:/Dev/Foodify/Java/Foodify/lib/mysql-connector-j-8.0.33.jar",
-    "project.structure.last.edited": "Problems",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.42873564"
   }

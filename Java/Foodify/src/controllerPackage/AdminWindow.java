@@ -212,7 +212,7 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
             }
 
         } catch (DBConnectionException e) {
-            e.printStackTrace();
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors le récupération des tags");
         }       
     }
 

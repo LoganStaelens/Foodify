@@ -70,7 +70,7 @@ public class PopupAddIngredientWindow extends Window implements Initializable {
         try {
             ingredientList = FXCollections.observableArrayList(this.recipeManager.getAllIngredients());
         } catch (DBConnectionException e) {
-            e.printStackTrace();
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors le récupération des ingrédients");
         }
         tableview.setItems(ingredientList);
         inputSearchBar.textProperty().addListener((obs, oldValue, newValue) -> {onInputTextFieldChanged();});
