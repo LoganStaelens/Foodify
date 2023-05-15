@@ -16,7 +16,7 @@ public class PopupYesNoWindow extends Window {
     private IYesNoPopupListener listener;
 
     @FXML
-    private Label label_message;
+    private Label labelMessage;
 
 
     public PopupYesNoWindow(Stage mainStage, Stage popupStage, FXMLLoader fxmlLoader) throws IOException {
@@ -34,7 +34,7 @@ public class PopupYesNoWindow extends Window {
         popupStage.setResizable(false);      
         popupStage.setScene(this.fxmlWindow);
 
-        this.label_message.setText(this.message);
+        this.labelMessage.setText(this.message);
 
         popupStage.show();  
     }

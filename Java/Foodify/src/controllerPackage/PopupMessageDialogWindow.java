@@ -19,14 +19,10 @@ public class PopupMessageDialogWindow extends Window {
     private String message;
 
     @FXML
-    private Label label_message;
+    private Label labelMessage;
 
     @FXML
-    private Label label_message_type;
-
-    
-
-
+    private Label labelMessageType;
 
     public PopupMessageDialogWindow(Stage mainStage, Stage popupStage, FXMLLoader fxmlLoader) throws IOException {
         super(mainStage, popupStage);
@@ -63,9 +59,9 @@ public class PopupMessageDialogWindow extends Window {
                 break;
         }
 
-        this.label_message.setTextFill(color);
-        this.label_message.setText(this.message);
-        this.label_message_type.setText(messageType);
+        this.labelMessage.setTextFill(color);
+        this.labelMessage.setText(this.message);
+        this.labelMessageType.setText(messageType);
 
         popupStage.show();  
     }

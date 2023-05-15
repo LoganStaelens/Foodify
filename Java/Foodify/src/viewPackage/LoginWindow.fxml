@@ -30,7 +30,7 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="textfield_login_id" layoutX="142.0" layoutY="110.0" promptText="exemple@foodify.com">
+            <TextField fx:id="textfieldLoginId" layoutX="142.0" layoutY="110.0" promptText="exemple@foodify.com">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font></TextField>
@@ -39,7 +39,7 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </Label>
-            <Button fx:id="button_login" layoutX="53.0" layoutY="248.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="45.0" prefWidth="264.0" text="Se connecter">
+            <Button layoutX="53.0" layoutY="248.0" mnemonicParsing="false" onAction="#onButtonLogin" prefHeight="45.0" prefWidth="264.0" text="Se connecter">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font></Button>
@@ -48,11 +48,11 @@
                   <Font name="Consolas" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="button_register" layoutX="53.0" layoutY="306.0" mnemonicParsing="false" onAction="#switchRegisterAction" prefHeight="45.0" prefWidth="264.0" text="Créer un compte">
+            <Button layoutX="53.0" layoutY="306.0" mnemonicParsing="false" onAction="#onButtonRegister" prefHeight="45.0" prefWidth="264.0" text="Créer un compte">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font></Button>
-            <PasswordField fx:id="textfield_passwd" layoutX="142.0" layoutY="167.0">
+            <PasswordField fx:id="textfieldPasswd" layoutX="142.0" layoutY="167.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font></PasswordField>

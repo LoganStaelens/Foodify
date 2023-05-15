@@ -31,7 +31,7 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
                <graphic>
-                  <TextField fx:id="input_recipe_title" prefHeight="30.0" prefWidth="198.0">
+                  <TextField fx:id="inputRecipeTitle" prefHeight="30.0" prefWidth="198.0">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font></TextField>
@@ -42,7 +42,7 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
                <graphic>
-                  <TextField fx:id="input_recipe_creator_first_name" prefHeight="30.0" prefWidth="110.0">
+                  <TextField fx:id="inputRecipeCreatorFirstName" prefHeight="30.0" prefWidth="110.0">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font></TextField>
@@ -53,13 +53,13 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
                <graphic>
-                  <TextField fx:id="input_recipe_creator_last_name" prefHeight="30.0" prefWidth="110.0">
+                  <TextField fx:id="inputRecipeCreatorLastName" prefHeight="30.0" prefWidth="110.0">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font></TextField>
                </graphic>
             </Label>
-            <MenuButton fx:id="menu_button_tags" layoutX="340.0" layoutY="242.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="181.0" text="Tags">
+            <MenuButton fx:id="menuButtonTags" layoutX="340.0" layoutY="242.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="181.0" text="Tags">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -73,7 +73,7 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
                <graphic>
-                  <ChoiceBox fx:id="choice_box_complexity" prefHeight="30.0" prefWidth="154.0" />
+                  <ChoiceBox fx:id="choiceBoxComplexity" prefHeight="30.0" prefWidth="154.0" />
                </graphic>
             </Label>
             <Label contentDisplay="RIGHT" graphicTextGap="232.0" layoutX="31.0" layoutY="293.0" prefHeight="30.0" prefWidth="406.0" text="Est Visible">
@@ -81,7 +81,7 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
                <graphic>
-                  <CheckBox fx:id="check_box_is_visible" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="41.0" text="CheckBox">
+                  <CheckBox fx:id="checkBoxIsVisible" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="41.0" text="CheckBox">
                      <font>
                         <Font size="20.0" />
                      </font>

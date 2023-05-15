@@ -97,8 +97,5 @@ public class MenuManager implements IMenuManager {
             throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
         }
     
-    }
-
-    
-    
+    }    
 }

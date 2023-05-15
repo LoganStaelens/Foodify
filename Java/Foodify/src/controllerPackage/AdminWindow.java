@@ -8,11 +8,16 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import businessPackage.IRecipeManager;
+import businessPackage.IUserManager;
 import businessPackage.RecipeManager;
+import businessPackage.UserManager;
 import exceptionPackage.DBConnectionException;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,10 +33,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import modelPackage.Country;
 import modelPackage.Ingredient;
 import modelPackage.Recipe;
 import modelPackage.RecipeStep;
+import modelPackage.User;
 import viewPackage.Foodify;
 
 
@@ -39,78 +48,117 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
 
     //Create Recipe Section
     @FXML
-    private TextField cr_textfield_recipe_name;
+    private TextField crTextfieldRecipeName;
     @FXML
-    private TextField cr_textfield_recipe_creator_first_name;
+    private TextField crTextfieldRecipeCreatorFirstName;
     @FXML
-    private TextField cr_textfield_recipe_creator_last_name;
+    private TextField crTextfieldRecipeCreatorLastName;
     @FXML
-    private ChoiceBox<String> cr_choice_box_complexity;
+    private ChoiceBox<String> crChoiceBoxComplexity;
     @FXML
-    private CheckBox cr_checkbox_visible;
+    private CheckBox crCheckboxVisible;
     @FXML
-    private MenuButton cr_menu_button_tags;
+    private MenuButton crMenuButtonTags;
 
     @FXML
-    private TableView<Ingredient> cr_tableview_ingredients;
+    private TableView<Ingredient> crTableviewIngredients;
     @FXML
-    private TableColumn<Ingredient, Integer> cr_ing_kcal_column;
+    private TableColumn<Ingredient, Integer> crIngKcalColumn;
     @FXML
-    private TableColumn<Ingredient, String> cr_ing_name_column;
+    private TableColumn<Ingredient, String> crIngNameColumn;
     @FXML
-    private TableColumn<Ingredient, Integer> cr_ing_quantity_column;
+    private TableColumn<Ingredient, Integer> crIngQuantityColumn;
     @FXML
-    private TableColumn<Ingredient, String> cr_ing_unit_column;
+    private TableColumn<Ingredient, String> crIngUnitColumn;
 
     @FXML
-    private TableView<RecipeStep> cr_tableview_steps;
+    private TableView<RecipeStep> crTableviewSteps;
     @FXML
-    private TableColumn<RecipeStep, String> cr_recipe_step_desc_column;
+    private TableColumn<RecipeStep, String> crRecipeStepDescColumn;
     @FXML
-    private TableColumn<RecipeStep, Integer> cr_recipe_step_duration_column;
+    private TableColumn<RecipeStep, Integer> crRecipeStepDurationColumn;
     @FXML
-    private TableColumn<RecipeStep, Integer> cr_recipe_step_stepcount_column;
+    private TableColumn<RecipeStep, Integer> crRecipeStepStepcountColumn;
     @FXML
-    private TableColumn<RecipeStep, String> cr_recipe_step_title_column;
+    private TableColumn<RecipeStep, String> crRecipeStepTitleColumn;
 
     //List recipes section
     @FXML
-    private TextField lr_input_search_bar;
+    private TextField lrInputSearchBar;
 
     @FXML
-    private TableView<Recipe> lr_tableview;
+    private TableView<Recipe> lrTableview;
 
     @FXML
-    private TableColumn<Recipe, Integer> lr_column_id;
+    private TableColumn<Recipe, Integer> lrColumnId;
 
     @FXML
-    private TableColumn<Recipe, String> lr_column_title;
+    private TableColumn<Recipe, String> lrColumnTitle;
 
     @FXML
-    private TableColumn<Recipe, String> lr_column_complexity;
+    private TableColumn<Recipe, String> lrColumnComplexity;
 
     @FXML
-    private TableColumn<Recipe, String> lr_column_tags;
+    private TableColumn<Recipe, String> lrColumnTags;
 
     @FXML
-    private TableColumn<Recipe, LocalDate> lr_column_last_update;
+    private TableColumn<Recipe, LocalDate> lrColumnLastUpdate;
     
     @FXML
-    private TableColumn<Recipe, Boolean> lr_column_is_visible;
+    private TableColumn<Recipe, Boolean> lrColumnIsVisible;
 
     @FXML
-    private TableColumn<Recipe, String> lr_column_first_name;
+    private TableColumn<Recipe, String> lrColumnFirstName;
 
     @FXML
-    private TableColumn<Recipe, String> lr_column_last_name;
+    private TableColumn<Recipe, String> lrColumnLastName;
 
-    private ObservableList<Recipe> lr_recipes;
-
-    @FXML
-    private Tab cr_tab;
+    private ObservableList<Recipe> lrRecipes;
 
     @FXML
-    private Tab lr_tab;
+    private Tab crTab;
+
+    @FXML
+    private Tab lrTab;
+
+    @FXML
+    private Tab fuTab;
+
+    @FXML
+    private ChoiceBox<String> fuInputChoiceBox;
+
+    @FXML
+    private TableView<User> fuTableView;
+
+    @FXML
+    private TableColumn<User, LocalDate> fuColumnBirthDate;
+
+    @FXML
+    private TableColumn<User, String> fuColumnCity;
+
+    @FXML
+    private TableColumn<User, String> fuColumnEmail;
+
+    @FXML
+    private TableColumn<User, String> fuColumnFirstName;
+
+    @FXML
+    private TableColumn<User, String> fuColumnLastName;
+
+    @FXML
+    private TableColumn<User, String> fuColumnStreet;
+
+    @FXML
+    private TableColumn<User, String> fuColumnUserID;
+
+    @FXML
+    private ImageView fuImageViewLoadingKettle;
+
+    @FXML
+    private ImageView fuImageViewLoadingLid;
+
+    @FXML
+    private ImageView fuImageViewLoadingSteam;
 
     private PopupAddIngredientWindow popupAddIngredientWindow;
     private PopupAddStepWindow popupAddStepWindow;
@@ -118,11 +166,13 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
     private PopupRecipeInfoWindow popupRecipeInfoWindow;
 
     private IRecipeManager recipeManager;
+    private IUserManager userManager;
 
     public AdminWindow(Stage mainStage, Stage popupStage, FXMLLoader fxmlLoader) throws IOException {
         super(mainStage, popupStage);
         fxmlLoader.setController(this);
         this.recipeManager = new RecipeManager();
+        this.userManager = new UserManager();
 
         this.fxmlWindow = new Scene(fxmlLoader.load());  
         this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());
@@ -135,30 +185,30 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
 
 
     void onTabCreateRecipe() {
-        cr_ing_name_column.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("name"));
-        cr_ing_kcal_column.setCellValueFactory(new PropertyValueFactory<Ingredient, Integer>("kcal"));
-        cr_ing_unit_column.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("unit"));
-        cr_ing_quantity_column.setCellValueFactory(new PropertyValueFactory<Ingredient, Integer>("quantity"));
-        cr_tableview_ingredients.setItems(FXCollections.observableArrayList());
+        crIngNameColumn.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("name"));
+        crIngKcalColumn.setCellValueFactory(new PropertyValueFactory<Ingredient, Integer>("kcal"));
+        crIngUnitColumn.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("unit"));
+        crIngQuantityColumn.setCellValueFactory(new PropertyValueFactory<Ingredient, Integer>("quantity"));
+        crTableviewIngredients.setItems(FXCollections.observableArrayList());
 
-        cr_recipe_step_desc_column.setCellValueFactory(new PropertyValueFactory<RecipeStep, String>("description"));
-        cr_recipe_step_duration_column.setCellValueFactory(new PropertyValueFactory<RecipeStep, Integer>("duration"));
-        cr_recipe_step_stepcount_column.setCellValueFactory(new PropertyValueFactory<RecipeStep, Integer>("stepCount"));
-        cr_recipe_step_title_column.setCellValueFactory(new PropertyValueFactory<RecipeStep, String>("title"));
-        cr_tableview_steps.setItems(FXCollections.observableArrayList());
+        crRecipeStepDescColumn.setCellValueFactory(new PropertyValueFactory<RecipeStep, String>("description"));
+        crRecipeStepDurationColumn.setCellValueFactory(new PropertyValueFactory<RecipeStep, Integer>("duration"));
+        crRecipeStepStepcountColumn.setCellValueFactory(new PropertyValueFactory<RecipeStep, Integer>("stepCount"));
+        crRecipeStepTitleColumn.setCellValueFactory(new PropertyValueFactory<RecipeStep, String>("title"));
+        crTableviewSteps.setItems(FXCollections.observableArrayList());
 
         try {
             List<String> complexities = this.recipeManager.getDifficulties();
-            cr_choice_box_complexity.getItems().clear();
+            crChoiceBoxComplexity.getItems().clear();
             for (String complexity : complexities) {
-                cr_choice_box_complexity.getItems().add(complexity);
+                crChoiceBoxComplexity.getItems().add(complexity);
             }
-            cr_choice_box_complexity.setValue(complexities.get(0));
+            crChoiceBoxComplexity.setValue(complexities.get(0));
 
             List<String> tags = this.recipeManager.getTags();
-            cr_menu_button_tags.getItems().clear();
+            crMenuButtonTags.getItems().clear();
             for (String tag : tags) {
-                cr_menu_button_tags.getItems().add(new CheckMenuItem(tag));
+                crMenuButtonTags.getItems().add(new CheckMenuItem(tag));
             }
 
         } catch (DBConnectionException e) {
@@ -167,39 +217,100 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
     }
 
     void onTabListRecipe() {
-        lr_column_id.setCellValueFactory(new PropertyValueFactory<Recipe, Integer>("recipeID"));
-        lr_column_title.setCellValueFactory(new PropertyValueFactory<Recipe, String>("title"));
-        lr_column_complexity.setCellValueFactory(new PropertyValueFactory<Recipe, String>("complexity"));
-        lr_column_tags.setCellValueFactory(new PropertyValueFactory<Recipe, String>("tags"));
-        lr_column_last_update.setCellValueFactory(new PropertyValueFactory<Recipe, LocalDate>("lastUpdate"));
-        lr_column_is_visible.setCellValueFactory(new PropertyValueFactory<Recipe, Boolean>("isVisible"));
-        lr_column_first_name.setCellValueFactory(new PropertyValueFactory<Recipe, String>("creatorFirstName"));
-        lr_column_last_name.setCellValueFactory(new PropertyValueFactory<Recipe, String>("creatorLastName"));
+        lrColumnId.setCellValueFactory(new PropertyValueFactory<Recipe, Integer>("recipeID"));
+        lrColumnTitle.setCellValueFactory(new PropertyValueFactory<Recipe, String>("title"));
+        lrColumnComplexity.setCellValueFactory(new PropertyValueFactory<Recipe, String>("complexity"));
+        lrColumnTags.setCellValueFactory(new PropertyValueFactory<Recipe, String>("tags"));
+        lrColumnLastUpdate.setCellValueFactory(new PropertyValueFactory<Recipe, LocalDate>("lastUpdate"));
+        lrColumnIsVisible.setCellValueFactory(new PropertyValueFactory<Recipe, Boolean>("isVisible"));
+        lrColumnFirstName.setCellValueFactory(new PropertyValueFactory<Recipe, String>("creatorFirstName"));
+        lrColumnLastName.setCellValueFactory(new PropertyValueFactory<Recipe, String>("creatorLastName"));
 
-        lr_recipes = FXCollections.observableArrayList();
+        lrRecipes = FXCollections.observableArrayList();
 
-        lr_input_search_bar.setText("");
+        lrInputSearchBar.setText("");
 
         try {
             List<Recipe> recipes = this.recipeManager.getAllRecipes();
             for (Recipe recipe : recipes) {
-                lr_recipes.add(recipe);
+                lrRecipes.add(recipe);
             }
 
-            lr_tableview.setItems(lr_recipes);
+            lrTableview.setItems(lrRecipes);
 
         } catch (DBConnectionException e) {
-            e.printStackTrace();
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la récupération des recettes");
         }     
         
-        lr_input_search_bar.textProperty().addListener((obs, oldValue, newValue) -> {lr_onInputTextFieldChanged();});
+        lrInputSearchBar.textProperty().addListener((obs, oldValue, newValue) -> {lrOnInputTextFieldChanged();});
+    }
+
+    void onTabFindUser() {
+        fuColumnUserID.setCellValueFactory(new PropertyValueFactory<User, String>("userID"));
+        fuColumnEmail.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
+        fuColumnFirstName.setCellValueFactory(new PropertyValueFactory<User, String>("firstName"));
+        fuColumnLastName.setCellValueFactory(new PropertyValueFactory<User, String>("lastName"));
+        fuColumnBirthDate.setCellValueFactory(new PropertyValueFactory<User, LocalDate>("birthDate"));
+        fuColumnStreet.setCellValueFactory(new PropertyValueFactory<User, String>("street"));
+        fuColumnCity.setCellValueFactory(new PropertyValueFactory<User, String>("city"));
+        fuTableView.setVisible(false);
+
+        try {
+            List<Country> countries = this.userManager.getCountries();
+            for (Country country : countries) {
+                fuInputChoiceBox.getItems().add(country.GetCountryName());
+            }
+
+        } catch (DBConnectionException e) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la récupération des pays");
+        }    
+    }
+
+    @FXML
+    void fuOnButtonSearch(ActionEvent event) {
+        String country = fuInputChoiceBox.getValue();
+
+        if(country == null || country.isEmpty())
+            return;
+
+        LoadingCommonZone commonZone = new LoadingCommonZone(fuImageViewLoadingSteam, fuImageViewLoadingLid, fuImageViewLoadingKettle);
+
+        ThreadLoading loadingThread = new ThreadLoading(commonZone);
+        loadingThread.start();
+
+        //Find users by country
+        try {
+            List<User> usersFound = this.userManager.findUsersByCountry(country);
+        
+            //Simuler un delai
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    commonZone.loadingComplete();
+
+                    fuTableView.setItems(FXCollections.observableArrayList(usersFound));
+            
+                    fuTableView.setVisible(true);
+                }
+            }));  
+            timeline.setCycleCount(1);
+            timeline.play();
+
+            
+        } catch (DBConnectionException e) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la recherche des utilisateurs");
+            commonZone.loadingComplete();
+        }
+
+        
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         onTabCreateRecipe();
-        cr_tab.setOnSelectionChanged(e -> onTabCreateRecipe());
-        lr_tab.setOnSelectionChanged(e -> onTabListRecipe());
+        crTab.setOnSelectionChanged(e -> onTabCreateRecipe());
+        lrTab.setOnSelectionChanged(e -> onTabListRecipe());
+        onTabFindUser();
     }
 
     @Override
@@ -213,24 +324,24 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
     }
 
     @FXML
-    private void cr_onButtonClear(ActionEvent event) {
-        cr_tableview_ingredients.getItems().clear();
-        cr_tableview_steps.getItems().clear();
-        cr_checkbox_visible.setSelected(false);
-        cr_textfield_recipe_name.setText("");
-        for(MenuItem item : cr_menu_button_tags.getItems()) {
+    private void crOnButtonClear(ActionEvent event) {
+        crTableviewIngredients.getItems().clear();
+        crTableviewSteps.getItems().clear();
+        crCheckboxVisible.setSelected(false);
+        crTextfieldRecipeName.setText("");
+        for(MenuItem item : crMenuButtonTags.getItems()) {
             CheckMenuItem menuItem = (CheckMenuItem)item;
             menuItem.setSelected(false);
         }
-        cr_choice_box_complexity.setValue(cr_choice_box_complexity.getItems().get(0));
+        crChoiceBoxComplexity.setValue(crChoiceBoxComplexity.getItems().get(0));
     }
 
     @FXML
-    private void cr_onButtonSave(ActionEvent event) {
+    private void crOnButtonSave(ActionEvent event) {
         
         List<String> selectedTags = new ArrayList<>();
 
-        for(MenuItem item : cr_menu_button_tags.getItems()) {
+        for(MenuItem item : crMenuButtonTags.getItems()) {
             CheckMenuItem menuItem = (CheckMenuItem)item;
             if(menuItem.isSelected())
                 selectedTags.add(menuItem.getText());
@@ -241,41 +352,41 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
             return;
         }
 
-        if(cr_textfield_recipe_name.getLength() >= Recipe.TITLE_MAX_LENGTH) {
+        if(crTextfieldRecipeName.getLength() >= Recipe.TITLE_MAX_LENGTH) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le titre de la recette est trop long, la longueur maximale est de " + Recipe.TITLE_MAX_LENGTH + " caractères.");
             return;
         }
 
-        if(cr_textfield_recipe_creator_first_name.getLength() >= Recipe.CREATOR_FIRST_NAME_MAX_LENGTH) {
-            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le prenom de l'auteur de la recette est trop long, la longueur maximale est de " + Recipe.CREATOR_FIRST_NAME_MAX_LENGTH + " caractères.");
+        if(crTextfieldRecipeCreatorFirstName.getLength() >= Recipe.CREATOR_FIRST_NAME_MAX_LENGTH) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le prénom de l'auteur de la recette est trop long, la longueur maximale est de " + Recipe.CREATOR_FIRST_NAME_MAX_LENGTH + " caractères.");
             return;
         }
 
-        if(cr_textfield_recipe_creator_last_name.getLength() >= Recipe.CREATOR_LAST_NAME_MAX_LENGTH) {
+        if(crTextfieldRecipeCreatorLastName.getLength() >= Recipe.CREATOR_LAST_NAME_MAX_LENGTH) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le nom de l'auteur de la recette est trop long, la longueur maximale est de " + Recipe.CREATOR_LAST_NAME_MAX_LENGTH + " caractères.");
             return;
         }
 
-        if(cr_tableview_ingredients.getItems().isEmpty()) {
+        if(crTableviewIngredients.getItems().isEmpty()) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucun ingrédient n'a été ajouté à la recette.");
             return;
         }
 
-        if(cr_tableview_steps.getItems().isEmpty()) {
+        if(crTableviewSteps.getItems().isEmpty()) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucune étape n'a été ajouté à la recette.");
             return;
         }
 
         try {
             this.recipeManager.createNewRecipe(
-            cr_textfield_recipe_name.getText(),
-            cr_choice_box_complexity.getValue(),
+            crTextfieldRecipeName.getText(),
+            crChoiceBoxComplexity.getValue(),
             selectedTags,
-            cr_checkbox_visible.isSelected(),
-            cr_tableview_ingredients.getItems(),
-            cr_tableview_steps.getItems(),
-            cr_textfield_recipe_creator_first_name.getText(),
-            cr_textfield_recipe_creator_last_name.getText()
+            crCheckboxVisible.isSelected(),
+            crTableviewIngredients.getItems(),
+            crTableviewSteps.getItems(),
+            crTextfieldRecipeCreatorFirstName.getText(),
+            crTextfieldRecipeCreatorLastName.getText()
             );
 
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.SUCCESS, "La recette a bien été ajoutée");
@@ -287,39 +398,39 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
     }
 
     @FXML
-    private void cr_onButtonAddIngredient(ActionEvent event) {
+    private void crOnButtonAddIngredient(ActionEvent event) {
         this.popupAddIngredientWindow.show();
     }
 
     @Override
     public void onAddIngredient(Ingredient ingredient) {
-        cr_tableview_ingredients.getItems().add(ingredient);
+        crTableviewIngredients.getItems().add(ingredient);
     }
 
     @FXML
-    private void cr_onButtonAddStep(ActionEvent event) { 
+    private void crOnButtonAddStep(ActionEvent event) { 
         this.popupAddStepWindow.show();
     }
 
     @Override
     public void onAddStep(RecipeStep step) {
-        step.setStepCount(cr_tableview_steps.getItems().size() + 1);
-        cr_tableview_steps.getItems().add(step);
+        step.setStepCount(crTableviewSteps.getItems().size() + 1);
+        crTableviewSteps.getItems().add(step);
     }
 
-    private void lr_onInputTextFieldChanged() {
-        lr_tableview.setItems(this.recipeManager.filterListByTitle(lr_recipes, lr_input_search_bar.getText()));
+    private void lrOnInputTextFieldChanged() {
+        lrTableview.setItems(this.recipeManager.filterListByTitle(lrRecipes, lrInputSearchBar.getText()));
     }
 
     @FXML
-    void lr_onButtonDelete(ActionEvent event) {
-        if(lr_tableview.getSelectionModel().getSelectedItem() != null) {
-            Foodify.getInstance().setPopupYesNoWindow("Etes vous sure de vouloir supprimer cette recette ?", new IYesNoPopupListener() {
+    void lrOnButtonDelete(ActionEvent event) {
+        if(lrTableview.getSelectionModel().getSelectedItem() != null) {
+            Foodify.getInstance().setPopupYesNoWindow("Etes vous sûre de vouloir supprimer cette recette ?", new IYesNoPopupListener() {
 
                 @Override
                 public void onPopupYesNoHandled(PopupYesNoResult result) {
                     if(result == PopupYesNoResult.YES)
-                        lr_DeleteRecipe();
+                        lrDeleteRecipe();
                 }
                 
             });
@@ -327,8 +438,8 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
         
     }
 
-    private void lr_DeleteRecipe() {
-        Recipe recipeToDelete = lr_tableview.getSelectionModel().getSelectedItem();
+    private void lrDeleteRecipe() {
+        Recipe recipeToDelete = lrTableview.getSelectionModel().getSelectedItem();
 
         try {
             this.recipeManager.deleteRecipe(recipeToDelete);
@@ -340,8 +451,8 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
     }
 
     @FXML
-    void lr_onButtonModify(ActionEvent event) {
-        Recipe recipeToModify = lr_tableview.getSelectionModel().getSelectedItem();
+    void lrOnButtonModify(ActionEvent event) {
+        Recipe recipeToModify = lrTableview.getSelectionModel().getSelectedItem();
         if(recipeToModify != null) {
             this.popupModifyRecipeWindow.setRecipe(recipeToModify);
             this.popupModifyRecipeWindow.show();
@@ -349,8 +460,8 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
     }
 
     @FXML
-    void lr_onButtonInfo(ActionEvent event) {
-        Recipe recipeToModify = lr_tableview.getSelectionModel().getSelectedItem();
+    void lrOnButtonInfo(ActionEvent event) {
+        Recipe recipeToModify = lrTableview.getSelectionModel().getSelectedItem();
         
         if (recipeToModify != null) {
             this.popupRecipeInfoWindow.setRecipe(recipeToModify);

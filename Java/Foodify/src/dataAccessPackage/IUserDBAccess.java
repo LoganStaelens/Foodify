@@ -12,5 +12,7 @@ public interface IUserDBAccess {
 
     void createNewUser(String uniqueID, boolean isAdmin, String firstName, String lastName, Gender gender, String email, LocalDate birthDate, String phoneNumber, int address, String password) throws DBConnectionException;
 
-    public ResultSet getGenders() throws DBConnectionException;
+    ResultSet getGenders() throws DBConnectionException;
+
+    ResultSet getUsersByCountry(String country) throws DBConnectionException;
 }

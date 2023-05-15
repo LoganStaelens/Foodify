@@ -1,5 +1,6 @@
 package businessPackage;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -20,9 +21,12 @@ import dataAccessPackage.UserDBAccess;
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
 import exceptionPackage.HashException;
+import exceptionPackage.StringTooLongException;
 import modelPackage.Address;
+import modelPackage.City;
 import modelPackage.Country;
 import modelPackage.Gender;
+import modelPackage.User;
 
 public class UserManager implements IUserManager {
 
@@ -122,5 +126,118 @@ public class UserManager implements IUserManager {
     @Override
     public boolean verifyPassword(String passwd1hash, String passwd2hash) {
         return passwd1hash.equals(passwd2hash);
+    }
+
+    @Override
+    public List<User> findUsersByCountry(String countryIn) throws DBConnectionException {
+        ResultSet data;
+        List<User> usersFound = new ArrayList<>();
+
+        try {
+            data = userDataAccess.getUsersByCountry(countryIn);
+
+            while(data.next()) {
+                UUID uuid = UUID.fromString(data.getString("User.unique_id"));
+                Gender gender = Gender.X;
+                switch(data.getString("User.gender")) {
+                    case "m":
+                        gender = Gender.M;
+                    case "f":
+                        gender = Gender.F;
+                }
+                boolean isAdmin = data.getBoolean("User.isAdmin");
+                String firstName = data.getString("User.firstName");
+                String lastName = data.getString("User.lastName");
+                String email = data.getString("User.email");
+                Date birthDatePrimal = data.getDate("User.birthDate");
+                String phoneNumber = data.getString("User.phoneNumber");
+                int addressID = data.getInt("Address.address_id");
+                String street = data.getString("Address.street");
+                int number = data.getInt("Address.number");
+                int cityID = data.getInt("City.city_id");
+                String cityName = data.getString("City.name");
+                String postCode = data.getString("City.postCode");
+                Country country = new Country(data.getString("City.country"));
+                City city = new City(cityID, cityName, postCode, country);
+                Address address = new Address(addressID, street, city, number);
+                User user = new User(uuid, gender, isAdmin, firstName, lastName, email, birthDatePrimal.toLocalDate(), phoneNumber, address);
+                usersFound.add(user);
+            }
+
+            return usersFound;
+       
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DBConnectionException(DBConnectionExceptionTypes.PREPARED_STATEMENT_EXCEPTION);
+        } catch (StringTooLongException e) {
+            // Should never happen
+            e.printStackTrace();
+        }
+        
+        return usersFound;     
+    }
+
+    @Override
+    public LoginResult login(String emailIn, String passwdIn)
+            throws HashException, DBConnectionException, StringTooLongException {
+                ResultSet data;
+
+                try {
+                    data = userDataAccess.findUserByEmail(emailIn);
+        
+                    if(data.next()) {
+                        String password = data.getString("User.password");
+                        
+                        String inputPasswordHash = this.hashAlgorithm.hash(passwdIn);
+                        if(verifyPassword(inputPasswordHash, password)) {
+                            UUID uuid = UUID.fromString(data.getString("User.unique_id"));
+                            Gender gender = Gender.X;
+                            switch(data.getString("User.gender")) {
+                                case "m":
+                                    gender = Gender.M;
+                                case "f":
+                                    gender = Gender.F;
+                                case "x":
+                                    gender = Gender.X;
+                            }
+        
+                            boolean isAdmin = data.getBoolean("User.isAdmin");
+                            String firstName = data.getString("User.firstName");
+                            String lastName = data.getString("User.lastName");
+                            String email = data.getString("User.email");
+                            Date birthDatePrimal = data.getDate("User.birthDate");
+                            String phoneNumber = data.getString("User.phoneNumber");
+                            int addressID = data.getInt("Address.address_id");
+                            String street = data.getString("Address.street");
+                            int number = data.getInt("Address.number");
+                            int cityID = data.getInt("City.city_id");
+                            String cityName = data.getString("City.name");
+                            String postCode = data.getString("City.postCode");
+                            Country country = new Country(data.getString("City.country"));
+                            City city = new City(cityID, cityName, postCode, country);
+                            Address address = new Address(addressID, street, city, number);
+                            User user = new User(uuid, gender, isAdmin, firstName, lastName, email, birthDatePrimal.toLocalDate(), phoneNumber, address);
+                            data.close();
+                            
+                            if (isAdmin) {
+                                return new LoginResult(user, LoginStatus.SUCCESS_ADMIN);
+                            }
+        
+                            return new LoginResult(user, LoginStatus.SUCCESS);
+                        }
+                        else {
+                            data.close();
+                            return new LoginResult(null, LoginStatus.PASSWD_INCORRECT);
+                        }
+        
+                        
+                    }
+                    else {
+                        return new LoginResult(null, LoginStatus.EMAIL_INCORRECT);
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    throw new DBConnectionException(DBConnectionExceptionTypes.PREPARED_STATEMENT_EXCEPTION);
+                }
     }
 }
