@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import controllerPackage.PopupMessageTypes;
-import dataAccessPackage.IRecipeDBAccess;
+import dataAccessPackage.IRecipeDataAccess;
 import dataAccessPackage.RecipeDBAccess;
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
@@ -21,7 +21,7 @@ import viewPackage.Foodify;
 
 public class RecipeManager implements IRecipeManager {
 
-    private IRecipeDBAccess recipeDataAccess;
+    private IRecipeDataAccess recipeDataAccess;
 
     public RecipeManager() {
         this.recipeDataAccess = new RecipeDBAccess();

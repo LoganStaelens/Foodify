@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
 
-public class CityDBAccess implements ICityDBAccess {
+public class CityDBAccess implements ICityDataAccess {
 
     public int checkCity(String country, String name, String postCode) throws DBConnectionException {
         

@@ -137,7 +137,10 @@ public class PopupModifyRecipeWindow extends Window implements Initializable {
     void onButtonModify(ActionEvent event) {
         int recipeID = this.recipe.getRecipeID();
 
-        
+        if(inputRecipeTitle.getText().isBlank()) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le nom de la recette est vide.");
+            return;
+        }
 
         if(inputRecipeTitle.getLength() >= Recipe.TITLE_MAX_LENGTH) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le titre de la recette est trop long, la longueur maximale est de " + Recipe.TITLE_MAX_LENGTH + " caractères.");

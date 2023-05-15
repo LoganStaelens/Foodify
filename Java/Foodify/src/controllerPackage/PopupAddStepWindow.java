@@ -40,6 +40,16 @@ public class PopupAddStepWindow extends Window {
         String title = inputTitle.getText();
         String description = inputDescription.getText();
         
+        if(title.isBlank()) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le titre est vide");
+            return;
+        }
+
+        if(description.isBlank()) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "La description est vide");
+            return;
+        }
+
         if(title.length() >= RecipeStep.STEP_TITLE_MAX_LENGTH) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le titre de l'étape de la recette est trop long, la longueur maximale est de " + RecipeStep.STEP_TITLE_MAX_LENGTH + " caractères");
             return;

@@ -13,10 +13,10 @@ import javax.print.DocFlavor.READER;
 import dataAccessPackage.AddressDBAccess;
 import dataAccessPackage.CityDBAccess;
 import dataAccessPackage.CountryDBAccess;
-import dataAccessPackage.IAddressDBAccess;
-import dataAccessPackage.ICityDBAccess;
-import dataAccessPackage.ICountryDBAccess;
-import dataAccessPackage.IUserDBAccess;
+import dataAccessPackage.IAddressDataAccess;
+import dataAccessPackage.ICityDataAccess;
+import dataAccessPackage.ICountryDataAccess;
+import dataAccessPackage.IUserDataAccess;
 import dataAccessPackage.UserDBAccess;
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
@@ -30,10 +30,10 @@ import modelPackage.User;
 
 public class UserManager implements IUserManager {
 
-    private IUserDBAccess userDataAccess;
-    private ICityDBAccess cityDBAccess;
-    private IAddressDBAccess addressDBAccess;
-    private ICountryDBAccess countryDBAccess;
+    private IUserDataAccess userDataAccess;
+    private ICityDataAccess cityDBAccess;
+    private IAddressDataAccess addressDBAccess;
+    private ICountryDataAccess countryDBAccess;
     private IHash hashAlgorithm;
 
     public UserManager() {

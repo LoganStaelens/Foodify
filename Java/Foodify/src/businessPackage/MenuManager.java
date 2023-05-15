@@ -13,7 +13,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import dataAccessPackage.IMenuDBAccess;
+import dataAccessPackage.IMenuDataAccess;
 import dataAccessPackage.MenuDBAccess;
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
@@ -24,7 +24,7 @@ import modelPackage.User;
 public class MenuManager implements IMenuManager {
 
     private IRecipeManager recipeManager;
-    private IMenuDBAccess menuDBAccess;
+    private IMenuDataAccess menuDBAccess;
 
     public MenuManager() {
         this.recipeManager = new RecipeManager();

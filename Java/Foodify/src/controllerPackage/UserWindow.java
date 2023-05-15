@@ -151,13 +151,19 @@ public class UserWindow extends Window implements Initializable {
     void mm_onButtonRecipeInfo(ActionEvent event) throws DBConnectionException {
         MenuView itemSelected = mmTableview.selectionModelProperty().getValue().getSelectedItem();
 
-        int menuID = itemSelected.getRecipeID();
-        Recipe recipe = recipeManager.findRecipeById(menuID);
-
-        if (recipe != null) {
-            this.popupRecipeInfoWindow.setRecipe(recipe);
-            this.popupRecipeInfoWindow.show();
+        if(itemSelected != null) {
+            int menuID = itemSelected.getRecipeID();
+            Recipe recipe = recipeManager.findRecipeById(menuID);
+    
+            if (recipe != null) {
+                this.popupRecipeInfoWindow.setRecipe(recipe);
+                this.popupRecipeInfoWindow.show();
+            }
         }
+        else
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Vous n'avez rien sélectionné");
+
+        
     }
     
     private void loadCmTab() {

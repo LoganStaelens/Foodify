@@ -10,7 +10,7 @@ import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
 import modelPackage.Gender;
 
-public class UserDBAccess implements IUserDBAccess {
+public class UserDBAccess implements IUserDataAccess {
 
     @Override
     public ResultSet findUserByEmail(String userEmail) throws DBConnectionException  {

@@ -3,7 +3,7 @@ package modelPackage;
 import exceptionPackage.StringTooLongException;
 
 public class Address {
-    private static final int STREET_MAX_LENGTH = 128;
+    public static final int STREET_MAX_LENGTH = 128;
 
     private City city;
     private int addressID;

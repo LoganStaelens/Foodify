@@ -271,7 +271,7 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
         fuTableView.setVisible(false);
         String country = fuInputChoiceBox.getValue();
 
-        if(country == null || country.isEmpty())
+        if(country == null || country.isBlank())
             return;
 
         LoadingCommonZone commonZone = new LoadingCommonZone(fuImageViewLoadingSteam, fuImageViewLoadingLid, fuImageViewLoadingKettle);
@@ -350,6 +350,11 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
 
         if(selectedTags.isEmpty()) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucun tag n'a été choisi.");
+            return;
+        }
+
+        if(crTextfieldRecipeName.getText().isBlank()) {
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le nom de la recette est vide.");
             return;
         }
 
@@ -436,19 +441,22 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
                 
             });
         }
+        else 
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Vous n'avez rien sélectionné");
         
     }
 
     private void lrDeleteRecipe() {
         Recipe recipeToDelete = lrTableview.getSelectionModel().getSelectedItem();
-
+        
         try {
             this.recipeManager.deleteRecipe(recipeToDelete);
             onTabListRecipe();
-            
+              
         } catch (DBConnectionException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la suppression de la recette");
         }
+       
     }
 
     @FXML
@@ -458,6 +466,8 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
             this.popupModifyRecipeWindow.setRecipe(recipeToModify);
             this.popupModifyRecipeWindow.show();
         }     
+        else 
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Vous n'avez rien sélectionné");
     }
 
     @FXML
@@ -468,6 +478,8 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
             this.popupRecipeInfoWindow.setRecipe(recipeToModify);
             this.popupRecipeInfoWindow.show();
         }  
+        else 
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Vous n'avez rien sélectionné");
     }
 
     @Override

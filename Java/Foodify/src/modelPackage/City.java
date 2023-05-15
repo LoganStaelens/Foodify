@@ -3,8 +3,8 @@ package modelPackage;
 import exceptionPackage.StringTooLongException;
 
 public class City {
-    private static final int NAME_MAX_LENGTH = 128;
-    private static final int POSTCODE_MAX_LENGTH = 128;
+    public static final int NAME_MAX_LENGTH = 128;
+    public static final int POSTCODE_MAX_LENGTH = 128;
 
     private Country country;
     private int cityID;

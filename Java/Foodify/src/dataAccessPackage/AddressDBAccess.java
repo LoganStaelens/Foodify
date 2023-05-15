@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
 
-public class AddressDBAccess implements IAddressDBAccess {
+public class AddressDBAccess implements IAddressDataAccess {
 
     public int checkAddress(int city, String street, int number) throws DBConnectionException {
         

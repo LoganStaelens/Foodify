@@ -6,10 +6,10 @@ import java.util.UUID;
 import exceptionPackage.StringTooLongException;
 
 public class User {
-    private static final int FIRST_NAME_MAX_LENGTH = 64;
-    private static final int LAST_NAME_MAX_LENGTH = 64;
-    private static final int EMAIL_MAX_LENGTH = 128;
-    private static final int PHONE_NUMBER_MAX_LENGTH = 32;
+    public static final int FIRST_NAME_MAX_LENGTH = 64;
+    public static final int LAST_NAME_MAX_LENGTH = 64;
+    public static final int EMAIL_MAX_LENGTH = 128;
+    public static final int PHONE_NUMBER_MAX_LENGTH = 32;
 
     private UUID uniqueID;
     private Gender gender;

@@ -98,16 +98,19 @@ public class PopupAddIngredientWindow extends Window implements Initializable {
     @FXML
     void onAddIngredient(ActionEvent event) {
         Ingredient ingredient = tableview.getSelectionModel().getSelectedItem();
-        
-        try {
-            int quantity = Integer.parseInt(inputQuantity.getText());
-            ingredient.setQuantity(quantity);
-            this.hide();
-            popupListener.onAddIngredient(ingredient);
+        if(ingredient != null) {
+            try {
+                int quantity = Integer.parseInt(inputQuantity.getText());
+                ingredient.setQuantity(quantity);
+                this.hide();
+                popupListener.onAddIngredient(ingredient);
+            }
+            catch (Exception e) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le champ spécifié dans quantitée n'est pas valide");
+            }
         }
-        catch (Exception e) {
-            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le champ spécifié dans quantitée n'est pas valide");
-        } 
+        else 
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Vous n'avez rien sélectionné");
     }
 
     @Override

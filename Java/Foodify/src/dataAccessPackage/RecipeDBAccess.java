@@ -9,7 +9,7 @@ import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
 import modelPackage.Recipe;
 
-public class RecipeDBAccess implements IRecipeDBAccess {
+public class RecipeDBAccess implements IRecipeDataAccess {
     
 
     @Override

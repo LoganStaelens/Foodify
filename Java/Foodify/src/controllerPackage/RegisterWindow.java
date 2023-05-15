@@ -3,6 +3,9 @@ package controllerPackage;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -25,6 +28,7 @@ import modelPackage.Address;
 import modelPackage.City;
 import modelPackage.Country;
 import modelPackage.Gender;
+import modelPackage.User;
 import viewPackage.Foodify;
 
 public class RegisterWindow extends Window implements Initializable {
@@ -141,7 +145,7 @@ public class RegisterWindow extends Window implements Initializable {
             String passwdHash = this.userManager.hashPassword(passwd);
             String passwdVerifyHash = this.userManager.hashPassword(passwdVerify);
             String email = input_textfield_email.getText();
-            LocalDate birthDate = input_date_picker_birthDate.getValue();
+            LocalDate birthDate = input_date_picker_birthDate.getValue();         
             String phoneNumber = input_textfield_phone_number.getText();
             String street = input_textfield_street.getText();
             String numberHouse = input_textfield_number.getText();
@@ -150,37 +154,62 @@ public class RegisterWindow extends Window implements Initializable {
             String postCode = input_textfield_post_code.getText();
             boolean emailFound = this.userManager.findUserByEmail(email);
 
-            if (firstName.isEmpty()) {
+            if (firstName.isBlank()) {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucun prénom n'a été choisi.");
                 return;
             }
 
-            if (lastName.isEmpty()) {
+            if(firstName.length() >= User.FIRST_NAME_MAX_LENGTH) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le prénom est trop long, la longueur maximale est de " + User.FIRST_NAME_MAX_LENGTH + " caractères.");
+                return;
+            }
+
+            if (lastName.isBlank()) {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucun nom n'a été choisi.");
                 return;
             }
 
-            if (passwd.isEmpty() || passwdVerify.isEmpty()) {
+            if(lastName.length() >= User.LAST_NAME_MAX_LENGTH) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le nom est trop long, la longueur maximale est de " + User.LAST_NAME_MAX_LENGTH + " caractères.");
+                return;
+            }
+
+            if (passwd.isBlank() || passwdVerify.isBlank()) {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucun mot de passe n'a été choisi.");
                 return;
             }
 
-            if (email.isEmpty()) {
+            if (email.isBlank()) {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucun email n'a été choisi.");
                 return;
             }
 
-            if (birthDate == null) {
-                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucune date de naissance n'a été choisi.");
+            if(email.length() >= User.EMAIL_MAX_LENGTH) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "L'email est trop long, la longueur maximale est de " + User.EMAIL_MAX_LENGTH + " caractères.");
                 return;
             }
 
-            if (street.isEmpty()) {
+            if(phoneNumber.length() >= User.PHONE_NUMBER_MAX_LENGTH) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le numéro de téléphone est trop long, la longueur maximale est de " + User.PHONE_NUMBER_MAX_LENGTH + " caractères.");
+                return;
+            }
+
+            if (birthDate == null) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "La date de naissance n'est pas valide.");
+                return;
+            }
+
+            if (street.isBlank()) {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucune rue n'a été choisi.");
                 return;
             }
 
-            if (numberHouse.isEmpty()) {
+            if(street.length() >= Address.STREET_MAX_LENGTH) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "La rue est trop longue, la longueur maximale est de " + Address.STREET_MAX_LENGTH + " caractères.");
+                return;
+            }
+
+            if (numberHouse.isBlank()) {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucun numéro de rue n'a été choisi.");
                 return;
             }
@@ -193,13 +222,23 @@ public class RegisterWindow extends Window implements Initializable {
                 return;
             }
 
-            if (city.isEmpty()) {
+            if (city.isBlank()) {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucune ville n'a été choisi.");
                 return;
             }
 
-            if (postCode.isEmpty()) {
+            if(city.length() >= City.NAME_MAX_LENGTH) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "La ville est trop longue, la longueur maximale est de " + City.NAME_MAX_LENGTH + " caractères.");
+                return;
+            }
+
+            if (postCode.isBlank()) {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucun code de postal n'a été choisi.");
+                return;
+            }
+
+            if(postCode.length() >= City.POSTCODE_MAX_LENGTH) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le code postal est trop long, la longueur maximale est de " + City.POSTCODE_MAX_LENGTH + " caractères.");
                 return;
             }
             

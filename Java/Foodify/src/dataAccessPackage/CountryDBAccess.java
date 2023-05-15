@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.DBConnectionExceptionTypes;
 
-public class CountryDBAccess implements ICountryDBAccess {
+public class CountryDBAccess implements ICountryDataAccess {
 
     @Override
     public ResultSet getCountries() throws DBConnectionException {
