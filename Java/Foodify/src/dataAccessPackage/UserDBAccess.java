@@ -37,7 +37,6 @@ public class UserDBAccess implements IUserDBAccess {
 
             insertStatement.setString(1, uniqueID);
             insertStatement.setInt(2, address);
-            System.out.println(gender.toString().toLowerCase());
             insertStatement.setString(3, gender.toString().toLowerCase());
             insertStatement.setBoolean(4, isAdmin);
             insertStatement.setString(5, firstName);

@@ -145,6 +145,7 @@ public class RegisterWindow extends Window implements Initializable {
             String phoneNumber = input_textfield_phone_number.getText();
             String street = input_textfield_street.getText();
             String numberHouse = input_textfield_number.getText();
+            int numberVerify;
             String city = input_textfield_city.getText();
             String postCode = input_textfield_post_code.getText();
             boolean emailFound = this.userManager.findUserByEmail(email);
@@ -184,6 +185,16 @@ public class RegisterWindow extends Window implements Initializable {
                 return;
             }
 
+            try {
+                numberVerify = Integer.parseInt(numberHouse);
+            } 
+            catch (NumberFormatException e) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Il y a des lettres dans le numéro de rue !");
+                return;
+            }
+
+            System.out.println(numberVerify);
+
             if (city.isEmpty()) {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucune ville n'a été choisi.");
                 return;
@@ -202,9 +213,11 @@ public class RegisterWindow extends Window implements Initializable {
                     email,
                     birthDate,
                     phoneNumber,
-                    new Address(street, Integer.parseInt(numberHouse), new City(city, postCode, input_choicebox_country.getValue())),
+                    new Address(street, numberVerify, new City(city, postCode, input_choicebox_country.getValue())),
                     passwdHash
                 );
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.SUCCESS, "Compte créer ! Veuillez désormais vous connectez.");
+                Foodify.getInstance().setLoginWindow();
             }
             else {
                 if (emailFound) {
