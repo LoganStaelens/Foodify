@@ -29,22 +29,22 @@ import viewPackage.Foodify;
 public class PopupAddIngredientWindow extends Window implements Initializable {
 
     @FXML
-    private TableColumn<Ingredient, String> column_kcal;
+    private TableColumn<Ingredient, String> columnKcal;
 
     @FXML
-    private TableColumn<Ingredient, String> column_name;
+    private TableColumn<Ingredient, String> columnName;
 
     @FXML
-    private TextField input_quantity;
+    private TextField inputQuantity;
 
     @FXML
-    private TextField input_search_bar;
+    private TextField inputSearchBar;
 
     @FXML
-    private Label label_unit;
+    private Label labelUnit;
 
     @FXML
-    private TableView<Ingredient> table;
+    private TableView<Ingredient> tableview;
 
     private IAddIngredientPopupListener popupListener;
 
@@ -64,49 +64,49 @@ public class PopupAddIngredientWindow extends Window implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        column_name.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("name"));
-        column_kcal.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("kcal"));
+        columnName.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("name"));
+        columnKcal.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("kcal"));
     
         try {
             ingredientList = FXCollections.observableArrayList(this.recipeManager.getAllIngredients());
         } catch (DBConnectionException e) {
             e.printStackTrace();
         }
-        table.setItems(ingredientList);
-        input_search_bar.textProperty().addListener((obs, oldValue, newValue) -> {onInputTextFieldChanged();});
+        tableview.setItems(ingredientList);
+        inputSearchBar.textProperty().addListener((obs, oldValue, newValue) -> {onInputTextFieldChanged();});
     
-        table.getSelectionModel().selectedItemProperty().addListener(this::onSelectedItem);
+        tableview.getSelectionModel().selectedItemProperty().addListener(this::onSelectedItem);
     
         
     }
 
     private void onSelectedItem(ObservableValue<? extends Ingredient> obs, Ingredient oldValue, Ingredient newValue) {
         
-        if(newValue != null) label_unit.setText(newValue.getUnitAbbrevition());
-        else label_unit.setText("");
+        if(newValue != null) labelUnit.setText(newValue.getUnitAbbrevition());
+        else labelUnit.setText("");
     }
 
     
     void onInputTextFieldChanged() {
-        String searchText = input_search_bar.getText();
+        String searchText = inputSearchBar.getText();
         FilteredList<Ingredient> filteredList = new FilteredList<>(ingredientList);
         filteredList.setPredicate(p -> p.getName().toLowerCase().contains(searchText.toLowerCase().trim()));
-        table.setItems(filteredList);
+        tableview.setItems(filteredList);
         
     }
 
     @FXML
     void onAddIngredient(ActionEvent event) {
-        Ingredient ingredient = table.getSelectionModel().getSelectedItem();
+        Ingredient ingredient = tableview.getSelectionModel().getSelectedItem();
         
         try {
-            int quantity = Integer.parseInt(input_quantity.getText());
+            int quantity = Integer.parseInt(inputQuantity.getText());
             ingredient.setQuantity(quantity);
             this.hide();
             popupListener.onAddIngredient(ingredient);
         }
         catch (Exception e) {
-            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le champ spécifié dans quantité n'est pas valide");
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le champ spécifié dans quantitée n'est pas valide");
         } 
     }
 

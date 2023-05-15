@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.spi.LocaleNameProvider;
 
 import dataAccessPackage.IMenuDBAccess;
 import dataAccessPackage.MenuDBAccess;
@@ -98,8 +97,5 @@ public class MenuManager implements IMenuManager {
             throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
         }
     
-    }
-
-    
-    
+    }    
 }

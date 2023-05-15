@@ -27,25 +27,25 @@ import javafx.stage.Stage;
 import modelPackage.Recipe;
 import viewPackage.Foodify;
 
-public class PopupModifyRecipeWindow extends Window implements Initializable{
+public class PopupModifyRecipeWindow extends Window implements Initializable {
     
     @FXML
-    private CheckBox check_box_is_visible;
+    private CheckBox checkBoxIsVisible;
 
     @FXML
-    private ChoiceBox<String> choice_box_complexity;
+    private ChoiceBox<String> choiceBoxComplexity;
 
     @FXML
-    private TextField input_recipe_creator_first_name;
+    private TextField inputRecipeCreatorFirstName;
 
     @FXML
-    private TextField input_recipe_creator_last_name;
+    private TextField inputRecipeCreatorLastName;
 
     @FXML
-    private TextField input_recipe_title;
+    private TextField inputRecipeTitle;
 
     @FXML
-    private MenuButton menu_button_tags;
+    private MenuButton menuButtonTags;
 
     private IModifyRecipePopupListener popupListener;
     private IRecipeManager recipeManager;
@@ -62,22 +62,20 @@ public class PopupModifyRecipeWindow extends Window implements Initializable{
         
     }
 
-    
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
             List<String> complexities = this.recipeManager.getDifficulties();
-            choice_box_complexity.getItems().clear();
+            choiceBoxComplexity.getItems().clear();
             for (String complexity : complexities) {
-                choice_box_complexity.getItems().add(complexity);
+                choiceBoxComplexity.getItems().add(complexity);
             }
-            choice_box_complexity.setValue(complexities.get(0));
+            choiceBoxComplexity.setValue(complexities.get(0));
 
             List<String> tags = this.recipeManager.getTags();
-            menu_button_tags.getItems().clear();
+            menuButtonTags.getItems().clear();
             for (String tag : tags) {
-                menu_button_tags.getItems().add(new CheckMenuItem(tag));
+                menuButtonTags.getItems().add(new CheckMenuItem(tag));
             }
 
         } catch (DBConnectionException e) {
@@ -89,8 +87,7 @@ public class PopupModifyRecipeWindow extends Window implements Initializable{
     public void show() {
         popupStage.setTitle("Foodify");
         popupStage.getIcons().add(new Image("viewPackage/Foodify.png"));
-        popupStage.setResizable(false);
-        
+        popupStage.setResizable(false);   
         popupStage.setScene(this.fxmlWindow);
         popupStage.show();  
     }
@@ -103,30 +100,29 @@ public class PopupModifyRecipeWindow extends Window implements Initializable{
     }
 
     private void fillFormFromRecipe(Recipe recipe) {
-        check_box_is_visible.setSelected(recipe.getIsVisible());
-        choice_box_complexity.setValue(recipe.getComplexity());
+        checkBoxIsVisible.setSelected(recipe.getIsVisible());
+        choiceBoxComplexity.setValue(recipe.getComplexity());
         ListIterator<String> tagListIterrator = recipe.getTagsItterator();
 
         while(tagListIterrator.hasNext()) {
             String tags = tagListIterrator.next();
 
-            for(MenuItem menuItem : menu_button_tags.getItems()) {
+            for(MenuItem menuItem : menuButtonTags.getItems()) {
                 CheckMenuItem checkMenuItem = (CheckMenuItem)menuItem;
 
                 if(checkMenuItem.getText().equalsIgnoreCase(tags)) 
-                    checkMenuItem.setSelected(true);
-                
+                    checkMenuItem.setSelected(true);          
             }
         }
 
-        input_recipe_creator_first_name.setText(recipe.getCreatorFirstName());
-        input_recipe_creator_last_name.setText(recipe.getCreatorLastName());
-        input_recipe_title.setText(recipe.getTitle());
+        inputRecipeCreatorFirstName.setText(recipe.getCreatorFirstName());
+        inputRecipeCreatorLastName.setText(recipe.getCreatorLastName());
+        inputRecipeTitle.setText(recipe.getTitle());
     }
 
     private void reset() {
         //Need to reset tags for the next modify popup to work
-        for(MenuItem menuItem : menu_button_tags.getItems()) {
+        for(MenuItem menuItem : menuButtonTags.getItems()) {
             CheckMenuItem checkMenuItem = (CheckMenuItem)menuItem;
             checkMenuItem.setSelected(false);          
         }
@@ -143,33 +139,33 @@ public class PopupModifyRecipeWindow extends Window implements Initializable{
 
         
 
-        if(input_recipe_title.getLength() >= Recipe.TITLE_MAX_LENGTH) {
+        if(inputRecipeTitle.getLength() >= Recipe.TITLE_MAX_LENGTH) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le titre de la recette est trop long, la longueur maximale est de " + Recipe.TITLE_MAX_LENGTH + " caractères.");
             return;
         }
 
-        if(input_recipe_creator_first_name.getLength() >= Recipe.CREATOR_FIRST_NAME_MAX_LENGTH) {
+        if(inputRecipeCreatorFirstName.getLength() >= Recipe.CREATOR_FIRST_NAME_MAX_LENGTH) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le prenom de l'auteur de la recette est trop long, la longueur maximale est de " + Recipe.CREATOR_FIRST_NAME_MAX_LENGTH + " caractères.");
             return;
         }
 
-        if(input_recipe_creator_last_name.getLength() >= Recipe.CREATOR_LAST_NAME_MAX_LENGTH) {
+        if(inputRecipeCreatorLastName.getLength() >= Recipe.CREATOR_LAST_NAME_MAX_LENGTH) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le nom de l'auteur de la recette est trop long, la longueur maximale est de " + Recipe.CREATOR_LAST_NAME_MAX_LENGTH + " caractères.");
             return;
         }
 
         Recipe newRecipe = new Recipe (
             recipeID,
-            input_recipe_title.getText(),
-            choice_box_complexity.getValue(),
-            check_box_is_visible.isSelected(),
+            inputRecipeTitle.getText(),
+            choiceBoxComplexity.getValue(),
+            checkBoxIsVisible.isSelected(),
             LocalDate.now(),
-            input_recipe_creator_first_name.getText(), 
-            input_recipe_creator_last_name.getText()
+            inputRecipeCreatorFirstName.getText(), 
+            inputRecipeCreatorLastName.getText()
             );
 
         boolean hasTags = false;
-        for(MenuItem item : menu_button_tags.getItems()) {
+        for(MenuItem item : menuButtonTags.getItems()) {
             CheckMenuItem menuItem = (CheckMenuItem)item;
             if(menuItem.isSelected()) {
                 newRecipe.addTag(menuItem.getText());
@@ -196,8 +192,4 @@ public class PopupModifyRecipeWindow extends Window implements Initializable{
         this.recipe = recipe;
         fillFormFromRecipe(recipe);
     }
-
-    
-
-
 }

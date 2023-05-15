@@ -1,13 +1,10 @@
 package controllerPackage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -19,15 +16,13 @@ import viewPackage.Foodify;
 public class PopupAddStepWindow extends Window {
 
     @FXML
-    private TextArea input_description;
+    private TextArea inputDescription;
 
     @FXML
-    private TextField input_duration;
+    private TextField inputDuration;
 
     @FXML
-    private TextField input_title;
-
-    
+    private TextField inputTitle;
     
     private IAddStepPopupListener popupListener;
 
@@ -36,15 +31,14 @@ public class PopupAddStepWindow extends Window {
         fxmlLoader.setController(this);
         this.popupListener = popupListener;
         this.fxmlWindow = new Scene(fxmlLoader.load());  
-        this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());
-        
+        this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());  
     }
 
     @FXML
     void onAddStep(ActionEvent event) {
 
-        String title = input_title.getText();
-        String description = input_description.getText();
+        String title = inputTitle.getText();
+        String description = inputDescription.getText();
         
         if(title.length() >= RecipeStep.STEP_TITLE_MAX_LENGTH) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le titre de l'étape de la recette est trop long, la longueur maximale est de " + RecipeStep.STEP_TITLE_MAX_LENGTH + " caractères");
@@ -58,7 +52,7 @@ public class PopupAddStepWindow extends Window {
 
 
         try {
-            int duration = Integer.parseInt(input_duration.getText());
+            int duration = Integer.parseInt(inputDuration.getText());
 
             this.hide();
             this.popupListener.onAddStep(new RecipeStep(title, description, duration));

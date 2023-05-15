@@ -1,7 +1,6 @@
 package modelPackage;
 
 import java.time.LocalDate;
-import java.util.Optional;
 import java.util.UUID;
 
 import exceptionPackage.StringTooLongException;
@@ -74,6 +73,29 @@ public class User {
     public UUID getUniqueID() {
         return uniqueID;
     }
+
+    public String getUserID() {
+        return uniqueID.toString();
+    }
+
+    public String getStreet() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(this.address.getStreet())
+            .append(" ")
+            .append(this.address.getNumber());
+
+        return builder.toString();
+    }
+
+    public String getCity() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(this.address.getCity().getPostCode())
+            .append(" ")
+            .append(this.address.getCity().getName());
+
+        return builder.toString();
+    }
+
     public Gender getGender() {
         return gender;
     }

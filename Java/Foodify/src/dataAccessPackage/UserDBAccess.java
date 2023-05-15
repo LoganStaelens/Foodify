@@ -77,5 +77,19 @@ public class UserDBAccess implements IUserDBAccess {
             throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
+
+    @Override
+    public ResultSet getUsersByCountry(String country) throws DBConnectionException {
+        String sql = "SELECT User.unique_id, User.gender, User.isAdmin, User.firstName, User.lastName, User.email, User.birthDate, User.phoneNumber, Address.address_id, Address.street, Address.number, City.city_id, City.name, City.postCode, City.country FROM User INNER JOIN Address ON User.address = Address.address_id INNER JOIN City ON Address.city = City.city_id INNER JOIN Country ON City.country = Country.name where Country.name = ?;";
+
+        PreparedStatement statement;
+        try {
+            statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+            statement.setString(1, country);
+            return statement.executeQuery();
+        } catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+        }
+    }
     
 }

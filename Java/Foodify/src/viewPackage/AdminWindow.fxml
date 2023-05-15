@@ -80,13 +80,13 @@
    <bottom>
       <TabPane prefHeight="624.0" prefWidth="900.0" style="-fx-background-color: #111;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab fx:id="cr_tab" text="Create Recipe">
+          <Tab fx:id="crTab" text="Creer une recette">
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ebdbcc;">
                      <children>
                         <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="28.0" layoutY="14.0" prefHeight="64.0" prefWidth="333.0" text="Nom de la recette" wrapText="true">
                            <graphic>
-                              <TextField fx:id="cr_textfield_recipe_name" prefHeight="30.0" prefWidth="202.0">
+                              <TextField fx:id="crTextfieldRecipeName" prefHeight="30.0" prefWidth="202.0">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -96,12 +96,12 @@
                               <Font name="Arial Rounded MT Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Button layoutX="749.0" layoutY="16.0" mnemonicParsing="false" onAction="#cr_onButtonSave" prefHeight="40.0" prefWidth="127.0" text="Enregistrer">
+                        <Button layoutX="749.0" layoutY="16.0" mnemonicParsing="false" onAction="#crOnButtonSave" prefHeight="40.0" prefWidth="127.0" text="Enregistrer">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font>
                         </Button>
-                        <ChoiceBox fx:id="cr_choice_box_complexity" layoutX="394.0" layoutY="31.0" prefHeight="30.0" prefWidth="147.0">
+                        <ChoiceBox fx:id="crChoiceBoxComplexity" layoutX="394.0" layoutY="31.0" prefHeight="30.0" prefWidth="147.0">
                            <stylesheets>
                               <URL value="@style.css" />
                               <URL value="@style.css" />
@@ -111,7 +111,7 @@
                               <Font name="Arial Rounded MT Bold" size="15.0" />
                            </font>
                            <graphic>
-                              <CheckBox fx:id="cr_checkbox_visible" contentDisplay="TOP" mnemonicParsing="false" prefHeight="19.0" prefWidth="18.0">
+                              <CheckBox fx:id="crCheckboxVisible" contentDisplay="TOP" mnemonicParsing="false" prefHeight="19.0" prefWidth="18.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -122,12 +122,12 @@
                            <left>
                               <Pane prefHeight="301.0" prefWidth="414.0" style="-fx-border-width: 2;" BorderPane.alignment="CENTER">
                                  <children>
-                                    <TableView fx:id="cr_tableview_ingredients" layoutX="3.0" layoutY="2.0" prefHeight="276.0" prefWidth="410.0">
+                                    <TableView fx:id="crTableviewIngredients" layoutX="3.0" layoutY="2.0" prefHeight="276.0" prefWidth="410.0">
                                       <columns>
-                                        <TableColumn fx:id="cr_ing_name_column" editable="false" prefWidth="156.0" resizable="false" text="name" />
-                                        <TableColumn fx:id="cr_ing_kcal_column" editable="false" prefWidth="72.0" resizable="false" text="kcal" />
-                                          <TableColumn fx:id="cr_ing_unit_column" editable="false" prefWidth="93.0" resizable="false" text="unit" />
-                                          <TableColumn fx:id="cr_ing_quantity_column" editable="false" prefWidth="88.0" resizable="false" text="quantity" />
+                                        <TableColumn fx:id="crIngNameColumn" editable="false" prefWidth="156.0" resizable="false" text="name" />
+                                        <TableColumn fx:id="crIngKcalColumn" editable="false" prefWidth="72.0" resizable="false" text="kcal" />
+                                          <TableColumn fx:id="crIngUnitColumn" editable="false" prefWidth="93.0" resizable="false" text="unit" />
+                                          <TableColumn fx:id="crIngQuantityColumn" editable="false" prefWidth="88.0" resizable="false" text="quantity" />
                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -139,12 +139,12 @@
                            <right>
                               <Pane prefHeight="301.0" prefWidth="414.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <TableView fx:id="cr_tableview_steps" layoutX="2.0" layoutY="2.0" prefHeight="276.0" prefWidth="410.0">
+                                    <TableView fx:id="crTableviewSteps" layoutX="2.0" layoutY="2.0" prefHeight="276.0" prefWidth="410.0">
                                        <columns>
-                                          <TableColumn fx:id="cr_recipe_step_stepcount_column" editable="false" maxWidth="90.0" minWidth="0.0" prefWidth="39.0" resizable="false" sortable="false" text="Etape" />
-                                          <TableColumn fx:id="cr_recipe_step_title_column" editable="false" minWidth="0.0" prefWidth="95.0" resizable="false" sortable="false" text="Titre" />
-                                          <TableColumn fx:id="cr_recipe_step_desc_column" editable="false" minWidth="0.0" prefWidth="180.0" sortable="false" text="Description" />
-                                          <TableColumn fx:id="cr_recipe_step_duration_column" editable="false" minWidth="0.0" prefWidth="94.0" sortable="false" text="Duration" />
+                                          <TableColumn fx:id="crRecipeStepStepcountColumn" editable="false" maxWidth="90.0" minWidth="0.0" prefWidth="39.0" resizable="false" sortable="false" text="Etape" />
+                                          <TableColumn fx:id="crRecipeStepTitleColumn" editable="false" minWidth="0.0" prefWidth="95.0" resizable="false" sortable="false" text="Titre" />
+                                          <TableColumn fx:id="crRecipeStepDescColumn" editable="false" minWidth="0.0" prefWidth="180.0" sortable="false" text="Description" />
+                                          <TableColumn fx:id="crRecipeStepDurationColumn" editable="false" minWidth="0.0" prefWidth="94.0" sortable="false" text="Duration" />
                                        </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -159,7 +159,7 @@
                               <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font>
                            <graphic>
-                              <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#cr_onButtonAddIngredient" prefHeight="32.0" prefWidth="32.0" text="Ajouter">
+                              <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#crOnButtonAddIngredient" prefHeight="32.0" prefWidth="32.0" text="Ajouter">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="13.0" />
                                  </font>
@@ -178,7 +178,7 @@
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                            <graphic>
-                              <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#cr_onButtonAddStep" prefHeight="32.0" prefWidth="32.0" text="Ajouter">
+                              <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#crOnButtonAddStep" prefHeight="32.0" prefWidth="32.0" text="Ajouter">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="13.0" />
                                  </font>
@@ -192,18 +192,18 @@
                               </Button>
                            </graphic>
                         </Label>
-                        <MenuButton fx:id="cr_menu_button_tags" layoutX="394.0" layoutY="81.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="147.0" text="Tags" textFill="#cccccc">
+                        <MenuButton fx:id="crMenuButtonTags" layoutX="394.0" layoutY="81.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="147.0" text="Tags" textFill="#cccccc">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="15.0" />
                            </font></MenuButton>
-                        <Button layoutX="638.0" layoutY="16.0" mnemonicParsing="false" onAction="#cr_onButtonClear" prefHeight="40.0" prefWidth="100.0" text="Effacer">
+                        <Button layoutX="638.0" layoutY="16.0" mnemonicParsing="false" onAction="#crOnButtonClear" prefHeight="40.0" prefWidth="100.0" text="Effacer">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font>
                         </Button>
                         <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="31.0" layoutY="102.0" prefHeight="74.0" prefWidth="326.0" text="Prenom du createur" wrapText="true">
                            <graphic>
-                              <TextField fx:id="cr_textfield_recipe_creator_first_name" prefHeight="30.0" prefWidth="198.0">
+                              <TextField fx:id="crTextfieldRecipeCreatorFirstName" prefHeight="30.0" prefWidth="198.0">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -215,7 +215,7 @@
                         </Label>
                         <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="31.0" layoutY="153.0" prefHeight="74.0" prefWidth="326.0" text="Nom du createur" wrapText="true">
                            <graphic>
-                              <TextField fx:id="cr_textfield_recipe_creator_last_name" prefHeight="30.0" prefWidth="198.0">
+                              <TextField fx:id="crTextfieldRecipeCreatorLastName" prefHeight="30.0" prefWidth="198.0">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -229,29 +229,29 @@
                   </Pane>
                </content>
             </Tab>
-          <Tab fx:id="lr_tab" text="List Recipe">
+          <Tab fx:id="lrTab" text="Rechercher une recette">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <top>
-                        <TextField fx:id="lr_input_search_bar" prefHeight="34.0" prefWidth="900.0" promptText="Ecrivez pour rechercher un recette" BorderPane.alignment="CENTER" />
+                        <TextField fx:id="lrInputSearchBar" prefHeight="34.0" prefWidth="900.0" promptText="Ecrivez pour rechercher un recette" BorderPane.alignment="CENTER" />
                      </top>
                      <center>
                         <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <center>
                               <Pane prefHeight="415.0" prefWidth="900.0" style="-fx-background-color: #ebdbcc;" BorderPane.alignment="CENTER">
                                  <children>
-                                    <TableView fx:id="lr_tableview" layoutX="20.0" layoutY="17.0" prefHeight="447.0" prefWidth="860.0">
+                                    <TableView fx:id="lrTableview" layoutX="20.0" layoutY="17.0" prefHeight="447.0" prefWidth="860.0">
                                       <columns>
-                                        <TableColumn fx:id="lr_column_id" editable="false" prefWidth="44.0" text="ID" />
-                                          <TableColumn fx:id="lr_column_title" editable="false" prefWidth="179.0" text="Titre" />
-                                          <TableColumn fx:id="lr_column_complexity" editable="false" minWidth="0.0" prefWidth="77.0" text="Complexité" />
-                                          <TableColumn fx:id="lr_column_tags" editable="false" prefWidth="232.0" text="Tags" />
-                                          <TableColumn fx:id="lr_column_last_update" editable="false" minWidth="0.0" prefWidth="100.0" text="Mis a jour" />
-                                          <TableColumn fx:id="lr_column_is_visible" editable="false" minWidth="0.0" prefWidth="64.0" text="Est visible" />
-                                          <TableColumn fx:id="lr_column_complexity111" minWidth="0.0" prefWidth="163.0" text="Createur">
+                                        <TableColumn fx:id="lrColumnId" editable="false" prefWidth="44.0" text="ID" />
+                                          <TableColumn fx:id="lrColumnTitle" editable="false" prefWidth="179.0" text="Titre" />
+                                          <TableColumn fx:id="lrColumnComplexity" editable="false" minWidth="0.0" prefWidth="77.0" text="Complexité" />
+                                          <TableColumn fx:id="lrColumnTags" editable="false" prefWidth="232.0" text="Tags" />
+                                          <TableColumn fx:id="lrColumnLastUpdate" editable="false" minWidth="0.0" prefWidth="100.0" text="Mis a jour" />
+                                          <TableColumn fx:id="lrColumnIsVisible" editable="false" minWidth="0.0" prefWidth="64.0" text="Est visible" />
+                                          <TableColumn minWidth="0.0" prefWidth="163.0" text="Createur">
                                              <columns>
-                                                <TableColumn fx:id="lr_column_first_name" editable="false" minWidth="0.0" prefWidth="83.0" text="Prenom" />
-                                                <TableColumn fx:id="lr_column_last_name" editable="false" minWidth="0.0" prefWidth="79.0" text="Nom" />
+                                                <TableColumn fx:id="lrColumnFirstName" editable="false" minWidth="0.0" prefWidth="83.0" text="Prenom" />
+                                                <TableColumn fx:id="lrColumnLastName" editable="false" minWidth="0.0" prefWidth="79.0" text="Nom" />
                                              </columns>
                                           </TableColumn>
                                       </columns>
@@ -262,15 +262,15 @@
                            <bottom>
                               <Pane prefHeight="76.0" prefWidth="900.0" style="-fx-background-color: #ffcd81;" BorderPane.alignment="CENTER">
                                  <children>
-                                    <Button layoutX="216.0" layoutY="16.0" mnemonicParsing="false" onAction="#lr_onButtonModify" prefHeight="45.0" prefWidth="124.0" text="Modifier">
+                                    <Button layoutX="216.0" layoutY="16.0" mnemonicParsing="false" onAction="#lrOnButtonModify" prefHeight="45.0" prefWidth="124.0" text="Modifier">
                                        <font>
                                           <Font size="14.0" />
                                        </font></Button>
-                                    <Button layoutX="391.0" layoutY="16.0" mnemonicParsing="false" onAction="#lr_onButtonDelete" prefHeight="45.0" prefWidth="124.0" text="Supprimer">
+                                    <Button layoutX="391.0" layoutY="16.0" mnemonicParsing="false" onAction="#lrOnButtonDelete" prefHeight="45.0" prefWidth="124.0" text="Supprimer">
                                        <font>
                                           <Font size="14.0" />
                                        </font></Button>
-                                    <Button layoutX="561.0" layoutY="16.0" mnemonicParsing="false" onAction="#lr_onButtonInfo" prefHeight="45.0" prefWidth="124.0" text="Informations">
+                                    <Button layoutX="561.0" layoutY="16.0" mnemonicParsing="false" onAction="#lrOnButtonInfo" prefHeight="45.0" prefWidth="124.0" text="Informations">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -282,9 +282,50 @@
                      </center>
                   </BorderPane>
                </content></Tab>
-            <Tab fx:id="lr_tab1" text="Find Users">
+            <Tab fx:id="fuTab" text="Rechercher des utilisateurs par pays">
                <content>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0" />
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ebdbcc;" BorderPane.alignment="CENTER">
+                           <children>
+                              <ImageView fx:id="fuImageViewLoadingLid" fitHeight="255.0" fitWidth="340.0" layoutX="323.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@LoadingCouvercle.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="fuImageViewLoadingKettle" fitHeight="255.0" fitWidth="340.0" layoutX="323.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@LoadingBas.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="fuImageViewLoadingSteam" fitHeight="255.0" fitWidth="340.0" layoutX="323.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@LoadingFire.png" />
+                                 </image>
+                              </ImageView>
+                              <Button layoutX="323.0" layoutY="46.0" mnemonicParsing="false" onAction="#fuOnButtonSearch" prefHeight="30.0" prefWidth="121.0" text="Rechercher" />
+                              <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="62.0" layoutY="49.0" prefHeight="24.0" prefWidth="213.0" text="Pays">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="15.0" />
+                                 </font>
+                                 <graphic>
+                                    <ChoiceBox fx:id="fuInputChoiceBox" prefHeight="30.0" prefWidth="150.0" />
+                                 </graphic>
+                              </Label>
+                              <TableView fx:id="fuTableView" layoutX="-4.0" layoutY="121.0" prefHeight="389.0" prefWidth="907.0">
+                                <columns>
+                                  <TableColumn fx:id="fuColumnUserID" prefWidth="106.0" text="ID" />
+                                  <TableColumn fx:id="fuColumnEmail" minWidth="8.0" prefWidth="189.0" text="Email" />
+                                    <TableColumn fx:id="fuColumnLastName" minWidth="8.0" prefWidth="120.0" text="nom" />
+                                    <TableColumn fx:id="fuColumnFirstName" minWidth="8.0" prefWidth="101.0" text="prenom" />
+                                    <TableColumn fx:id="fuColumnBirthDate" minWidth="8.0" prefWidth="113.0" text="Date de naissance" />
+                                    <TableColumn fx:id="fuColumnStreet" minWidth="8.0" prefWidth="113.0" text="Rue" />
+                                    <TableColumn fx:id="fuColumnCity" minWidth="8.0" prefWidth="164.0" text="Ville" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </Pane>
+                     </center></BorderPane>
                </content>
             </Tab>
         </tabs>
