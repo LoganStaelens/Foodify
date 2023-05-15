@@ -2,9 +2,9 @@ package controllerPackage;
 
 import java.io.IOException;
 
-import businessPackage.ILoginManager;
-import businessPackage.LoginManager;
+import businessPackage.IUserManager;
 import businessPackage.LoginResult;
+import businessPackage.UserManager;
 import exceptionPackage.DBConnectionException;
 import exceptionPackage.HashException;
 import exceptionPackage.StringTooLongException;
@@ -23,27 +23,21 @@ import viewPackage.Foodify;
 public class LoginWindow extends Window {
 
     @FXML
-    private TextField textfield_login_id;
+    private TextField textfieldLoginId;
 
     @FXML
-    private TextField textfield_passwd;
-
-    @FXML
-    private Button button_login;
-
-    @FXML
-    private Button button_register;
+    private TextField textfieldPasswd;
 
     @FXML
     private Label label;
 
-    private ILoginManager loginManager;
+    private IUserManager userManager;
 
     public LoginWindow(Stage mainStage, Stage popupStage, FXMLLoader fxmlLoader) throws IOException {
         super(mainStage, popupStage);
         fxmlLoader.setController(this);
         this.fxmlWindow = new Scene(fxmlLoader.load());
-        this.loginManager = new LoginManager();
+        this.userManager = new UserManager();
         this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());
     }
 
@@ -57,31 +51,27 @@ public class LoginWindow extends Window {
     }
 
     @FXML
-    public void loginAction(ActionEvent event) {
+    public void onButtonLogin(ActionEvent event) {
         
         try {
-            LoginResult result = loginManager.login(textfield_login_id.getText(), textfield_passwd.getText());
+            LoginResult result = userManager.login(textfieldLoginId.getText(), textfieldPasswd.getText());
 
             label.setVisible(true);
             label.setTextFill(Paint.valueOf("fb0f0f"));
 
             switch(result.getStatus()) {
                 case SUCCESS:
-                    label.setTextFill(Paint.valueOf("3e8329"));
-                    label.setText("Connection utilisateur etablie");
-                    Foodify.getInstance().setUserWindow();
                     Foodify.getInstance().setUser(result.getUser());
+                    Foodify.getInstance().setUserWindow();
                 break;
 
                 case SUCCESS_ADMIN:
-                    label.setTextFill(Paint.valueOf("3e8329"));
-                    label.setText("Connection administrateur etablie");
                     Foodify.getInstance().setAdminWindow();
                     
                 break;
 
                 case EMAIL_INCORRECT:
-                    label.setText("Email incorrecte");
+                    label.setText("Email incorrect");
                 break;
 
                 case PASSWD_INCORRECT:
@@ -94,7 +84,7 @@ public class LoginWindow extends Window {
     }
 
     @FXML
-    public void switchRegisterAction(ActionEvent event) {
+    public void onButtonRegister(ActionEvent event) {
         Foodify.getInstance().setRegisterWindow();
     }   
 }

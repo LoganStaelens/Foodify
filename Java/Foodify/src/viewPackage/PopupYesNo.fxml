@@ -25,7 +25,7 @@
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font></Button>
-            <Label fx:id="label_message" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="24.0" prefHeight="87.0" prefWidth="342.0" text="[MESSAGE]" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Label fx:id="labelMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="24.0" prefHeight="87.0" prefWidth="342.0" text="[MESSAGE]" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>

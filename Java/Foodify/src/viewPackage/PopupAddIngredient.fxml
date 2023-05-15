@@ -29,7 +29,7 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
                <graphic>
-                  <TextField fx:id="input_quantity" alignment="BOTTOM_LEFT">
+                  <TextField fx:id="inputQuantity" alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="114.0">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font></TextField>
@@ -40,7 +40,7 @@
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Button>
-            <Label fx:id="label_unit" contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="276.0" layoutY="23.0">
+            <Label fx:id="labelUnit" contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="276.0" layoutY="23.0">
                <font>
                   <Font size="13.0" />
                </font>
@@ -51,17 +51,17 @@
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <top>
-            <TextField fx:id="input_search_bar" prefHeight="39.0" prefWidth="600.0" promptText="Ecrivez pour rechercher ..." BorderPane.alignment="CENTER">
+            <TextField fx:id="inputSearchBar" prefHeight="39.0" prefWidth="600.0" promptText="Ecrivez pour rechercher ..." BorderPane.alignment="CENTER">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </TextField>
          </top>
          <center>
-            <TableView fx:id="table" prefHeight="339.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="tableview" prefHeight="339.0" prefWidth="600.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="column_name" editable="false" prefWidth="488.79997557401657" text="Nom de l'ingrédient" />
-                  <TableColumn fx:id="column_kcal" editable="false" prefWidth="109.60003662109375" text="Kcal" />
+                <TableColumn fx:id="columnName" editable="false" prefWidth="488.79997557401657" text="Nom de l'ingrédient" />
+                  <TableColumn fx:id="columnKcal" editable="false" prefWidth="109.60003662109375" text="Kcal" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

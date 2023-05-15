@@ -27,34 +27,34 @@ import viewPackage.Foodify;
 public class PopupRecipeInfoWindow extends Window implements Initializable{
     
     @FXML
-    private TableView<Ingredient> table_view_ingredient;
+    private TableView<Ingredient> tableviewIngredient;
 
     @FXML
-    private TableColumn<Ingredient, Integer> column_ingredient_amount;
+    private TableColumn<Ingredient, Integer> columnIngredientAmount;
 
     @FXML
-    private TableColumn<Ingredient, Integer> column_ingredient_kcal;
+    private TableColumn<Ingredient, Integer> columnIngredientKcal;
 
     @FXML
-    private TableColumn<Ingredient, String> column_ingredient_name;
+    private TableColumn<Ingredient, String> columnIngredientName;
 
     @FXML
-    private TableColumn<Ingredient, String> column_ingredient_unit;
+    private TableColumn<Ingredient, String> columnIngredientUnit;
 
     @FXML
-    private TableColumn<RecipeStep, String> column_step_description;
+    private TableColumn<RecipeStep, String> columnStepDescription;
 
     @FXML
-    private TableColumn<RecipeStep, Integer> column_step_duration;
+    private TableColumn<RecipeStep, Integer> columnStepDuration;
 
     @FXML
-    private TableColumn<RecipeStep, Integer> column_step_step_count;
+    private TableColumn<RecipeStep, Integer> columnStepStepCount;
 
     @FXML
-    private TableColumn<RecipeStep, String> column_step_title;
+    private TableColumn<RecipeStep, String> columnStepTitle;
 
     @FXML
-    private TableView<RecipeStep> table_view_step;
+    private TableView<RecipeStep> tableviewStep;
 
     private IRecipeManager recipeManager;
     private Recipe recipe;
@@ -70,22 +70,22 @@ public class PopupRecipeInfoWindow extends Window implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        column_ingredient_name.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("name"));
-        column_ingredient_kcal.setCellValueFactory(new PropertyValueFactory<Ingredient, Integer>("kcal"));
-        column_ingredient_unit.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("unit"));
-        column_ingredient_amount.setCellValueFactory(new PropertyValueFactory<Ingredient, Integer>("quantity"));
+        columnIngredientName.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("name"));
+        columnIngredientKcal.setCellValueFactory(new PropertyValueFactory<Ingredient, Integer>("kcal"));
+        columnIngredientUnit.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("unit"));
+        columnIngredientAmount.setCellValueFactory(new PropertyValueFactory<Ingredient, Integer>("quantity"));
         
-        column_step_description.setCellValueFactory(new PropertyValueFactory<RecipeStep, String>("description"));
-        column_step_duration.setCellValueFactory(new PropertyValueFactory<RecipeStep, Integer>("duration"));
-        column_step_step_count.setCellValueFactory(new PropertyValueFactory<RecipeStep, Integer>("stepCount"));
-        column_step_title.setCellValueFactory(new PropertyValueFactory<RecipeStep, String>("title"));
+        columnStepDescription.setCellValueFactory(new PropertyValueFactory<RecipeStep, String>("description"));
+        columnStepDuration.setCellValueFactory(new PropertyValueFactory<RecipeStep, Integer>("duration"));
+        columnStepStepCount.setCellValueFactory(new PropertyValueFactory<RecipeStep, Integer>("stepCount"));
+        columnStepTitle.setCellValueFactory(new PropertyValueFactory<RecipeStep, String>("title"));
         reset();
     }
 
     private void reset() {
         this.recipe = null;
-        table_view_ingredient.setItems(FXCollections.observableArrayList());
-        table_view_step.setItems(FXCollections.observableArrayList());
+        tableviewIngredient.setItems(FXCollections.observableArrayList());
+        tableviewStep.setItems(FXCollections.observableArrayList());
 
     }
 
@@ -102,19 +102,19 @@ public class PopupRecipeInfoWindow extends Window implements Initializable{
             try {
                 List<Ingredient> ingredients = this.recipeManager.getIngredientsForRecipe(recipe);
 
-                table_view_ingredient.setItems(FXCollections.observableArrayList(ingredients));
+                tableviewIngredient.setItems(FXCollections.observableArrayList(ingredients));
             }
             catch (DBConnectionException e) {
-                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la recuperation des ingredients de la recette");
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la récupération des ingrédients de la recette");
             }
 
             try {
                 List<RecipeStep> recipeSteps = this.recipeManager.getRecipeStepsForRecipe(recipe);
 
-                table_view_step.setItems(FXCollections.observableArrayList(recipeSteps));
+                tableviewStep.setItems(FXCollections.observableArrayList(recipeSteps));
             }
             catch (DBConnectionException e) {
-                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la recuperation des etapes de la recette");
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la récupération des étapes de la recette");
             }
         }
     }

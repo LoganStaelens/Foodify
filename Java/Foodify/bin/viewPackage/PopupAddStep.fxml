@@ -29,7 +29,7 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
                <graphic>
-                  <TextField fx:id="input_title" prefHeight="30.0" prefWidth="352.0">
+                  <TextField fx:id="inputTitle" prefHeight="30.0" prefWidth="352.0">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font>
@@ -51,7 +51,7 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
                <graphic>
-                  <TextField fx:id="input_duration" prefHeight="30.0" prefWidth="96.0">
+                  <TextField fx:id="inputDuration" prefHeight="30.0" prefWidth="96.0">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font>
@@ -63,7 +63,7 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </Text>
-            <TextArea fx:id="input_description" layoutX="26.0" layoutY="198.0" prefHeight="129.0" prefWidth="549.0">
+            <TextArea fx:id="inputDescription" layoutX="26.0" layoutY="198.0" prefHeight="129.0" prefWidth="549.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
