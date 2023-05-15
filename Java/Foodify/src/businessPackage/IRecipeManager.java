@@ -33,4 +33,6 @@ public interface IRecipeManager {
     Recipe findRecipeByName(String name) throws DBConnectionException;
 
     Recipe findRecipeByTag(String tag) throws DBConnectionException;
+
+    Recipe findRecipeById(int recipeID) throws DBConnectionException;
 }

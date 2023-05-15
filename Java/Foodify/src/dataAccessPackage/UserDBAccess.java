@@ -15,8 +15,7 @@ public class UserDBAccess implements IUserDBAccess {
     @Override
     public ResultSet findUserByEmail(String userEmail) throws DBConnectionException  {
 
-        String sql = "select User.unique_id, User.gender, User.isAdmin, User.firstName, User.lastName, User.email, User.password, User.birthDate, User.phoneNumber, Address.address_id, Address.street, Address.number, City.city_id, City.name, City.postCode, City.country from User INNER JOIN Address ON User.address = Address.address_id INNER JOIN City ON Address.city = City.city_id where email = ?;";
-
+        String sql = "select User.unique_id, User.gender, User.isAdmin, User.firstName, User.lastName, User.email, User.password, User.birthDate, User.phoneNumber, Address.address_id, Address.street, Address.number, City.city_id, City.name, City.postCode, City.country from User INNER JOIN Address ON User.address = Address.address_id INNER JOIN City ON Address.city = City.city_id where email = ?";
         PreparedStatement statement;
         try {
             statement = DBConnection.getInstance().getConnection().prepareStatement(sql);

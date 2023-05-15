@@ -281,4 +281,27 @@ public class RecipeManager implements IRecipeManager {
         }
         return null;
     }
+
+    public Recipe findRecipeById(int recipeID) throws DBConnectionException {
+        
+        ResultSet result = recipeDataAccess.findRecipeById(recipeID);
+        
+        try {
+            if (result.next()) {
+                Recipe recipe = new Recipe(result.getInt("recipe_id"), 
+                                result.getString("title"), 
+                                result.getString("complexity"), 
+                                result.getBoolean("isVisible"), 
+                                result.getDate("lastUpdate").toLocalDate(), 
+                                result.getString("creatorFirstName"), 
+                                result.getString("creatorLastName"));
+                result.close();
+                return recipe;
+            }
+        }
+        catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+        }
+        return null;
+    }
 }

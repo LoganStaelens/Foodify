@@ -28,56 +28,57 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import modelPackage.MenuView;
+import modelPackage.Recipe;
 import viewPackage.Foodify;
 
 public class UserWindow extends Window implements Initializable {
 
     @FXML
-    private ChoiceBox<String> cm_input_choicebox_friday;
+    private ChoiceBox<String> cmInputChoiceboxFriday;
 
     @FXML
-    private ChoiceBox<String> cm_input_choicebox_monday;
+    private ChoiceBox<String> cmInputChoiceboxMonday;
 
     @FXML
-    private ChoiceBox<String> cm_input_choicebox_saturday;
+    private ChoiceBox<String> cmInputChoiceboxSaturday;
 
     @FXML
-    private ChoiceBox<String> cm_input_choicebox_sunday;
+    private ChoiceBox<String> cmInputChoiceboxSunday;
 
     @FXML
-    private ChoiceBox<String> cm_input_choicebox_thursday;
+    private ChoiceBox<String> cmInputChoiceboxThursday;
 
     @FXML
-    private ChoiceBox<String> cm_input_choicebox_tuesday;
+    private ChoiceBox<String> cmInputChoiceboxTuesday;
 
     @FXML
-    private ChoiceBox<String> cm_input_choicebox_wednesday;
+    private ChoiceBox<String> cmInputChoiceboxWednesday;
 
     @FXML
-    private Tab cm_tab;
+    private Tab cmTab;
 
     @FXML
-    private Tab mm_tab;
+    private Tab mmTab;
 
     @FXML
-    private TableColumn<MenuView, Integer> mm_column_year;
+    private TableColumn<MenuView, Integer> mmColumnYear;
 
     @FXML
-    private TableColumn<MenuView, Integer> mm_column_week;
+    private TableColumn<MenuView, Integer> mmColumnWeek;
 
     @FXML
-    private TableColumn<MenuView, String> mm_column_day;
+    private TableColumn<MenuView, String> mmColumnDay;
 
     @FXML
-    private TableColumn<MenuView, String> mm_column_recipe;
+    private TableColumn<MenuView, String> mmColumnRecipe;
 
     @FXML
-    private TableView<MenuView> mm_tableview;
+    private TableView<MenuView> mmTableview;
 
     @FXML
-    private Button mm_buttonRecipeInfo;
+    private Button mmButtonRecipeInfo;
 
-    private List<ChoiceBox<String>> cm_input_choice_boxes;
+    private List<ChoiceBox<String>> cmInputChoiceBoxes;
 
     IRecipeManager recipeManager;
     IMenuManager menuManager;
@@ -120,7 +121,7 @@ public class UserWindow extends Window implements Initializable {
             if(!this.menuManager.hasAMenuAlready(Foodify.getInstance().getUser())) {
                 Map<Integer, String> selectedTags = new HashMap<>();
                 int day = 1;
-                for (ChoiceBox<String> choiceBox : cm_input_choice_boxes) {
+                for (ChoiceBox<String> choiceBox : cmInputChoiceBoxes) {
                     
                     if(choiceBox.getValue() != null && !choiceBox.getValue().isEmpty()) {
                         selectedTags.put(day, choiceBox.getValue());
@@ -147,9 +148,16 @@ public class UserWindow extends Window implements Initializable {
     }
 
     @FXML
-    void mm_onButtonRecipeInfo(ActionEvent event) {
-        MenuView itemSelected = mm_tableview.selectionModelProperty().getValue().getSelectedItem();
-        
+    void mm_onButtonRecipeInfo(ActionEvent event) throws DBConnectionException {
+        MenuView itemSelected = mmTableview.selectionModelProperty().getValue().getSelectedItem();
+
+        int menuID = itemSelected.getRecipeID();
+        Recipe recipe = recipeManager.findRecipeById(menuID);
+
+        if (recipe != null) {
+            this.popupRecipeInfoWindow.setRecipe(recipe);
+            this.popupRecipeInfoWindow.show();
+        }
     }
     
     private void loadCmTab() {
@@ -157,7 +165,7 @@ public class UserWindow extends Window implements Initializable {
         try {
             List<String> tags = this.recipeManager.getTags();
         
-            for (ChoiceBox<String> choiceBox : cm_input_choice_boxes) {
+            for (ChoiceBox<String> choiceBox : cmInputChoiceBoxes) {
                 choiceBox.getItems().clear();
                 choiceBox.setItems(FXCollections.observableArrayList(tags));
             }
@@ -169,29 +177,29 @@ public class UserWindow extends Window implements Initializable {
     }
 
     private void loadMmTab() {
-        mm_column_year.setCellValueFactory(new PropertyValueFactory<MenuView, Integer>("year"));
-        mm_column_week.setCellValueFactory(new PropertyValueFactory<MenuView, Integer>("week"));
-        mm_column_day.setCellValueFactory(new PropertyValueFactory<MenuView, String>("dayName"));
-        mm_column_recipe.setCellValueFactory(new PropertyValueFactory<MenuView, String>("recipeTitle"));
-        mm_tableview.getItems().clear();
+        mmColumnYear.setCellValueFactory(new PropertyValueFactory<MenuView, Integer>("year"));
+        mmColumnWeek.setCellValueFactory(new PropertyValueFactory<MenuView, Integer>("week"));
+        mmColumnDay.setCellValueFactory(new PropertyValueFactory<MenuView, String>("dayName"));
+        mmColumnRecipe.setCellValueFactory(new PropertyValueFactory<MenuView, String>("recipeTitle"));
+        mmTableview.getItems().clear();
 
         
         try {
             boolean visible = this.menuManager.hasAMenuAlready(Foodify.getInstance().getUser());
-            mm_tableview.setVisible(visible);
-            mm_buttonRecipeInfo.setVisible(visible);
+            mmTableview.setVisible(visible);
+            mmButtonRecipeInfo.setVisible(visible);
 
             if(visible) {
                 List<MenuView> menuItemViews = this.menuManager.getCurrentMenuFromUser(Foodify.getInstance().getUser());
 
-                mm_tableview.setItems(FXCollections.observableArrayList(menuItemViews));
+                mmTableview.setItems(FXCollections.observableArrayList(menuItemViews));
             }
             
 
 
         } catch (DBConnectionException e) {
-            mm_tableview.setVisible(false);
-            mm_buttonRecipeInfo.setVisible(false);
+            mmTableview.setVisible(false);
+            mmButtonRecipeInfo.setVisible(false);
 
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de l'initialisation de la fenetre mon menu");
         }
@@ -200,19 +208,19 @@ public class UserWindow extends Window implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cm_input_choice_boxes = Arrays.asList (
-            cm_input_choicebox_monday,
-            cm_input_choicebox_tuesday,
-            cm_input_choicebox_wednesday,
-            cm_input_choicebox_thursday,
-            cm_input_choicebox_friday,
-            cm_input_choicebox_saturday,
-            cm_input_choicebox_sunday);
+        cmInputChoiceBoxes = Arrays.asList (
+            cmInputChoiceboxMonday,
+            cmInputChoiceboxTuesday,
+            cmInputChoiceboxWednesday,
+            cmInputChoiceboxThursday,
+            cmInputChoiceboxFriday,
+            cmInputChoiceboxSaturday,
+            cmInputChoiceboxSunday);
 
         
         loadCmTab();
 
-        mm_tab.selectedProperty().addListener((observable, oldTab, newTab) -> {
+        mmTab.selectedProperty().addListener((observable, oldTab, newTab) -> {
             loadMmTab();
         });
     }

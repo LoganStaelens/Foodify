@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.print.DocFlavor.READER;
+
 import dataAccessPackage.AddressDBAccess;
 import dataAccessPackage.CityDBAccess;
 import dataAccessPackage.CountryDBAccess;
@@ -61,6 +63,21 @@ public class UserManager implements IUserManager {
         }
 
         userDataAccess.createNewUser(UUID.randomUUID().toString(), false, firstName, lastName, gender, email, birthDate, phoneNumber, addressID, password);
+    }
+
+    public boolean findUserByEmail(String userEmail) throws DBConnectionException {
+        
+        ResultSet result = userDataAccess.findUserByEmail(userEmail);
+
+        try {
+            if (result.next()) {
+                return true;
+            }
+        }
+        catch (SQLException e) {
+            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+        }
+        return false;
     }
 
     public List<String> getGenders() throws DBConnectionException {
