@@ -44,10 +44,13 @@ public class Foodify extends Application {
         return instance;
     }
 
+    private boolean running;
+
     @Override
     public void start(Stage stage)
     {
         instance = this;
+        running = true;
         Platform.setImplicitExit(true);
 
         this.primaryStage = stage;
@@ -72,9 +75,8 @@ public class Foodify extends Application {
         try {
             loadWindows();
 
-            setLoginWindow();
-
-
+            if(running)
+                setLoginWindow();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -96,8 +98,7 @@ public class Foodify extends Application {
         this.primaryStage.close();
         this.popupStage.close();
         this.popupDialogStage.close();
-        Platform.exit();
-        System.exit(-1);
+        running = false;
     }
 
     public void setLoginWindow() {

@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d6fd7381-a243-4153-b6bd-69dd69184a64" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupYesNoWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupYesNoWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/RegisterWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/RegisterWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/Foodify.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/viewPackage/Foodify.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllerPackage/RegisterWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/RegisterWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/viewPackage/Foodify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewPackage/Foodify.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

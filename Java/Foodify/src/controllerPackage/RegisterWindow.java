@@ -94,14 +94,9 @@ public class RegisterWindow extends Window implements Initializable {
                 input_choice_boc_gender.getItems().add(gender);
             }
             input_choice_boc_gender.setValue(genders.get(0));
-        }
-        catch (DBConnectionException e) {
-            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la récupération des genres");
-        }
 
-        input_choicebox_country.getItems().clear();
+            input_choicebox_country.getItems().clear();
 
-        try {
             List<Country> countries = this.userManager.getCountries();
 
             for(Country country : countries) {
@@ -110,7 +105,7 @@ public class RegisterWindow extends Window implements Initializable {
             input_choicebox_country.setValue(countries.get(0).GetCountryName());
         }
         catch (DBConnectionException e) {
-            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la récupération des pays");
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de l'initialisation de la fenêtre de création d'utilisateurs");
         }
     }
 
