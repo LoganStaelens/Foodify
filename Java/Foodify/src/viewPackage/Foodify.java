@@ -65,7 +65,7 @@ public class Foodify extends Application {
         this.popupDialogStage.getIcons().add(new Image("viewPackage/Foodify.png"));
         this.popupDialogStage.setResizable(false);
         this.popupDialogStage.initStyle(StageStyle.UNDECORATED);
-        this.popupDialogStage.initModality(Modality.WINDOW_MODAL);
+        this.popupDialogStage.initModality(Modality.APPLICATION_MODAL);
         this.popupDialogStage.initOwner(primaryStage);
 
         
