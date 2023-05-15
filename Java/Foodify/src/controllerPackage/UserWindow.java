@@ -97,10 +97,6 @@ public class UserWindow extends Window implements Initializable {
 
     @Override
     public void show() {
-        mainStage.setTitle("Foodify");
-        mainStage.getIcons().add(new Image("viewPackage/Foodify.png"));
-        mainStage.setResizable(false);
-        
         mainStage.setScene(this.fxmlWindow);
         mainStage.show();
     }

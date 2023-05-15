@@ -10,7 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import viewPackage.Foodify;
 
 public class PopupMessageDialogWindow extends Window {
@@ -36,9 +38,12 @@ public class PopupMessageDialogWindow extends Window {
 
     @Override
     public void show() {
-        popupStage.setTitle("Foodify");
-        popupStage.getIcons().add(new Image("viewPackage/Foodify.png"));
-        popupStage.setResizable(false);      
+
+        this.popupStage.initStyle(StageStyle.UNDECORATED);
+        this.popupStage.initModality(Modality.WINDOW_MODAL);
+        this.popupStage.initOwner(mainStage);
+
+
         popupStage.setScene(this.fxmlWindow);
 
         Paint color = Color.WHITE;
@@ -75,6 +80,7 @@ public class PopupMessageDialogWindow extends Window {
     @FXML
     void onCloseButton(ActionEvent event) {
         hide();
+
         if(this.messageType == PopupMessageTypes.ERROR) {
             Foodify.getInstance().close();
         }

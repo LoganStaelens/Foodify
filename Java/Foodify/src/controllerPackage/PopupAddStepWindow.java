@@ -75,10 +75,6 @@ public class PopupAddStepWindow extends Window {
 
     @Override
     public void show() {
-        popupStage.setTitle("Foodify");
-        popupStage.getIcons().add(new Image("viewPackage/Foodify.png"));
-        popupStage.setResizable(false);
-        
         popupStage.setScene(this.fxmlWindow);
         popupStage.show();  
     }

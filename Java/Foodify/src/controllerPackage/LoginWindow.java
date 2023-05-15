@@ -43,9 +43,7 @@ public class LoginWindow extends Window {
 
     @Override
     public void show() {
-        mainStage.setTitle("Foodify");
-        mainStage.getIcons().add(new Image("viewPackage/Foodify.png"));
-        mainStage.setResizable(false);
+
         mainStage.setScene(this.fxmlWindow);
         mainStage.show();
     }

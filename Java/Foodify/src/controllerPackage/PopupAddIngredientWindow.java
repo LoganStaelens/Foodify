@@ -120,10 +120,6 @@ public class PopupAddIngredientWindow extends Window implements Initializable {
 
     @Override
     public void show() {
-        popupStage.setTitle("Foodify");
-        popupStage.getIcons().add(new Image("viewPackage/Foodify.png"));
-        popupStage.setResizable(false);
-        
         popupStage.setScene(this.fxmlWindow);
         popupStage.show();  
     }

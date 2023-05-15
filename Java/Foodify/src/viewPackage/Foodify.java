@@ -3,7 +3,9 @@ package viewPackage;
 
 import dataAccessPackage.DBConnection;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import modelPackage.User;
 
@@ -44,15 +46,27 @@ public class Foodify extends Application {
     public void start(Stage stage)
     {
         instance = this;
+        Platform.setImplicitExit(true);
 
         this.primaryStage = stage;
+        this.primaryStage.setTitle("Foodify");
+        this.primaryStage.getIcons().add(new Image("viewPackage/Foodify.png"));
+        this.primaryStage.setResizable(false);
         this.popupStage = new Stage(primaryStage.getStyle());
+        this.popupStage.setTitle("Foodify");
+        this.popupStage.getIcons().add(new Image("viewPackage/Foodify.png"));
+        this.popupStage.setResizable(false);
         this.popupDialogStage = new Stage(primaryStage.getStyle());
+        this.popupDialogStage.setTitle("Foodify");
+        this.popupDialogStage.getIcons().add(new Image("viewPackage/Foodify.png"));
+        this.popupDialogStage.setResizable(false);
         
         try {
             loadWindows();
 
             setLoginWindow();
+
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -60,8 +74,8 @@ public class Foodify extends Application {
     }
 
     private void loadWindows() throws IOException {
-        this.popupMessageDialogWindow = new PopupMessageDialogWindow(popupDialogStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupMessageDialog.fxml")));
-        this.popupYesNoWindow = new PopupYesNoWindow(popupDialogStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupYesNo.fxml")));
+        this.popupMessageDialogWindow = new PopupMessageDialogWindow(primaryStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupMessageDialog.fxml")));
+        this.popupYesNoWindow = new PopupYesNoWindow(primaryStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupYesNo.fxml")));
 
 
         this.loginWindow = new LoginWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("LoginWindow.fxml")));
@@ -71,11 +85,9 @@ public class Foodify extends Application {
     }
 
     public void close() {
-        try {
-            stop();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        this.primaryStage.close();
+        this.popupStage.close();
+        this.popupDialogStage.close();
     }
 
     public void setLoginWindow() {

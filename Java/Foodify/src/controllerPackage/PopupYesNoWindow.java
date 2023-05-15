@@ -8,7 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class PopupYesNoWindow extends Window {
     
@@ -29,9 +31,10 @@ public class PopupYesNoWindow extends Window {
 
     @Override
     public void show() {
-        popupStage.setTitle("Foodify");
-        popupStage.getIcons().add(new Image("viewPackage/Foodify.png"));
-        popupStage.setResizable(false);      
+        this.popupStage.initStyle(StageStyle.UNDECORATED);
+        this.popupStage.initModality(Modality.WINDOW_MODAL);
+        this.popupStage.initOwner(mainStage);
+
         popupStage.setScene(this.fxmlWindow);
 
         this.labelMessage.setText(this.message);
