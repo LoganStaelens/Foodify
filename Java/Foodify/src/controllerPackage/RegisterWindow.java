@@ -193,8 +193,6 @@ public class RegisterWindow extends Window implements Initializable {
                 return;
             }
 
-            System.out.println(numberVerify);
-
             if (city.isEmpty()) {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucune ville n'a été choisi.");
                 return;
