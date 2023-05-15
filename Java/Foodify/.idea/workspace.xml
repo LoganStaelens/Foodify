@@ -6,23 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d6fd7381-a243-4153-b6bd-69dd69184a64" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoginWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoginWindow$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoginWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoginWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupAddIngredientWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupAddIngredientWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupAddStepWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupAddStepWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupModifyRecipeWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupModifyRecipeWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupRecipeInfoWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupRecipeInfoWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupYesNoWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupYesNoWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/RegisterWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/RegisterWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/UserWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/UserWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/Foodify.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/viewPackage/Foodify.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllerPackage/PopupMessageDialogWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/PopupMessageDialogWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllerPackage/PopupYesNoWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/PopupYesNoWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/Foodify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewPackage/Foodify.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
