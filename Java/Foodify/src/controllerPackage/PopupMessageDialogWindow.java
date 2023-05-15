@@ -38,12 +38,6 @@ public class PopupMessageDialogWindow extends Window {
 
     @Override
     public void show() {
-
-        this.popupStage.initStyle(StageStyle.UNDECORATED);
-        this.popupStage.initModality(Modality.WINDOW_MODAL);
-        this.popupStage.initOwner(mainStage);
-
-
         popupStage.setScene(this.fxmlWindow);
 
         Paint color = Color.WHITE;

@@ -6,7 +6,9 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import modelPackage.User;
 
 import java.io.IOException;
@@ -52,14 +54,20 @@ public class Foodify extends Application {
         this.primaryStage.setTitle("Foodify");
         this.primaryStage.getIcons().add(new Image("viewPackage/Foodify.png"));
         this.primaryStage.setResizable(false);
+
         this.popupStage = new Stage(primaryStage.getStyle());
         this.popupStage.setTitle("Foodify");
         this.popupStage.getIcons().add(new Image("viewPackage/Foodify.png"));
         this.popupStage.setResizable(false);
+
         this.popupDialogStage = new Stage(primaryStage.getStyle());
         this.popupDialogStage.setTitle("Foodify");
         this.popupDialogStage.getIcons().add(new Image("viewPackage/Foodify.png"));
         this.popupDialogStage.setResizable(false);
+        this.popupDialogStage.initStyle(StageStyle.UNDECORATED);
+        this.popupDialogStage.initModality(Modality.WINDOW_MODAL);
+        this.popupDialogStage.initOwner(primaryStage);
+
         
         try {
             loadWindows();

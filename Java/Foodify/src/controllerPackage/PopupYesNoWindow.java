@@ -31,10 +31,6 @@ public class PopupYesNoWindow extends Window {
 
     @Override
     public void show() {
-        this.popupStage.initStyle(StageStyle.UNDECORATED);
-        this.popupStage.initModality(Modality.WINDOW_MODAL);
-        this.popupStage.initOwner(mainStage);
-
         popupStage.setScene(this.fxmlWindow);
 
         this.labelMessage.setText(this.message);
