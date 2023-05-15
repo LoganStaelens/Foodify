@@ -135,13 +135,15 @@ public class RegisterWindow extends Window implements Initializable {
         try {
             String passwdHash = this.userManager.hashPassword(input_textfield_password.getText());
             String passwdVerifyHash = this.userManager.hashPassword(input_textfield_verify_password.getText());
+            String email = input_textfield_email.getText();
+            boolean emailFound = this.userManager.findUserByEmail(email);
             
-            if (this.userManager.verifyPassword(passwdHash, passwdVerifyHash)) {
+            if (this.userManager.verifyPassword(passwdHash, passwdVerifyHash) && !emailFound) {
                 this.userManager.createNewUser(
                     input_textfield_first_name.getText(),
                     input_textfield_last_name.getText(),
                     Gender.valueOf(input_choice_boc_gender.getValue().toUpperCase()),
-                    input_textfield_email.getText(),
+                    email,
                     input_date_picker_birthDate.getValue(),
                     input_textfield_phone_number.getText(),
                     new Address(input_textfield_street.getText(), Integer.parseInt(input_textfield_number.getText()), new City(input_textfield_city.getText(), input_textfield_post_code.getText(), input_choicebox_country.getValue())),
@@ -149,11 +151,14 @@ public class RegisterWindow extends Window implements Initializable {
                 );
             }
             else {
-                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Les mots de passes ne correspondent pas");
+                if (emailFound) {
+                    Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "L'adresse mail existe déjà !");
+                }
+                else {
+                    Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Les mots de passes ne correspondent pas");
+                }
             }
             
-            
-        
         } catch (DBConnectionException | HashException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la creation d'un utilisateur");
         } catch (NumberFormatException e) {

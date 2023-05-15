@@ -21,4 +21,6 @@ public interface IUserManager {
 
     boolean verifyPassword(String passwd1hash, String passwd2hash);
 
+    boolean findUserByEmail(String userEmail) throws DBConnectionException;
+
 }
