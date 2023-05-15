@@ -96,6 +96,8 @@ public class Foodify extends Application {
         this.primaryStage.close();
         this.popupStage.close();
         this.popupDialogStage.close();
+        Platform.exit();
+        System.exit(-1);
     }
 
     public void setLoginWindow() {
