@@ -12,5 +12,5 @@ public interface IMenuDBAccess {
 
     boolean hasMenuForUser(String userID, int year, int week) throws DBConnectionException;
 
-    ResultSet getCurrentMenuFromUser(String userID) throws DBConnectionException;
+    ResultSet getCurrentMenuFromUser(String userID, int week, int year) throws DBConnectionException;
 }

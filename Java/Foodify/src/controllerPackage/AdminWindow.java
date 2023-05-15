@@ -268,6 +268,7 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
 
     @FXML
     void fuOnButtonSearch(ActionEvent event) {
+        fuTableView.setVisible(false);
         String country = fuInputChoiceBox.getValue();
 
         if(country == null || country.isEmpty())

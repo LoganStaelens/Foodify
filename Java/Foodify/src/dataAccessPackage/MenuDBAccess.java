@@ -93,8 +93,8 @@ public class MenuDBAccess implements IMenuDBAccess {
     }
 
     @Override
-    public ResultSet getCurrentMenuFromUser(String userID) throws DBConnectionException {
-        String sql = "SELECT Menu.year, Menu.week, MenuItem.day, Recipe.title, Recipe.recipe_id FROM Menu INNER JOIN MenuItem On Menu.menu_id = MenuItem.menu INNER JOIN Recipe ON Recipe.recipe_id = MenuItem.recipe WHERE Menu.user = ?;";
+    public ResultSet getCurrentMenuFromUser(String userID, int week, int year) throws DBConnectionException {
+        String sql = "SELECT Menu.year, Menu.week, MenuItem.day, Recipe.title, Recipe.recipe_id FROM Menu INNER JOIN MenuItem On Menu.menu_id = MenuItem.menu INNER JOIN Recipe ON Recipe.recipe_id = MenuItem.recipe WHERE Menu.user = ? AND Menu.week = ? AND Menu.year = ?;";
 
         PreparedStatement insertStatement;
 
@@ -102,6 +102,8 @@ public class MenuDBAccess implements IMenuDBAccess {
             insertStatement = DBConnection.getInstance().getConnection().prepareStatement(sql);
             
             insertStatement.setString(1, userID);
+            insertStatement.setInt(2, week);
+            insertStatement.setInt(3, year);
 
             return insertStatement.executeQuery();
         }

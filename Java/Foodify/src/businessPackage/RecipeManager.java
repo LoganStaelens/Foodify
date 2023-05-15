@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import controllerPackage.PopupMessageTypes;
 import dataAccessPackage.IRecipeDBAccess;
 import dataAccessPackage.RecipeDBAccess;
 import exceptionPackage.DBConnectionException;
@@ -16,6 +17,7 @@ import javafx.collections.transformation.FilteredList;
 import modelPackage.Ingredient;
 import modelPackage.Recipe;
 import modelPackage.RecipeStep;
+import viewPackage.Foodify;
 
 public class RecipeManager implements IRecipeManager {
 
@@ -260,21 +262,27 @@ public class RecipeManager implements IRecipeManager {
             
             result.close();
 
-            int index = (int)(Math.random() * data.size());
+            if(data.size() > 0) {
+                int index = (int)(Math.random() * data.size());
 
-            result = recipeDataAccess.findRecipeById(data.get(index));
-
-            if (result.next()) {
-                Recipe recipe = new Recipe(result.getInt("recipe_id"), 
-                                result.getString("title"), 
-                                result.getString("complexity"), 
-                                result.getBoolean("isVisible"), 
-                                result.getDate("lastUpdate").toLocalDate(), 
-                                result.getString("creatorFirstName"), 
-                                result.getString("creatorLastName"));
-                result.close();
-                return recipe;
+                result = recipeDataAccess.findRecipeById(data.get(index));
+    
+                if (result.next()) {
+                    Recipe recipe = new Recipe(result.getInt("recipe_id"), 
+                                    result.getString("title"), 
+                                    result.getString("complexity"), 
+                                    result.getBoolean("isVisible"), 
+                                    result.getDate("lastUpdate").toLocalDate(), 
+                                    result.getString("creatorFirstName"), 
+                                    result.getString("creatorLastName"));
+                    result.close();
+                    return recipe;
+                }
             }
+            else {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucune recette existante");
+                return null;
+            }          
         }
         catch (SQLException e) {
             throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);

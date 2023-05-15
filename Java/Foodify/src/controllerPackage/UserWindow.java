@@ -134,16 +134,16 @@ public class UserWindow extends Window implements Initializable {
                 
                 result = menuManager.createMenu(Foodify.getInstance().getUser(), selectedTags);
                 if(result)
-                    Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.SUCCESS, "Le menu a bien ete cree");
+                    Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.SUCCESS, "Le menu a bien été créé");
                 else
-                    Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la creation du menu");
+                    Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "le menu n'a pas pu être créé");
 
             }
             else {
-                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Attention vous avez deja un menu de cree");
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Attention vous avez déjà un menu de créé");
             }
         } catch (DBConnectionException e) {
-            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la creation du menu");
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la création du menu");
         }   
     }
 
@@ -172,7 +172,7 @@ public class UserWindow extends Window implements Initializable {
 
         }
         catch (DBConnectionException e) {
-            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la recuperation des tags");
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la récupération des tags");
         }
     }
 
@@ -201,7 +201,7 @@ public class UserWindow extends Window implements Initializable {
             mmTableview.setVisible(false);
             mmButtonRecipeInfo.setVisible(false);
 
-            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de l'initialisation de la fenetre mon menu");
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de l'initialisation de la fenêtre mon menu");
         }
         
     }

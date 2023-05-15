@@ -91,7 +91,7 @@ public class RegisterWindow extends Window implements Initializable {
             input_choice_boc_gender.setValue(genders.get(0));
         }
         catch (DBConnectionException e) {
-            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la recuperation des genres");
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la récupération des genres");
         }
 
         input_choicebox_country.getItems().clear();
@@ -105,7 +105,7 @@ public class RegisterWindow extends Window implements Initializable {
             input_choicebox_country.setValue(countries.get(0).GetCountryName());
         }
         catch (DBConnectionException e) {
-            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la recuperation des pays");
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la récupération des pays");
         }
     }
 
@@ -160,7 +160,7 @@ public class RegisterWindow extends Window implements Initializable {
             }
             
         } catch (DBConnectionException | HashException e) {
-            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la creation d'un utilisateur");
+            Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la création d'un utilisateur");
         } catch (NumberFormatException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur nombre");
         } catch (StringTooLongException e) {

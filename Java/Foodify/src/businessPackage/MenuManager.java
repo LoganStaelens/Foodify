@@ -37,27 +37,31 @@ public class MenuManager implements IMenuManager {
 
         for(Entry<Integer, String> pair : selectedTags.entrySet()) {
             Recipe recipe = this.recipeManager.findRecipeByTag(pair.getValue());
-            menuRecipes.put(pair.getKey(), recipe);
+
+            if(recipe != null)
+                menuRecipes.put(pair.getKey(), recipe);
         }
 
-        //Create Menu
-        Calendar calendar = Calendar.getInstance(Locale.FRANCE);
-        calendar.setTime(Date.from(Instant.now()));
-        int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR) + 1;
-        int year = LocalDate.now().getYear();
-        
-        if(weekOfYear > 52) {
-            weekOfYear -= 52;
-            year++;
-        }
-        
-        int menuID = this.menuDBAccess.createNewMenu(user.getUniqueID().toString(), year, weekOfYear);
+        if(menuRecipes.size() > 0) {
+            //Create Menu
+            Calendar calendar = Calendar.getInstance(Locale.FRANCE);
+            calendar.setTime(Date.from(Instant.now()));
+            int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR) + 1;
+            int year = LocalDate.now().getYear();
 
-        for(Entry<Integer, Recipe> menuItems : menuRecipes.entrySet()) {
-            this.menuDBAccess.createNewMenuItem(menuID, menuItems.getValue().getRecipeID(), menuItems.getKey());
+            if(weekOfYear > 52) {
+                weekOfYear -= 52;
+                year++;
+            }
+
+            int menuID = this.menuDBAccess.createNewMenu(user.getUniqueID().toString(), year, weekOfYear);
+
+            for(Entry<Integer, Recipe> menuItems : menuRecipes.entrySet()) {
+                this.menuDBAccess.createNewMenuItem(menuID, menuItems.getValue().getRecipeID(), menuItems.getKey());
+            }
         }
 
-        return selectedTags.size() == menuRecipes.size();
+        return menuRecipes.size() > 0;
     }
 
     @Override
@@ -77,7 +81,17 @@ public class MenuManager implements IMenuManager {
 
     @Override
     public List<MenuView> getCurrentMenuFromUser(User user) throws DBConnectionException {
-        ResultSet result = this.menuDBAccess.getCurrentMenuFromUser(user.getUniqueID().toString());
+        Calendar calendar = Calendar.getInstance(Locale.FRANCE);
+        calendar.setTime(Date.from(Instant.now()));
+        int weekSearch = calendar.get(Calendar.WEEK_OF_YEAR) + 1;
+        int yearSearch = LocalDate.now().getYear();
+        
+        if(weekSearch > 52) {
+            weekSearch -= 52;
+            yearSearch++;
+        }
+        
+        ResultSet result = this.menuDBAccess.getCurrentMenuFromUser(user.getUniqueID().toString(), weekSearch, yearSearch);
 
         List<MenuView> menuItemsView = new ArrayList<>();
 
