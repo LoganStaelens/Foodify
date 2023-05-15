@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import viewPackage.Foodify;
 
 public class PopupMessageDialogWindow extends Window {
 
@@ -74,6 +75,9 @@ public class PopupMessageDialogWindow extends Window {
     @FXML
     void onCloseButton(ActionEvent event) {
         hide();
+        if(this.messageType == PopupMessageTypes.ERROR) {
+            Foodify.getInstance().close();
+        }
     }
 
     public void setMessageType(PopupMessageTypes messageType) {

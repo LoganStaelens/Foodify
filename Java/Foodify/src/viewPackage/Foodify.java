@@ -1,6 +1,7 @@
 package viewPackage;
 
 
+import dataAccessPackage.DBConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -53,8 +54,6 @@ public class Foodify extends Application {
 
             setLoginWindow();
 
-            UUID.randomUUID().toString();
-
         } catch (IOException e) {
             e.printStackTrace();
         }  
@@ -63,11 +62,20 @@ public class Foodify extends Application {
     private void loadWindows() throws IOException {
         this.popupMessageDialogWindow = new PopupMessageDialogWindow(popupDialogStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupMessageDialog.fxml")));
         this.popupYesNoWindow = new PopupYesNoWindow(popupDialogStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupYesNo.fxml")));
+
+
         this.loginWindow = new LoginWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("LoginWindow.fxml")));
         this.registerWindow = new RegisterWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("RegisterWindow.fxml")));
         this.adminWindow = new AdminWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("AdminWindow.fxml")));
         this.userWindow = new UserWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("UserWindow.fxml")));
+    }
 
+    public void close() {
+        try {
+            stop();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void setLoginWindow() {
