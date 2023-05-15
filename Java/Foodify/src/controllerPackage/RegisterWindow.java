@@ -216,7 +216,7 @@ public class RegisterWindow extends Window implements Initializable {
                     new Address(street, numberVerify, new City(city, postCode, input_choicebox_country.getValue())),
                     passwdHash
                 );
-                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.SUCCESS, "Compte créer ! Veuillez désormais vous connectez.");
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.SUCCESS, "Compte créé ! Veuillez désormais vous connectez.");
                 Foodify.getInstance().setLoginWindow();
             }
             else {
