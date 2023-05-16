@@ -28,219 +28,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6dd8bf62-16ea-4f15-b802-62f1ef602e30" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_33.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/artifacts/Foodify_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/libraries/junit_jupiter.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/libraries/mysql_connector_j_8_0_33.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Foodify_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Foodify_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Libraries.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foodify.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Foodify.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/res/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/businessPackage/IHash.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/businessPackage/IMenuManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/businessPackage/IRecipeManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/businessPackage/IUserManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/businessPackage/LoginResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/businessPackage/LoginStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/businessPackage/MenuManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/businessPackage/RecipeManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/businessPackage/SHA256Algorithm.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/businessPackage/UserManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/AdminWindow$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/AdminWindow$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/AdminWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/IAddIngredientPopupListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/IAddStepPopupListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/IModifyRecipePopupListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/IYesNoPopupListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/LoadingCommonZone.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/LoginWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/PopupAddIngredientWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/PopupAddStepWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/PopupMessageDialogWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/PopupMessageTypes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/PopupModifyRecipeWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/PopupRecipeInfoWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/PopupYesNoResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/PopupYesNoWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/RegisterWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/ThreadLoading.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/UserWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/controllerPackage/Window.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/dataAccessPackage/AddressDBAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/dataAccessPackage/CityDBAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/dataAccessPackage/CountryDBAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/dataAccessPackage/DBConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/dataAccessPackage/IAddressDataAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/dataAccessPackage/ICityDataAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/dataAccessPackage/ICountryDataAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/dataAccessPackage/IMenuDataAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/dataAccessPackage/IRecipeDataAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/dataAccessPackage/IUserDataAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/dataAccessPackage/MenuDBAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/dataAccessPackage/RecipeDBAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/dataAccessPackage/UserDBAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/exceptionPackage/DataFetchException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/exceptionPackage/DataFetchExceptionTypes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/exceptionPackage/HashException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/exceptionPackage/InvalidInputException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/exceptionPackage/StringTooLongException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelPackage/Address.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelPackage/City.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelPackage/Country.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelPackage/Gender.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelPackage/Ingredient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelPackage/Menu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelPackage/MenuItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelPackage/MenuView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelPackage/Recipe.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelPackage/RecipeStep.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelPackage/TagList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/modelPackage/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/res/viewPackage/AdminWindow.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/res/viewPackage/LoginWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/LoginWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/res/viewPackage/PopupAddIngredient.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/res/viewPackage/PopupAddStep.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/PopupAddStep.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/res/viewPackage/PopupMessageDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/PopupMessageDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/res/viewPackage/PopupModifyRecipe.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/res/viewPackage/PopupRecipeInfo.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/res/viewPackage/PopupYesNo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/PopupYesNo.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/res/viewPackage/RegisterWindow.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/res/viewPackage/UserWindow.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/res/viewPackage/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/RecipeManagerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/UserManagerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/viewPackage/Foodify.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/viewPackage/Foodify.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/Foodify.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/viewPackage/LoadingBas.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/LoadingBas.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/viewPackage/LoadingCouvercle.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/LoadingCouvercle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/viewPackage/LoadingFire.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/LoadingFire.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/viewPackage/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/viewPackage/Tests unitaires -Tuto  .pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/viewPackage/add_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/add_icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/viewPackage/add_icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/viewPackage/folder_icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/viewPackage/user-silhouette.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/user-silhouette.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/IHash.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/businessPackage/IHash.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/IMenuManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/businessPackage/IMenuManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/IRecipeManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/businessPackage/IRecipeManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/IUserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/businessPackage/IUserManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/LoginResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/businessPackage/LoginResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/LoginStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/businessPackage/LoginStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/MenuManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/businessPackage/MenuManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/RecipeManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/businessPackage/RecipeManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/SHA256Algorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/businessPackage/SHA256Algorithm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/businessPackage/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/businessPackage/UserManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/IAddIngredientPopupListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/IAddIngredientPopupListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/IAddStepPopupListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/IAddStepPopupListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/IModifyRecipePopupListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/IModifyRecipePopupListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/IYesNoPopupListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/IYesNoPopupListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoadingCommonZone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoadingCommonZone.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoginWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoginWindow$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoginWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoginWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupAddIngredientWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupAddIngredientWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupAddStepWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupAddStepWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageTypes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageTypes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupModifyRecipeWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupModifyRecipeWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupRecipeInfoWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupRecipeInfoWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupYesNoResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupYesNoResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupYesNoWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupYesNoWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/RegisterWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/RegisterWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/ThreadLoading.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/ThreadLoading.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/UserWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/UserWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/Window.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/AddressDBAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/AddressDBAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/CityDBAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/CityDBAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/CountryDBAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/CountryDBAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/DBConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/IAddressDataAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/IAddressDataAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/ICityDataAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/ICityDataAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/ICountryDataAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/ICountryDataAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/IMenuDataAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/IMenuDataAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/IRecipeDataAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/IRecipeDataAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/IUserDataAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/IUserDataAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/MenuDBAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/MenuDBAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/RecipeDBAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/RecipeDBAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/UserDBAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/dataAccessPackage/UserDBAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/DataFetchException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/DataFetchException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/DataFetchExceptionTypes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/DataFetchExceptionTypes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/HashException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/HashException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/InvalidInputException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/InvalidInputException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/StringTooLongException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/exceptionPackage/StringTooLongException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Address.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Address.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/City.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/modelPackage/City.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Country.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Country.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Gender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Gender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Ingredient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Ingredient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/MenuItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/modelPackage/MenuItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/MenuView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/modelPackage/MenuView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Recipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/modelPackage/Recipe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/RecipeStep.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/modelPackage/RecipeStep.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/TagList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/modelPackage/TagList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/modelPackage/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/modelPackage/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/res/viewPackage/AdminWindow.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/res/viewPackage/LoginWindow.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/res/viewPackage/PopupAddIngredient.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/res/viewPackage/PopupAddStep.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/res/viewPackage/PopupMessageDialog.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/res/viewPackage/PopupModifyRecipe.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/res/viewPackage/PopupRecipeInfo.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/res/viewPackage/PopupYesNo.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/res/viewPackage/RegisterWindow.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/res/viewPackage/UserWindow.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/res/viewPackage/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/test/RecipeManagerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/test/RecipeManagerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/test/UserManagerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/test/UserManagerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/AdminWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/viewPackage/AdminWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/Foodify.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/viewPackage/Foodify.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/LoginWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/viewPackage/LoginWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/viewPackage/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/PopupAddIngredient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/viewPackage/PopupAddIngredient.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/PopupModifyRecipe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/viewPackage/PopupModifyRecipe.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/PopupRecipeInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/viewPackage/PopupRecipeInfo.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/RegisterWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/viewPackage/RegisterWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/Tests unitaires -Tuto  .pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/UserWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/viewPackage/UserWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/folder_icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataAccessPackage/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataAccessPackage/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/AdminWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/AdminWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/Foodify.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/LoadingBas.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/LoadingCouvercle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/LoadingFire.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/LoginWindow.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/PopupAddIngredient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/PopupAddIngredient.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/PopupAddStep.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/PopupMessageDialog.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/PopupModifyRecipe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/PopupModifyRecipe.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/PopupRecipeInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/PopupRecipeInfo.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/PopupYesNo.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/RegisterWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/RegisterWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/UserWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/UserWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/add_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/folder_icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewPackage/user-silhouette.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,19 +53,19 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/Dev/Foodify/Foodify/Java/Foodify/lib/javafx-sdk-20.0.1/bin",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Dev/Foodify/Foodify/Java/Foodify/lib/javafx-sdk-20.0.1/bin&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Dev\Foodify\Foodify\Java\Foodify\res\viewPackage" />

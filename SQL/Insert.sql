@@ -924,12 +924,20 @@ INSERT INTO Ingredient (unit, name, calories) VALUES
 (6, "Zeste d'orange", 97),
 (4, "Huile de truffe", 800),
 (1, "Truffe", 92),
-(1, "Concentré de tomates", 92);
-
+(1, "Concentré de tomates", 92),
+(1, "Sucre blanc", 398),
+(4, "Sauce soja sucré", 263),
+(4, "Sauce soja salé", 78),
+(1, "Céléri", 16),
+(1, "Nouilles chinoises", 165),
+(1, "Oeuf", 150),
+(4, "Sauce poisson", 45),
+(1, "Bouillon de volaille", 9),
+(4, "Miel", 433),
+(1, "Pâte feuilletée", 505);
 
 INSERT INTO Ingredient (unit, name, calories) VALUES
-(1, "Sucre blanc", 398),
-(1, "Sucre Vanillé", 380);
+(1, "Pâte feuilletée", 505);
 
 INSERT INTO Recipe (complexity, isVisible, title, lastUpdate) VALUES
 ("FACILE", true, "Spaghetti bolognaise", NOW());
@@ -958,3 +966,61 @@ INSERT INTO IngredientStack (recipe, ingredient, amount) VALUES
 (1, 69, 60),
 (1, 89, 150),
 (1, 54, 150);
+
+
+INSERT INTO Recipe (complexity, isVisible, title, lastUpdate) VALUES
+("FACILE", true, "Curry japonais", NOW());
+
+INSERT INTO Taglink (recipe, tag) VALUES
+(2, "JAPONAIS");
+
+INSERT INTO RecipeStep (recipe, stepCount, title, description, duration) VALUES
+(2, 1, "Oignons", "Couper les oignons en tranche. Faites les cuir dans une poêle", 5),
+(2, 2, "Carottes", "Couper les carotten et la viande en morceaux, Faites cuire les carottes dans une casserole d'eau", 5),
+(2, 3, "Ajout viande", "Ajoutez la viande avec les oignons cuits avec une cuillère à soupe de miel et une peu d'épices à poulet", 8),
+(2, 4, "Eau", "Dès que le poulet est saisi, ajoutez 750 ml d'eau", 1),
+(2, 5, "Bouillon de poule", "Ajoutez le cube de bouillon de poule", 1),
+(2, 6, "Roux de curry", "Pour la préparation du roux de curry, mélangez 30 gr de beurre, 30 gr de farine, un peu de ketchup et une càs de curry. Ajoutez la ensuite dans la casserole", 5),
+(2, 7, "Epaissir le curry", "Ajoutez du pain dans le curry en morceaux", 2),
+(2, 8, "Cuisson riz", "Pendant que le curry mijote, cuisez le riz", 20);
+
+
+INSERT INTO IngredientStack (recipe, ingredient, amount) VALUES
+(2, 79, 200), #oignon
+(2, 53, 400), #carotte
+(2, 459, 400), #riz
+(2, 270, 500), #blanc de poulet
+(2, 644, 15), #miel
+(2, 475, 30), #beurre
+(2, 444, 30), #farine
+(2, 580, 3), #curry
+(2, 643, 15); #bouillon de volaille
+
+
+INSERT INTO Recipe (complexity, isVisible, title, lastUpdate) VALUES
+("FACILE", true, "Tarte courgette, tomates, chèvre", NOW());
+
+INSERT INTO Taglink (recipe, tag) VALUES
+(2, "JAPONAIS");
+
+INSERT INTO RecipeStep (recipe, stepCount, title, description, duration) VALUES
+(2, 1, "Oignons", "Couper les oignons en tranche. Faites les cuir dans une poêle", 5),
+(2, 2, "Carottes", "Couper les carotten et la viande en morceaux, Faites cuire les carottes dans une casserole d'eau", 5),
+(2, 3, "Ajout viande", "Ajoutez la viande avec les oignons cuits avec une cuillère à soupe de miel et une peu d'épices à poulet", 8),
+(2, 4, "Eau", "Dès que le poulet est saisi, ajoutez 750 ml d'eau", 1),
+(2, 5, "Bouillon de poule", "Ajoutez le cube de bouillon de poule", 1),
+(2, 6, "Roux de curry", "Pour la préparation du roux de curry, mélangez 30 gr de beurre, 30 gr de farine, un peu de ketchup et une càs de curry. Ajoutez la ensuite dans la casserole", 5),
+(2, 7, "Epaissir le curry", "Ajoutez du pain dans le curry en morceaux", 2),
+(2, 8, "Cuisson riz", "Pendant que le curry mijote, cuisez le riz", 20);
+
+
+INSERT INTO IngredientStack (recipe, ingredient, amount) VALUES
+(2, 79, 200), #oignon
+(2, 53, 400), #carotte
+(2, 459, 400), #riz
+(2, 270, 500), #blanc de poulet
+(2, 644, 15), #miel
+(2, 475, 30), #beurre
+(2, 444, 30), #farine
+(2, 580, 3), #curry
+(2, 643, 15); #bouillon de volaille
