@@ -80,7 +80,7 @@
    <bottom>
       <TabPane prefHeight="624.0" prefWidth="900.0" style="-fx-background-color: #111;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab fx:id="crTab" text="Creer une recette">
+          <Tab fx:id="crTab" text="Créer une recette">
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ebdbcc;">
                      <children>
@@ -124,10 +124,10 @@
                                  <children>
                                     <TableView fx:id="crTableviewIngredients" layoutX="3.0" layoutY="2.0" prefHeight="276.0" prefWidth="410.0">
                                       <columns>
-                                        <TableColumn fx:id="crIngNameColumn" editable="false" prefWidth="156.0" resizable="false" text="name" />
-                                        <TableColumn fx:id="crIngKcalColumn" editable="false" prefWidth="72.0" resizable="false" text="kcal" />
-                                          <TableColumn fx:id="crIngUnitColumn" editable="false" prefWidth="93.0" resizable="false" text="unit" />
-                                          <TableColumn fx:id="crIngQuantityColumn" editable="false" prefWidth="88.0" resizable="false" text="quantity" />
+                                        <TableColumn fx:id="crIngNameColumn" editable="false" prefWidth="156.0" resizable="false" text="Nom" />
+                                        <TableColumn fx:id="crIngKcalColumn" editable="false" prefWidth="72.0" resizable="false" text="Kcal" />
+                                          <TableColumn fx:id="crIngUnitColumn" editable="false" prefWidth="93.0" resizable="false" text="Unité" />
+                                          <TableColumn fx:id="crIngQuantityColumn" editable="false" prefWidth="88.0" resizable="false" text="Quantité" />
                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -144,7 +144,7 @@
                                           <TableColumn fx:id="crRecipeStepStepcountColumn" editable="false" maxWidth="90.0" minWidth="0.0" prefWidth="39.0" resizable="false" sortable="false" text="Etape" />
                                           <TableColumn fx:id="crRecipeStepTitleColumn" editable="false" minWidth="0.0" prefWidth="95.0" resizable="false" sortable="false" text="Titre" />
                                           <TableColumn fx:id="crRecipeStepDescColumn" editable="false" minWidth="0.0" prefWidth="180.0" sortable="false" text="Description" />
-                                          <TableColumn fx:id="crRecipeStepDurationColumn" editable="false" minWidth="0.0" prefWidth="94.0" sortable="false" text="Duration" />
+                                          <TableColumn fx:id="crRecipeStepDurationColumn" editable="false" minWidth="0.0" prefWidth="94.0" sortable="false" text="Durée" />
                                        </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -154,7 +154,7 @@
                               </Pane>
                            </right>
                         </BorderPane>
-                        <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="183.0" layoutY="227.0" prefHeight="44.0" prefWidth="185.0" text="Ingredients" textAlignment="CENTER">
+                        <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="183.0" layoutY="227.0" prefHeight="44.0" prefWidth="185.0" text="Ingrédients" textAlignment="CENTER">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font>
@@ -201,7 +201,7 @@
                               <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="31.0" layoutY="102.0" prefHeight="74.0" prefWidth="326.0" text="Prenom du createur" wrapText="true">
+                        <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="31.0" layoutY="102.0" prefHeight="74.0" prefWidth="326.0" text="Prénom du créateur" wrapText="true">
                            <graphic>
                               <TextField fx:id="crTextfieldRecipeCreatorFirstName" prefHeight="30.0" prefWidth="198.0">
                                  <font>
@@ -213,7 +213,7 @@
                               <Font name="Arial Rounded MT Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="31.0" layoutY="153.0" prefHeight="74.0" prefWidth="326.0" text="Nom du createur" wrapText="true">
+                        <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="31.0" layoutY="153.0" prefHeight="74.0" prefWidth="326.0" text="Nom du créateur" wrapText="true">
                            <graphic>
                               <TextField fx:id="crTextfieldRecipeCreatorLastName" prefHeight="30.0" prefWidth="198.0">
                                  <font>
@@ -246,11 +246,11 @@
                                           <TableColumn fx:id="lrColumnTitle" editable="false" prefWidth="179.0" text="Titre" />
                                           <TableColumn fx:id="lrColumnComplexity" editable="false" minWidth="0.0" prefWidth="77.0" text="Complexité" />
                                           <TableColumn fx:id="lrColumnTags" editable="false" prefWidth="232.0" text="Tags" />
-                                          <TableColumn fx:id="lrColumnLastUpdate" editable="false" minWidth="0.0" prefWidth="100.0" text="Mis a jour" />
+                                          <TableColumn fx:id="lrColumnLastUpdate" editable="false" minWidth="0.0" prefWidth="100.0" text="Mis à jour" />
                                           <TableColumn fx:id="lrColumnIsVisible" editable="false" minWidth="0.0" prefWidth="64.0" text="Est visible" />
-                                          <TableColumn minWidth="0.0" prefWidth="163.0" text="Createur">
+                                          <TableColumn minWidth="0.0" prefWidth="163.0" text="Créateur">
                                              <columns>
-                                                <TableColumn fx:id="lrColumnFirstName" editable="false" minWidth="0.0" prefWidth="83.0" text="Prenom" />
+                                                <TableColumn fx:id="lrColumnFirstName" editable="false" minWidth="0.0" prefWidth="83.0" text="Prénom" />
                                                 <TableColumn fx:id="lrColumnLastName" editable="false" minWidth="0.0" prefWidth="79.0" text="Nom" />
                                              </columns>
                                           </TableColumn>
@@ -316,8 +316,8 @@
                                 <columns>
                                   <TableColumn fx:id="fuColumnUserID" prefWidth="106.0" text="ID" />
                                   <TableColumn fx:id="fuColumnEmail" minWidth="8.0" prefWidth="189.0" text="Email" />
-                                    <TableColumn fx:id="fuColumnLastName" minWidth="8.0" prefWidth="120.0" text="nom" />
-                                    <TableColumn fx:id="fuColumnFirstName" minWidth="8.0" prefWidth="101.0" text="prenom" />
+                                    <TableColumn fx:id="fuColumnLastName" minWidth="8.0" prefWidth="120.0" text="Nom" />
+                                    <TableColumn fx:id="fuColumnFirstName" minWidth="8.0" prefWidth="101.0" text="Prénom" />
                                     <TableColumn fx:id="fuColumnBirthDate" minWidth="8.0" prefWidth="113.0" text="Date de naissance" />
                                     <TableColumn fx:id="fuColumnStreet" minWidth="8.0" prefWidth="113.0" text="Rue" />
                                     <TableColumn fx:id="fuColumnCity" minWidth="8.0" prefWidth="164.0" text="Ville" />

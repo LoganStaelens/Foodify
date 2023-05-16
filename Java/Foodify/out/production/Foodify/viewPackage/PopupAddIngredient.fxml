@@ -24,7 +24,7 @@
    <bottom>
       <Pane prefHeight="65.0" prefWidth="600.0" style="-fx-background-color: #ebdbcc;" BorderPane.alignment="CENTER">
          <children>
-            <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="41.0" layoutY="20.0" text="Quantitée">
+            <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="41.0" layoutY="20.0" text="Quantité">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>

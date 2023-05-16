@@ -79,7 +79,7 @@
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font>
       </Label>
-      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="452.0" layoutY="274.0" prefHeight="63.0" prefWidth="223.0" text="Numero" wrapText="true">
+      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="452.0" layoutY="274.0" prefHeight="63.0" prefWidth="223.0" text="Numéro" wrapText="true">
          <font>
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font>
@@ -102,7 +102,7 @@
             <ChoiceBox fx:id="input_choicebox_country" prefHeight="27.0" prefWidth="153.0" />
          </graphic>
       </Label>
-      <Button layoutX="325.0" layoutY="496.0" mnemonicParsing="false" onAction="#onButtonCreate" prefHeight="26.0" prefWidth="109.0" text="Create" />
+      <Button layoutX="325.0" layoutY="496.0" mnemonicParsing="false" onAction="#onButtonCreate" prefHeight="26.0" prefWidth="109.0" text="Créer" />
       <TextField fx:id="input_textfield_last_name" layoutX="116.0" layoutY="203.0" prefHeight="30.0" prefWidth="133.0">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />

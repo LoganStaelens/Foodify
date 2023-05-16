@@ -42,9 +42,9 @@
                      <children>
                         <TableView fx:id="tableviewIngredient" layoutY="44.0" prefHeight="339.0" prefWidth="600.0">
                           <columns>
-                            <TableColumn fx:id="columnIngredientName" editable="false" prefWidth="137.0" text="Ingredient" />
-                              <TableColumn fx:id="columnIngredientAmount" editable="false" prefWidth="162.0" text="Quantitee" />
-                              <TableColumn fx:id="columnIngredientUnit" editable="false" prefWidth="109.60003662109375" text="Unitee" />
+                            <TableColumn fx:id="columnIngredientName" editable="false" prefWidth="137.0" text="Ingrédient" />
+                              <TableColumn fx:id="columnIngredientAmount" editable="false" prefWidth="162.0" text="Quantité" />
+                              <TableColumn fx:id="columnIngredientUnit" editable="false" prefWidth="109.60003662109375" text="Unité" />
                               <TableColumn fx:id="columnIngredientKcal" editable="false" prefWidth="488.79997557401657" text="Kcal" />
                           </columns>
                            <columnResizePolicy>
@@ -59,7 +59,7 @@
                               <TableColumn fx:id="columnStepDuration" editable="false" prefWidth="208.0" text="Duree" />
                            </columns>
                         </TableView>
-                        <Label layoutX="35.0" layoutY="14.0" text="Ingredients">
+                        <Label layoutX="35.0" layoutY="14.0" text="Ingrédients">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
