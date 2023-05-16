@@ -4,12 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import exceptionPackage.DBConnectionException;
-import exceptionPackage.DBConnectionExceptionTypes;
+import exceptionPackage.DataFetchException;
+import exceptionPackage.DataFetchExceptionTypes;
 
 public class MenuDBAccess implements IMenuDataAccess {
     
-    public int createNewMenu(String userID, int year, int week) throws DBConnectionException {
+    public int createNewMenu(String userID, int year, int week) throws DataFetchException {
         
         String sql = "INSERT INTO Menu (user, year, week) VALUES (?, ?, ?)";
 
@@ -36,11 +36,11 @@ public class MenuDBAccess implements IMenuDataAccess {
             return lastID;
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
-    public int createNewMenuItem(int menuID, int recipeID, int day) throws DBConnectionException {
+    public int createNewMenuItem(int menuID, int recipeID, int day) throws DataFetchException {
 
         String sql = "INSERT INTO MenuItem (menu, recipe, day) VALUES (?, ?, ?)";
 
@@ -67,12 +67,12 @@ public class MenuDBAccess implements IMenuDataAccess {
             return lastID;
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public boolean hasMenuForUser(String userID, int year, int week) throws DBConnectionException {
+    public boolean hasMenuForUser(String userID, int year, int week) throws DataFetchException {
         String sql = "SELECT * FROM Menu WHERE user = ? AND year = ? AND week = ?";
 
         PreparedStatement insertStatement;
@@ -88,12 +88,12 @@ public class MenuDBAccess implements IMenuDataAccess {
             return result.next();
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public ResultSet getCurrentMenuFromUser(String userID, int week, int year) throws DBConnectionException {
+    public ResultSet getCurrentMenuFromUser(String userID, int week, int year) throws DataFetchException {
         String sql = "SELECT Menu.year, Menu.week, MenuItem.day, Recipe.title, Recipe.recipe_id FROM Menu INNER JOIN MenuItem On Menu.menu_id = MenuItem.menu INNER JOIN Recipe ON Recipe.recipe_id = MenuItem.recipe WHERE Menu.user = ? AND Menu.week = ? AND Menu.year = ?;";
 
         PreparedStatement insertStatement;
@@ -108,7 +108,7 @@ public class MenuDBAccess implements IMenuDataAccess {
             return insertStatement.executeQuery();
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 }

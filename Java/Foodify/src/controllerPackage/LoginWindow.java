@@ -5,7 +5,7 @@ import java.io.IOException;
 import businessPackage.IUserManager;
 import businessPackage.LoginResult;
 import businessPackage.UserManager;
-import exceptionPackage.DBConnectionException;
+import exceptionPackage.DataFetchException;
 import exceptionPackage.HashException;
 import exceptionPackage.StringTooLongException;
 import javafx.event.ActionEvent;
@@ -74,7 +74,7 @@ public class LoginWindow extends Window {
                     label.setText("Mot de passe incorrect");
                 break;
             }
-        } catch (HashException | DBConnectionException | StringTooLongException e) {
+        } catch (HashException | DataFetchException | StringTooLongException e) {
             e.printStackTrace();
         }    
     }

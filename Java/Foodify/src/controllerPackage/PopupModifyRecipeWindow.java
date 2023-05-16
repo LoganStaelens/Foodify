@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 
 import businessPackage.IRecipeManager;
 import businessPackage.RecipeManager;
-import exceptionPackage.DBConnectionException;
+import exceptionPackage.DataFetchException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -76,7 +76,7 @@ public class PopupModifyRecipeWindow extends Window implements Initializable {
                 menuButtonTags.getItems().add(new CheckMenuItem(tag));
             }
 
-        } catch (DBConnectionException e) {
+        } catch (DataFetchException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de l'initialisation du popup de modification de recettes");
         } 
     }

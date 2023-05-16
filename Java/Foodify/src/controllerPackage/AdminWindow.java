@@ -11,7 +11,7 @@ import businessPackage.IRecipeManager;
 import businessPackage.IUserManager;
 import businessPackage.RecipeManager;
 import businessPackage.UserManager;
-import exceptionPackage.DBConnectionException;
+import exceptionPackage.DataFetchException;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -210,7 +210,7 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
                 crMenuButtonTags.getItems().add(new CheckMenuItem(tag));
             }
 
-        } catch (DBConnectionException e) {
+        } catch (DataFetchException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors le récupération des tags");
         }       
     }
@@ -237,7 +237,7 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
 
             lrTableview.setItems(lrRecipes);
 
-        } catch (DBConnectionException e) {
+        } catch (DataFetchException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la récupération des recettes");
         }     
         
@@ -260,7 +260,7 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
                 fuInputChoiceBox.getItems().add(country.GetCountryName());
             }
 
-        } catch (DBConnectionException e) {
+        } catch (DataFetchException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la récupération des pays");
         }    
     }
@@ -297,7 +297,7 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
             timeline.play();
 
             
-        } catch (DBConnectionException e) {
+        } catch (DataFetchException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la recherche des utilisateurs");
             commonZone.loadingComplete();
         }
@@ -393,7 +393,7 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
 
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.SUCCESS, "La recette a bien été ajoutée");
         }
-        catch (DBConnectionException e) {
+        catch (DataFetchException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Une erreur est survenue!");
         }
         
@@ -449,7 +449,7 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
             this.recipeManager.deleteRecipe(recipeToDelete);
             onTabListRecipe();
               
-        } catch (DBConnectionException e) {
+        } catch (DataFetchException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la suppression de la recette");
         }
        
@@ -483,7 +483,7 @@ public class AdminWindow extends Window implements Initializable, IAddIngredient
         try {
             this.recipeManager.modifyRecipe(newVersion);
             onTabListRecipe();
-        } catch (DBConnectionException e) {
+        } catch (DataFetchException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la modification de la recette");
         }
     }

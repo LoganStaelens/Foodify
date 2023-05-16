@@ -7,17 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
-import controllerPackage.PopupMessageTypes;
 import dataAccessPackage.IRecipeDataAccess;
 import dataAccessPackage.RecipeDBAccess;
-import exceptionPackage.DBConnectionException;
-import exceptionPackage.DBConnectionExceptionTypes;
+import exceptionPackage.DataFetchException;
+import exceptionPackage.DataFetchExceptionTypes;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import modelPackage.Ingredient;
 import modelPackage.Recipe;
 import modelPackage.RecipeStep;
-import viewPackage.Foodify;
 
 public class RecipeManager implements IRecipeManager {
 
@@ -28,7 +26,7 @@ public class RecipeManager implements IRecipeManager {
     }
 
     @Override
-    public List<Ingredient> getAllIngredients() throws DBConnectionException {
+    public List<Ingredient> getAllIngredients() throws DataFetchException {
         ResultSet result = recipeDataAccess.getAllIngredients();
 
         List<Ingredient> data = new ArrayList<Ingredient>();
@@ -46,14 +44,14 @@ public class RecipeManager implements IRecipeManager {
 
             result.close();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.RESULT_SET_EXCEPTION);
         }
 
         return data;
     }
 
     @Override
-    public List<String> getDifficulties() throws DBConnectionException {
+    public List<String> getDifficulties() throws DataFetchException {
         ResultSet result = recipeDataAccess.getDifficulties();
 
         List<String> data = new ArrayList<String>();
@@ -67,14 +65,14 @@ public class RecipeManager implements IRecipeManager {
 
             result.close();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.RESULT_SET_EXCEPTION);
         }
 
         return data;
     }
 
     @Override
-    public List<String> getTags() throws DBConnectionException {
+    public List<String> getTags() throws DataFetchException {
         ResultSet result = recipeDataAccess.getTags();
 
         List<String> data = new ArrayList<String>();
@@ -88,7 +86,7 @@ public class RecipeManager implements IRecipeManager {
 
             result.close();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.RESULT_SET_EXCEPTION);
         }
 
         return data;
@@ -97,7 +95,7 @@ public class RecipeManager implements IRecipeManager {
     @Override
     public void createNewRecipe(String title, String complexity, List<String> selectedTags, boolean isVisible,
             List<Ingredient> ingredients, List<RecipeStep> steps, String creatorFirstName, String creatorLastName)
-            throws DBConnectionException {
+            throws DataFetchException {
         
         int recipeID = recipeDataAccess.createNewRecipe(title, complexity, isVisible, creatorFirstName, creatorLastName);
         
@@ -115,7 +113,7 @@ public class RecipeManager implements IRecipeManager {
     }
 
     @Override
-    public List<Recipe> getAllRecipes() throws DBConnectionException {
+    public List<Recipe> getAllRecipes() throws DataFetchException {
         ResultSet result = recipeDataAccess.getAllRecipes();
         List<Recipe> data = new ArrayList<>();
 
@@ -142,7 +140,7 @@ public class RecipeManager implements IRecipeManager {
                 result.close();
             }
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.RESULT_SET_EXCEPTION);
         }
     
         return data;
@@ -156,7 +154,7 @@ public class RecipeManager implements IRecipeManager {
     }
 
     @Override
-    public void deleteRecipe(Recipe recipe) throws DBConnectionException {
+    public void deleteRecipe(Recipe recipe) throws DataFetchException {
         this.recipeDataAccess.deleteTagByRecipeID(recipe.getRecipeID());
         this.recipeDataAccess.deleteIngredientsByRecipeID(recipe.getRecipeID());
         this.recipeDataAccess.deleteRecipeStepsByRecipeID(recipe.getRecipeID());
@@ -164,7 +162,7 @@ public class RecipeManager implements IRecipeManager {
     }
 
     @Override
-    public void modifyRecipe(Recipe newRecipe) throws DBConnectionException {
+    public void modifyRecipe(Recipe newRecipe) throws DataFetchException {
         this.recipeDataAccess.modifyRecipe(newRecipe);
 
         this.recipeDataAccess.deleteTagByRecipeID(newRecipe.getRecipeID());
@@ -176,7 +174,7 @@ public class RecipeManager implements IRecipeManager {
     }
 
     @Override
-    public List<Ingredient> getIngredientsForRecipe(Recipe recipe) throws DBConnectionException {
+    public List<Ingredient> getIngredientsForRecipe(Recipe recipe) throws DataFetchException {
      
         ResultSet result = recipeDataAccess.getIngredientsForRecipe(recipe.getRecipeID());
         List<Ingredient> data = new ArrayList<>();
@@ -193,14 +191,14 @@ public class RecipeManager implements IRecipeManager {
             result.close();
           
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.RESULT_SET_EXCEPTION);
         }
         
         return data;
     }
 
     @Override
-    public List<RecipeStep> getRecipeStepsForRecipe(Recipe recipe) throws DBConnectionException {
+    public List<RecipeStep> getRecipeStepsForRecipe(Recipe recipe) throws DataFetchException {
         ResultSet result = recipeDataAccess.getRecipeStepsForRecipe(recipe.getRecipeID());
         List<RecipeStep> data = new ArrayList<>();
 
@@ -218,13 +216,13 @@ public class RecipeManager implements IRecipeManager {
             result.close();
           
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.RESULT_SET_EXCEPTION);
         }
         
         return data;
     }
     
-    public Recipe findRecipeByName(String name) throws DBConnectionException {
+    public Recipe findRecipeByName(String name) throws DataFetchException {
 
         ResultSet result = recipeDataAccess.findRecipeByName(name);
 
@@ -241,15 +239,16 @@ public class RecipeManager implements IRecipeManager {
             result.close();
             return recipe;
             }
-            
-            return null;
+
+
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.RESULT_SET_EXCEPTION);
         }
+        return null;
     }
 
-    public Recipe findRecipeByTag(String tag) throws DBConnectionException {
+    public Recipe findRecipeByTag(String tag) throws DataFetchException {
         
         ResultSet result = recipeDataAccess.findRecipesByTag(tag);
         List<Integer> data = new ArrayList<>();
@@ -279,18 +278,15 @@ public class RecipeManager implements IRecipeManager {
                     return recipe;
                 }
             }
-            else {
-                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucune recette existante");
-                return null;
-            }          
+
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.RESULT_SET_EXCEPTION);
         }
         return null;
     }
 
-    public Recipe findRecipeById(int recipeID) throws DBConnectionException {
+    public Recipe findRecipeById(int recipeID) throws DataFetchException {
         
         ResultSet result = recipeDataAccess.findRecipeById(recipeID);
         
@@ -308,7 +304,7 @@ public class RecipeManager implements IRecipeManager {
             }
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.RESULT_SET_EXCEPTION);
         }
         return null;
     }

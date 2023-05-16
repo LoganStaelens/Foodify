@@ -2,45 +2,45 @@ package dataAccessPackage;
 
 import java.sql.ResultSet;
 
-import exceptionPackage.DBConnectionException;
+import exceptionPackage.DataFetchException;
 import modelPackage.Recipe;
 
 public interface IRecipeDataAccess {
-    ResultSet getAllIngredients() throws DBConnectionException;
+    ResultSet getAllIngredients() throws DataFetchException;
 
-    ResultSet getDifficulties() throws DBConnectionException;
+    ResultSet getDifficulties() throws DataFetchException;
 
-    ResultSet getTags() throws DBConnectionException;
+    ResultSet getTags() throws DataFetchException;
 
-    int createNewRecipe(String recipeTitle, String complexity, boolean isVisible, String creatorFirstname, String creatorLastName) throws DBConnectionException;
+    int createNewRecipe(String recipeTitle, String complexity, boolean isVisible, String creatorFirstname, String creatorLastName) throws DataFetchException;
 
-    void addTagToRecipe(int recipeID, String tag) throws DBConnectionException;
+    void addTagToRecipe(int recipeID, String tag) throws DataFetchException;
 
-    void addRecipeStep(int recipeID, int stepCount, String title, String description, int duration) throws DBConnectionException;
+    void addRecipeStep(int recipeID, int stepCount, String title, String description, int duration) throws DataFetchException;
 
-    void addIngredient(int recipeID, int ingredientID, int amount) throws DBConnectionException;
+    void addIngredient(int recipeID, int ingredientID, int amount) throws DataFetchException;
 
-    ResultSet getAllRecipes() throws DBConnectionException;
+    ResultSet getAllRecipes() throws DataFetchException;
 
-    ResultSet getTagsForRecipe(int recipeID) throws DBConnectionException;
+    ResultSet getTagsForRecipe(int recipeID) throws DataFetchException;
 
-    void deleteTagByRecipeID(int recipeID) throws DBConnectionException;
+    void deleteTagByRecipeID(int recipeID) throws DataFetchException;
 
-    void deleteIngredientsByRecipeID(int recipeID) throws DBConnectionException;
+    void deleteIngredientsByRecipeID(int recipeID) throws DataFetchException;
 
-    void deleteRecipeStepsByRecipeID(int recipeID) throws DBConnectionException;
+    void deleteRecipeStepsByRecipeID(int recipeID) throws DataFetchException;
     
-    void deleteRecipeByRecipeID(int recipeID) throws DBConnectionException;
+    void deleteRecipeByRecipeID(int recipeID) throws DataFetchException;
 
-    void modifyRecipe(Recipe newRecipe) throws DBConnectionException;
+    void modifyRecipe(Recipe newRecipe) throws DataFetchException;
 
-    ResultSet getIngredientsForRecipe(int recipeID) throws DBConnectionException;
+    ResultSet getIngredientsForRecipe(int recipeID) throws DataFetchException;
 
-    ResultSet getRecipeStepsForRecipe(int recipeID) throws DBConnectionException;
+    ResultSet getRecipeStepsForRecipe(int recipeID) throws DataFetchException;
 
-    ResultSet findRecipeByName(String name) throws DBConnectionException;
+    ResultSet findRecipeByName(String name) throws DataFetchException;
 
-    ResultSet findRecipesByTag(String tag) throws DBConnectionException;
+    ResultSet findRecipesByTag(String tag) throws DataFetchException;
 
-    ResultSet findRecipeById(int recipeID) throws DBConnectionException;
+    ResultSet findRecipeById(int recipeID) throws DataFetchException;
 }

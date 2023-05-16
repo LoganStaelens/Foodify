@@ -5,15 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import exceptionPackage.DBConnectionException;
-import exceptionPackage.DBConnectionExceptionTypes;
+import exceptionPackage.DataFetchException;
+import exceptionPackage.DataFetchExceptionTypes;
 import modelPackage.Recipe;
 
 public class RecipeDBAccess implements IRecipeDataAccess {
     
 
     @Override
-    public ResultSet getAllIngredients() throws DBConnectionException {
+    public ResultSet getAllIngredients() throws DataFetchException {
 
         String sql = "SELECT Ingredient.ingredient_id, Ingredient.name, Ingredient.calories, Unit.unit_id, Unit.name, Unit.abbreviation FROM Ingredient INNER Join Unit On Ingredient.unit = Unit.unit_id;";
 
@@ -22,11 +22,11 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
             return statement.executeQuery();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }}
 
     @Override
-    public ResultSet getDifficulties() throws DBConnectionException {
+    public ResultSet getDifficulties() throws DataFetchException {
         String sql = "SELECT Complexity.complexity from Complexity ORDER BY Complexity.degree ASC;";
 
         PreparedStatement statement;
@@ -34,12 +34,12 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
             return statement.executeQuery();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public ResultSet getTags() throws DBConnectionException {
+    public ResultSet getTags() throws DataFetchException {
         String sql = "SELECT * from tag;";
 
         PreparedStatement statement;
@@ -47,13 +47,13 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
             return statement.executeQuery();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
     public int createNewRecipe(String recipeTitle, String complexity, boolean isVisible, String creatorFirstname,
-            String creatorLastName) throws DBConnectionException {
+            String creatorLastName) throws DataFetchException {
         String sql = "INSERT INTO Recipe (title, complexity, isVisible, lastUpdate, creatorFirstName, creatorLastName) VALUES (?, ?, ?, NOW(), ?, ?);";
 
         PreparedStatement insertStatement;
@@ -94,12 +94,12 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             return last_id;
 
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public void addTagToRecipe(int recipeID, String tag) throws DBConnectionException {
+    public void addTagToRecipe(int recipeID, String tag) throws DataFetchException {
         String sql = "INSERT INTO TagLink (recipe, tag) VALUES (?, ?);";
         
         PreparedStatement insertStatement;
@@ -109,13 +109,13 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             insertStatement.setString(2, tag);
             insertStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
     public void addRecipeStep(int recipeID, int stepCount, String title, String description, int duration)
-            throws DBConnectionException {
+            throws DataFetchException {
         String sql = "INSERT INTO RecipeStep (recipe, stepCount, title, description, duration) VALUES (?, ?, ?, ?, ?);";
         
         PreparedStatement insertStatement;
@@ -128,12 +128,12 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             insertStatement.setInt(5, duration);
             insertStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public void addIngredient(int recipeID, int ingredientID, int amount) throws DBConnectionException {
+    public void addIngredient(int recipeID, int ingredientID, int amount) throws DataFetchException {
         String sql = "INSERT INTO IngredientStack (recipe, ingredient, amount) VALUES (?, ?, ?);";
         
         PreparedStatement insertStatement;
@@ -144,12 +144,12 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             insertStatement.setInt(3, amount);
             insertStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public ResultSet getAllRecipes() throws DBConnectionException {
+    public ResultSet getAllRecipes() throws DataFetchException {
         String sql = "SELECT * from Recipe;";
 
         PreparedStatement statement;
@@ -157,12 +157,12 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
             return statement.executeQuery();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public ResultSet getTagsForRecipe(int recipeID) throws DBConnectionException {
+    public ResultSet getTagsForRecipe(int recipeID) throws DataFetchException {
         String sql = "SELECT Recipe.recipe_id, TagLink.tag from Recipe INNER JOIN TagLink On Recipe.recipe_id = TagLink.recipe Where Recipe.recipe_id = ?;";
 
         PreparedStatement statement;
@@ -171,12 +171,12 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             statement.setInt(1, recipeID);
             return statement.executeQuery();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public void deleteTagByRecipeID(int recipeID) throws DBConnectionException {
+    public void deleteTagByRecipeID(int recipeID) throws DataFetchException {
         String sql = "DELETE FROM TagLink Where recipe = ?";
 
         PreparedStatement statement;
@@ -185,12 +185,12 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             statement.setInt(1, recipeID);
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public void deleteIngredientsByRecipeID(int recipeID) throws DBConnectionException {
+    public void deleteIngredientsByRecipeID(int recipeID) throws DataFetchException {
         String sql = "DELETE FROM IngredientStack Where recipe = ?";
 
         PreparedStatement statement;
@@ -199,12 +199,12 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             statement.setInt(1, recipeID);
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public void deleteRecipeStepsByRecipeID(int recipeID) throws DBConnectionException {
+    public void deleteRecipeStepsByRecipeID(int recipeID) throws DataFetchException {
         String sql = "DELETE FROM RecipeStep Where recipe = ?";
 
         PreparedStatement statement;
@@ -213,12 +213,12 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             statement.setInt(1, recipeID);
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public void deleteRecipeByRecipeID(int recipeID) throws DBConnectionException {
+    public void deleteRecipeByRecipeID(int recipeID) throws DataFetchException {
         String sql = "DELETE FROM Recipe Where recipe_id = ?";
 
         PreparedStatement statement;
@@ -227,12 +227,12 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             statement.setInt(1, recipeID);
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public void modifyRecipe(Recipe newRecipe) throws DBConnectionException {
+    public void modifyRecipe(Recipe newRecipe) throws DataFetchException {
         String sql = "UPDATE Recipe SET complexity = ?, isVisible = ?, title = ?, lastUpdate = ?, creatorFirstName = ?, creatorLastName = ? Where recipe_id = ?";
 
         PreparedStatement statement;
@@ -255,12 +255,12 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             statement.setInt(7, newRecipe.getRecipeID());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public ResultSet getIngredientsForRecipe(int recipeID) throws DBConnectionException {
+    public ResultSet getIngredientsForRecipe(int recipeID) throws DataFetchException {
         String sql = "SELECT IngredientStack.amount as amount, Ingredient.name as ingredient, Ingredient.calories as kcal, Unit.name as unit FROM IngredientStack INNER JOIN Ingredient On IngredientStack.ingredient = Ingredient.ingredient_id INNER JOIN Unit On Ingredient.unit = Unit.unit_id WHERE IngredientStack.recipe = ?;";
     
         PreparedStatement statement;
@@ -269,12 +269,12 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             statement.setInt(1, recipeID);
             return statement.executeQuery();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public ResultSet getRecipeStepsForRecipe(int recipeID) throws DBConnectionException {
+    public ResultSet getRecipeStepsForRecipe(int recipeID) throws DataFetchException {
         String sql = "SELECT RecipeStep.stepCount as stepCount, RecipeStep.title as title, RecipeStep.description as description, RecipeStep.duration as duration FROM RecipeStep WHERE RecipeStep.recipe = ? ORDER BY RecipeStep.stepCount ASC;";
     
         PreparedStatement statement;
@@ -283,11 +283,11 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             statement.setInt(1, recipeID);
             return statement.executeQuery();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         } 
     }
 
-    public ResultSet findRecipeByName(String name) throws DBConnectionException {
+    public ResultSet findRecipeByName(String name) throws DataFetchException {
         
         String sql = "SELECT * from Recipe WHERE title = ?";
 
@@ -301,11 +301,11 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             return statement.executeQuery();
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
-    public ResultSet findRecipesByTag(String tag) throws DBConnectionException {
+    public ResultSet findRecipesByTag(String tag) throws DataFetchException {
         
         String sql = "SELECT TagLink.recipe from TagLink WHERE tag = ?";
 
@@ -319,11 +319,11 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             return statement.executeQuery();
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
-    public ResultSet findRecipeById(int recipeID) throws DBConnectionException {
+    public ResultSet findRecipeById(int recipeID) throws DataFetchException {
 
         String sql = "SELECT * from Recipe WHERE recipe_id = ?";
 
@@ -337,7 +337,7 @@ public class RecipeDBAccess implements IRecipeDataAccess {
             return statement.executeQuery();
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 }

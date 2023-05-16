@@ -15,8 +15,8 @@ import java.util.Map.Entry;
 
 import dataAccessPackage.IMenuDataAccess;
 import dataAccessPackage.MenuDBAccess;
-import exceptionPackage.DBConnectionException;
-import exceptionPackage.DBConnectionExceptionTypes;
+import exceptionPackage.DataFetchException;
+import exceptionPackage.DataFetchExceptionTypes;
 import modelPackage.MenuView;
 import modelPackage.Recipe;
 import modelPackage.User;
@@ -32,7 +32,7 @@ public class MenuManager implements IMenuManager {
     }
 
     @Override
-    public boolean createMenu(User user, Map<Integer, String> selectedTags) throws DBConnectionException {
+    public boolean createMenu(User user, Map<Integer, String> selectedTags) throws DataFetchException {
         Map<Integer, Recipe> menuRecipes = new HashMap<>();
 
         for(Entry<Integer, String> pair : selectedTags.entrySet()) {
@@ -65,7 +65,7 @@ public class MenuManager implements IMenuManager {
     }
 
     @Override
-    public boolean hasAMenuAlready(User user) throws DBConnectionException {
+    public boolean hasAMenuAlready(User user) throws DataFetchException {
         Calendar calendar = Calendar.getInstance(Locale.FRANCE);
         calendar.setTime(Date.from(Instant.now()));
         int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR) + 1;
@@ -80,7 +80,7 @@ public class MenuManager implements IMenuManager {
     }
 
     @Override
-    public List<MenuView> getCurrentMenuFromUser(User user) throws DBConnectionException {
+    public List<MenuView> getCurrentMenuFromUser(User user) throws DataFetchException {
         Calendar calendar = Calendar.getInstance(Locale.FRANCE);
         calendar.setTime(Date.from(Instant.now()));
         int weekSearch = calendar.get(Calendar.WEEK_OF_YEAR) + 1;
@@ -108,7 +108,7 @@ public class MenuManager implements IMenuManager {
 
             return menuItemsView;
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.RESULT_SET_EXCEPTION);
         }
     
     }    

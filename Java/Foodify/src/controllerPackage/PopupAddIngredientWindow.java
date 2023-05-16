@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 import businessPackage.IRecipeManager;
 import businessPackage.RecipeManager;
-import exceptionPackage.DBConnectionException;
+import exceptionPackage.DataFetchException;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -68,7 +68,7 @@ public class PopupAddIngredientWindow extends Window implements Initializable {
     
         try {
             ingredientList = FXCollections.observableArrayList(this.recipeManager.getAllIngredients());
-        } catch (DBConnectionException e) {
+        } catch (DataFetchException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors le récupération des ingrédients");
         }
         tableview.setItems(ingredientList);

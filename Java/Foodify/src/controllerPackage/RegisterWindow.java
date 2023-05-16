@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 
 import businessPackage.IUserManager;
 import businessPackage.UserManager;
-import exceptionPackage.DBConnectionException;
+import exceptionPackage.DataFetchException;
 import exceptionPackage.HashException;
 import exceptionPackage.StringTooLongException;
 import javafx.event.ActionEvent;
@@ -100,7 +100,7 @@ public class RegisterWindow extends Window implements Initializable {
             }
             input_choicebox_country.setValue(countries.get(0).GetCountryName());
         }
-        catch (DBConnectionException e) {
+        catch (DataFetchException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de l'initialisation de la fenêtre de création d'utilisateurs");
         }
     }
@@ -252,7 +252,7 @@ public class RegisterWindow extends Window implements Initializable {
                 }
             }
             
-        } catch (DBConnectionException | HashException e) {
+        } catch (DataFetchException | HashException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la création d'un utilisateur");
         } catch (NumberFormatException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur nombre");

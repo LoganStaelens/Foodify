@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import javax.print.DocFlavor.READER;
-
 import dataAccessPackage.AddressDBAccess;
 import dataAccessPackage.CityDBAccess;
 import dataAccessPackage.CountryDBAccess;
@@ -18,8 +16,8 @@ import dataAccessPackage.ICityDataAccess;
 import dataAccessPackage.ICountryDataAccess;
 import dataAccessPackage.IUserDataAccess;
 import dataAccessPackage.UserDBAccess;
-import exceptionPackage.DBConnectionException;
-import exceptionPackage.DBConnectionExceptionTypes;
+import exceptionPackage.DataFetchException;
+import exceptionPackage.DataFetchExceptionTypes;
 import exceptionPackage.HashException;
 import exceptionPackage.StringTooLongException;
 import modelPackage.Address;
@@ -44,7 +42,7 @@ public class UserManager implements IUserManager {
         hashAlgorithm = new SHA256Algorithm();
     }
     
-    public void createNewUser(String firstName, String lastName, Gender gender, String email, LocalDate birthDate, String phoneNumber, Address address, String password) throws DBConnectionException {
+    public void createNewUser(String firstName, String lastName, Gender gender, String email, LocalDate birthDate, String phoneNumber, Address address, String password) throws DataFetchException {
         
         int cityID = cityDBAccess.checkCity(address.getCity().getCountry().GetCountryName(), address.getCity().getName(), address.getCity().getPostCode());
         int addressID;
@@ -65,7 +63,7 @@ public class UserManager implements IUserManager {
         userDataAccess.createNewUser(UUID.randomUUID().toString(), false, firstName, lastName, gender, email, birthDate, phoneNumber, addressID, password);
     }
 
-    public boolean findUserByEmail(String userEmail) throws DBConnectionException {
+    public boolean findUserByEmail(String userEmail) throws DataFetchException {
         
         ResultSet result = userDataAccess.findUserByEmail(userEmail);
 
@@ -75,12 +73,12 @@ public class UserManager implements IUserManager {
             }
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.RESULT_SET_EXCEPTION);
         }
         return false;
     }
 
-    public List<String> getGenders() throws DBConnectionException {
+    public List<String> getGenders() throws DataFetchException {
         
         ResultSet result = userDataAccess.getGenders();
 
@@ -94,13 +92,13 @@ public class UserManager implements IUserManager {
 
             result.close();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.RESULT_SET_EXCEPTION);
         }
         return data;
     }
 
     @Override
-    public List<Country> getCountries() throws DBConnectionException {
+    public List<Country> getCountries() throws DataFetchException {
         ResultSet result = countryDBAccess.getCountries();
 
         List<Country> data = new ArrayList<Country>();
@@ -113,7 +111,7 @@ public class UserManager implements IUserManager {
 
             result.close();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.RESULT_SET_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.RESULT_SET_EXCEPTION);
         }
         return data;
     }
@@ -129,7 +127,7 @@ public class UserManager implements IUserManager {
     }
 
     @Override
-    public List<User> findUsersByCountry(String countryIn) throws DBConnectionException {
+    public List<User> findUsersByCountry(String countryIn) throws DataFetchException {
         ResultSet data;
         List<User> usersFound = new ArrayList<>();
 
@@ -167,7 +165,7 @@ public class UserManager implements IUserManager {
             return usersFound;
        
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.PREPARED_STATEMENT_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.PREPARED_STATEMENT_EXCEPTION);
         } catch (StringTooLongException e) {
             // Should never happen
             e.printStackTrace();
@@ -178,7 +176,7 @@ public class UserManager implements IUserManager {
 
     @Override
     public LoginResult login(String emailIn, String passwdIn)
-            throws HashException, DBConnectionException, StringTooLongException {
+            throws HashException, DataFetchException, StringTooLongException {
                 ResultSet data;
 
                 try {
@@ -235,7 +233,7 @@ public class UserManager implements IUserManager {
                         return new LoginResult(null, LoginStatus.EMAIL_INCORRECT);
                     }
                 } catch (SQLException e) {
-                    throw new DBConnectionException(DBConnectionExceptionTypes.PREPARED_STATEMENT_EXCEPTION);
+                    throw new DataFetchException(DataFetchExceptionTypes.PREPARED_STATEMENT_EXCEPTION);
                 }
     }
 }

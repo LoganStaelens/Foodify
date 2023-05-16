@@ -4,12 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import exceptionPackage.DBConnectionException;
-import exceptionPackage.DBConnectionExceptionTypes;
+import exceptionPackage.DataFetchException;
+import exceptionPackage.DataFetchExceptionTypes;
 
 public class CityDBAccess implements ICityDataAccess {
 
-    public int checkCity(String country, String name, String postCode) throws DBConnectionException {
+    public int checkCity(String country, String name, String postCode) throws DataFetchException {
         
         String sql = "SELECT City.city_id, City.country, City.name, City.postCode FROM City WHERE country = ? AND name = ? AND postCode = ?";
 
@@ -32,11 +32,11 @@ public class CityDBAccess implements ICityDataAccess {
             }
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
     
-    public int createNewCity(String country, String name, String postCode) throws DBConnectionException {
+    public int createNewCity(String country, String name, String postCode) throws DataFetchException {
 
         String sql = "INSERT INTO City (country, name, postCode) VALUES (?, ?, ?)";
 
@@ -66,7 +66,7 @@ public class CityDBAccess implements ICityDataAccess {
             return lastID;
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 }

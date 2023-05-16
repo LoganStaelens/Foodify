@@ -6,14 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-import exceptionPackage.DBConnectionException;
-import exceptionPackage.DBConnectionExceptionTypes;
+import exceptionPackage.DataFetchException;
+import exceptionPackage.DataFetchExceptionTypes;
 import modelPackage.Gender;
 
 public class UserDBAccess implements IUserDataAccess {
 
     @Override
-    public ResultSet findUserByEmail(String userEmail) throws DBConnectionException  {
+    public ResultSet findUserByEmail(String userEmail) throws DataFetchException {
 
         String sql = "select User.unique_id, User.gender, User.isAdmin, User.firstName, User.lastName, User.email, User.password, User.birthDate, User.phoneNumber, Address.address_id, Address.street, Address.number, City.city_id, City.name, City.postCode, City.country from User INNER JOIN Address ON User.address = Address.address_id INNER JOIN City ON Address.city = City.city_id where email = ?";
         PreparedStatement statement;
@@ -22,11 +22,11 @@ public class UserDBAccess implements IUserDataAccess {
             statement.setString(1, userEmail);
             return statement.executeQuery();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
-    public void createNewUser(String uniqueID, boolean isAdmin, String firstName, String lastName, Gender gender, String email, LocalDate birthDate, String phoneNumber, int address, String password) throws DBConnectionException {
+    public void createNewUser(String uniqueID, boolean isAdmin, String firstName, String lastName, Gender gender, String email, LocalDate birthDate, String phoneNumber, int address, String password) throws DataFetchException {
         
         String sql = "INSERT INTO User (unique_id, address, gender, isAdmin, firstName, lastName, email, password, birthDate, phoneNumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -56,11 +56,11 @@ public class UserDBAccess implements IUserDataAccess {
             insertStatement.executeUpdate();
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
-    public ResultSet getGenders() throws DBConnectionException {
+    public ResultSet getGenders() throws DataFetchException {
         
         String sql = "SELECT Gender.gender from Gender;";
 
@@ -71,12 +71,12 @@ public class UserDBAccess implements IUserDataAccess {
             return statement.executeQuery();
         } 
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
 
     @Override
-    public ResultSet getUsersByCountry(String country) throws DBConnectionException {
+    public ResultSet getUsersByCountry(String country) throws DataFetchException {
         String sql = "SELECT User.unique_id, User.gender, User.isAdmin, User.firstName, User.lastName, User.email, User.birthDate, User.phoneNumber, Address.address_id, Address.street, Address.number, City.city_id, City.name, City.postCode, City.country FROM User INNER JOIN Address ON User.address = Address.address_id INNER JOIN City ON Address.city = City.city_id INNER JOIN Country ON City.country = Country.name where Country.name = ?;";
 
         PreparedStatement statement;
@@ -85,7 +85,7 @@ public class UserDBAccess implements IUserDataAccess {
             statement.setString(1, country);
             return statement.executeQuery();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
     

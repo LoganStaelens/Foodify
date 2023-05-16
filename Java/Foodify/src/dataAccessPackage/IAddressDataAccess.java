@@ -1,10 +1,10 @@
 package dataAccessPackage;
 
-import exceptionPackage.DBConnectionException;
+import exceptionPackage.DataFetchException;
 
 public interface IAddressDataAccess {
     
-    int createNewAddress(String street, int city, int number) throws DBConnectionException;
+    int createNewAddress(String street, int city, int number) throws DataFetchException;
 
-    int checkAddress(int city, String street, int number) throws DBConnectionException;
+    int checkAddress(int city, String street, int number) throws DataFetchException;
 }

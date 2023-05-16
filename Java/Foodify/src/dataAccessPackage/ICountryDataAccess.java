@@ -2,8 +2,8 @@ package dataAccessPackage;
 
 import java.sql.ResultSet;
 
-import exceptionPackage.DBConnectionException;
+import exceptionPackage.DataFetchException;
 
 public interface ICountryDataAccess {
-    ResultSet getCountries() throws DBConnectionException;
+    ResultSet getCountries() throws DataFetchException;
 }

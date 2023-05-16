@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 
 import businessPackage.IRecipeManager;
 import businessPackage.RecipeManager;
-import exceptionPackage.DBConnectionException;
+import exceptionPackage.DataFetchException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -99,7 +99,7 @@ public class PopupRecipeInfoWindow extends Window implements Initializable{
 
                 tableviewIngredient.setItems(FXCollections.observableArrayList(ingredients));
             }
-            catch (DBConnectionException e) {
+            catch (DataFetchException e) {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la récupération des ingrédients de la recette");
             }
 
@@ -108,7 +108,7 @@ public class PopupRecipeInfoWindow extends Window implements Initializable{
 
                 tableviewStep.setItems(FXCollections.observableArrayList(recipeSteps));
             }
-            catch (DBConnectionException e) {
+            catch (DataFetchException e) {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la récupération des étapes de la recette");
             }
         }

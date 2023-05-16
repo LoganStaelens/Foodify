@@ -12,7 +12,7 @@ import businessPackage.IMenuManager;
 import businessPackage.IRecipeManager;
 import businessPackage.MenuManager;
 import businessPackage.RecipeManager;
-import exceptionPackage.DBConnectionException;
+import exceptionPackage.DataFetchException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -137,13 +137,13 @@ public class UserWindow extends Window implements Initializable {
             else {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Attention vous avez déjà un menu de créé");
             }
-        } catch (DBConnectionException e) {
+        } catch (DataFetchException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la création du menu");
         }   
     }
 
     @FXML
-    void mm_onButtonRecipeInfo(ActionEvent event) throws DBConnectionException {
+    void mm_onButtonRecipeInfo(ActionEvent event) throws DataFetchException {
         MenuView itemSelected = mmTableview.selectionModelProperty().getValue().getSelectedItem();
 
         if(itemSelected != null) {
@@ -172,7 +172,7 @@ public class UserWindow extends Window implements Initializable {
             }
 
         }
-        catch (DBConnectionException e) {
+        catch (DataFetchException e) {
             Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.ERROR, "Erreur lors de la récupération des tags");
         }
     }
@@ -198,7 +198,7 @@ public class UserWindow extends Window implements Initializable {
             
 
 
-        } catch (DBConnectionException e) {
+        } catch (DataFetchException e) {
             mmTableview.setVisible(false);
             mmButtonRecipeInfo.setVisible(false);
 

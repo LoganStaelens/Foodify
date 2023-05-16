@@ -4,13 +4,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import exceptionPackage.DBConnectionException;
-import exceptionPackage.DBConnectionExceptionTypes;
+import exceptionPackage.DataFetchException;
+import exceptionPackage.DataFetchExceptionTypes;
 
 public class CountryDBAccess implements ICountryDataAccess {
 
     @Override
-    public ResultSet getCountries() throws DBConnectionException {
+    public ResultSet getCountries() throws DataFetchException {
         String sql = "SELECT * FROM Country";
 
         PreparedStatement statement;
@@ -21,7 +21,7 @@ public class CountryDBAccess implements ICountryDataAccess {
             return statement.executeQuery();
         }
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
     }
     

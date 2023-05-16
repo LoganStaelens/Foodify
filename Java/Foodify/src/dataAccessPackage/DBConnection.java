@@ -5,14 +5,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.SQLTimeoutException;
 
-import exceptionPackage.DBConnectionException;
-import exceptionPackage.DBConnectionExceptionTypes;
+import exceptionPackage.DataFetchException;
+import exceptionPackage.DataFetchExceptionTypes;
 
 public class DBConnection {
 
     private static DBConnection INSTANCE;
 
-    public static DBConnection getInstance() throws DBConnectionException {
+    public static DBConnection getInstance() throws DataFetchException {
         if(INSTANCE == null)
             INSTANCE = new DBConnection();
 
@@ -26,7 +26,7 @@ public class DBConnection {
 
     private Connection connection;
 
-    private DBConnection() throws DBConnectionException  {
+    private DBConnection() throws DataFetchException {
 
         try {
             this.connection = DriverManager.getConnection(
@@ -36,10 +36,10 @@ public class DBConnection {
                 );
         } 
         catch (SQLTimeoutException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.TIMEOUT_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.TIMEOUT_EXCEPTION);
         } 
         catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CONNECTION_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CONNECTION_EXCEPTION);
         }
 
     }
@@ -48,11 +48,11 @@ public class DBConnection {
         return connection;
     }
 
-    public void closeConnection() throws DBConnectionException {
+    public void closeConnection() throws DataFetchException {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new DBConnectionException(DBConnectionExceptionTypes.CLOSE_EXCEPTION);
+            throw new DataFetchException(DataFetchExceptionTypes.CLOSE_EXCEPTION);
         }
     }
 }
