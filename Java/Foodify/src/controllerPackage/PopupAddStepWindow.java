@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import modelPackage.RecipeStep;
 import viewPackage.Foodify;
@@ -31,7 +30,7 @@ public class PopupAddStepWindow extends Window {
         fxmlLoader.setController(this);
         this.popupListener = popupListener;
         this.fxmlWindow = new Scene(fxmlLoader.load());  
-        this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());  
+        this.fxmlWindow.getStylesheets().add(getClass().getResource("/viewPackage/style.css").toExternalForm());
     }
 
     @FXML

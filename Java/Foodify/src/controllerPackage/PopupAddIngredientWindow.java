@@ -21,7 +21,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import modelPackage.Ingredient;
 import viewPackage.Foodify;
@@ -58,7 +57,7 @@ public class PopupAddIngredientWindow extends Window implements Initializable {
         this.popupListener = popupListener;
         this.recipeManager = new RecipeManager();
         this.fxmlWindow = new Scene(fxmlLoader.load());  
-        this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());
+        this.fxmlWindow.getStylesheets().add(getClass().getResource("/viewPackage/style.css").toExternalForm());
         
     }
 

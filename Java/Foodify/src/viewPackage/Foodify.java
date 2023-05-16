@@ -1,7 +1,6 @@
 package viewPackage;
 
 
-import dataAccessPackage.DBConnection;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +11,6 @@ import javafx.stage.StageStyle;
 import modelPackage.User;
 
 import java.io.IOException;
-import java.util.UUID;
 
 import controllerPackage.AdminWindow;
 import controllerPackage.IYesNoPopupListener;
@@ -84,14 +82,14 @@ public class Foodify extends Application {
     }
 
     private void loadWindows() throws IOException {
-        this.popupMessageDialogWindow = new PopupMessageDialogWindow(primaryStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupMessageDialog.fxml")));
-        this.popupYesNoWindow = new PopupYesNoWindow(primaryStage, popupDialogStage, new FXMLLoader(getClass().getResource("PopupYesNo.fxml")));
+        this.popupMessageDialogWindow = new PopupMessageDialogWindow(primaryStage, popupDialogStage, new FXMLLoader(getClass().getResource("/viewPackage/PopupMessageDialog.fxml")));
+        this.popupYesNoWindow = new PopupYesNoWindow(primaryStage, popupDialogStage, new FXMLLoader(getClass().getResource("/viewPackage/PopupYesNo.fxml")));
 
 
-        this.loginWindow = new LoginWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("LoginWindow.fxml")));
-        this.registerWindow = new RegisterWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("RegisterWindow.fxml")));
-        this.adminWindow = new AdminWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("AdminWindow.fxml")));
-        this.userWindow = new UserWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("UserWindow.fxml")));
+        this.loginWindow = new LoginWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("/viewPackage/LoginWindow.fxml")));
+        this.registerWindow = new RegisterWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("/viewPackage/RegisterWindow.fxml")));
+        this.adminWindow = new AdminWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("/viewPackage/AdminWindow.fxml")));
+        this.userWindow = new UserWindow(primaryStage, popupStage, new FXMLLoader(getClass().getResource("/viewPackage/UserWindow.fxml")));
     }
 
     public void close() {
@@ -135,9 +133,5 @@ public class Foodify extends Application {
 
     public User getUser() {
         return this.user;
-    }
-
-    public static void main (String[] args) {
-        launch(args);
     }
 }

@@ -17,7 +17,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import modelPackage.Ingredient;
 import modelPackage.Recipe;
@@ -64,7 +63,7 @@ public class PopupRecipeInfoWindow extends Window implements Initializable{
         fxmlLoader.setController(this);
         this.recipeManager = new RecipeManager();
         this.fxmlWindow = new Scene(fxmlLoader.load());  
-        this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());
+        this.fxmlWindow.getStylesheets().add(getClass().getResource("/viewPackage/style.css").toExternalForm());
         
     }
 

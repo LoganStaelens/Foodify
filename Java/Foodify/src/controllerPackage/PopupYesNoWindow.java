@@ -25,7 +25,7 @@ public class PopupYesNoWindow extends Window {
         super(mainStage, popupStage);
         fxmlLoader.setController(this);
         this.fxmlWindow = new Scene(fxmlLoader.load());  
-        this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());
+        this.fxmlWindow.getStylesheets().add(getClass().getResource("/viewPackage/style.css").toExternalForm());
         this.message = "Etes vous en forme ?";
     }
 

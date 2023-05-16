@@ -3,7 +3,6 @@ package controllerPackage;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.ResourceBundle;
@@ -22,7 +21,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import modelPackage.Recipe;
 import viewPackage.Foodify;
@@ -58,7 +56,7 @@ public class PopupModifyRecipeWindow extends Window implements Initializable {
         this.popupListener = popupListener;
         this.recipeManager = new RecipeManager();
         this.fxmlWindow = new Scene(fxmlLoader.load());  
-        this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());
+        this.fxmlWindow.getStylesheets().add(getClass().getResource("/viewPackage/style.css").toExternalForm());
         
     }
 

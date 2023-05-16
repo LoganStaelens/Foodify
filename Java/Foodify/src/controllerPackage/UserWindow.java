@@ -25,7 +25,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import modelPackage.MenuView;
 import modelPackage.Recipe;
@@ -91,8 +90,8 @@ public class UserWindow extends Window implements Initializable {
         this.recipeManager = new RecipeManager();  
         this.menuManager = new MenuManager();
         this.fxmlWindow = new Scene(fxmlLoader.load());
-        this.popupRecipeInfoWindow = new PopupRecipeInfoWindow(mainStage, popupStage, new FXMLLoader(getClass().getResource("../viewPackage/PopupRecipeInfo.fxml")));
-        this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());
+        this.popupRecipeInfoWindow = new PopupRecipeInfoWindow(mainStage, popupStage, new FXMLLoader(getClass().getResource("/viewPackage/PopupRecipeInfo.fxml")));
+        this.fxmlWindow.getStylesheets().add(getClass().getResource("/viewPackage/style.css").toExternalForm());
     }
 
     @Override

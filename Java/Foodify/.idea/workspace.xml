@@ -1,18 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Foodify:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6fd7381-a243-4153-b6bd-69dd69184a64" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Foodify_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/viewPackage/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foodify.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Foodify.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/viewPackage/AdminWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/viewPackage/AdminWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/viewPackage/add_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/viewPackage/add_icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/viewPackage/folder_icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid16140.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid2840.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/AdminWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoginWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoginWindow$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoginWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/LoginWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupAddIngredientWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupAddIngredientWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupAddStepWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupAddStepWindow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupMessageDialogWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupModifyRecipeWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupModifyRecipeWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupRecipeInfoWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupRecipeInfoWindow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupYesNoWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/PopupYesNoWindow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/RegisterWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/RegisterWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/UserWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/controllerPackage/UserWindow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/Foodify.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Foodify/viewPackage/Foodify.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllerPackage/AdminWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/AdminWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllerPackage/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/LoginWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllerPackage/PopupAddIngredientWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/PopupAddIngredientWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllerPackage/PopupAddStepWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/PopupAddStepWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllerPackage/PopupMessageDialogWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/PopupMessageDialogWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllerPackage/PopupModifyRecipeWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/PopupModifyRecipeWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllerPackage/PopupRecipeInfoWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/PopupRecipeInfoWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllerPackage/PopupYesNoWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/PopupYesNoWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllerPackage/RegisterWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/RegisterWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllerPackage/UserWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/UserWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewPackage/AdminWindow.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/viewPackage/Foodify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewPackage/Foodify.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewPackage/LoginWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/viewPackage/LoginWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewPackage/PopupAddIngredient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/viewPackage/PopupAddIngredient.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewPackage/PopupAddStep.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/viewPackage/PopupAddStep.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewPackage/PopupMessageDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/viewPackage/PopupMessageDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewPackage/PopupModifyRecipe.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/viewPackage/PopupModifyRecipe.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewPackage/PopupRecipeInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/viewPackage/PopupRecipeInfo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewPackage/PopupYesNo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/viewPackage/PopupYesNo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewPackage/RegisterWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/viewPackage/RegisterWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewPackage/UserWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/viewPackage/UserWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewPackage/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/viewPackage/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +80,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -53,26 +104,24 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "jdk.selected.JAVA_MODULE": "openjdk-20",
-    "last_opened_file_path": "D:/Dev/Foodify/Java/Foodify/lib/mysql-connector-j-8.0.33.jar",
-    "project.structure.last.edited": "Libraries",
+    "last_opened_file_path": "D:/Dev/Foodify/Java/Foodify/lib/javafx-sdk-20.0.1/bin",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.42873564"
+    "project.structure.side.proportion": "0.120492525",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.viewPackage.Foodify">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.HelloApplication" />
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.demo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Dev\Foodify\Java\Foodify\out\artifacts\Foodify" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Dev\Foodify\Java\Foodify\src\res" />
+      <recent name="D:\Dev\Foodify\Java\Foodify\res\viewPackage" />
+      <recent name="D:\Dev\Foodify\Java\Foodify\res" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JAR Application.Foodify.jar">
     <configuration name="viewPackage.Foodify" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="viewPackage.Foodify" />
       <module name="Foodify" />
@@ -86,6 +135,12 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="Foodify.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Foodify/Foodify.jar" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;lib\javafx-sdk-20.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="demo" />
@@ -101,13 +156,13 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.HelloApplication" />
       <item itemvalue="Application.viewPackage.Foodify" />
+      <item itemvalue="JAR Application.Foodify.jar" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JAR Application.Foodify.jar" />
         <item itemvalue="Application.viewPackage.Foodify" />
-        <item itemvalue="Application.HelloApplication" />
       </list>
     </recent_temporary>
   </component>

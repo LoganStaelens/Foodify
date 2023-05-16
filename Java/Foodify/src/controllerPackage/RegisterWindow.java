@@ -3,9 +3,6 @@ package controllerPackage;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -22,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import modelPackage.Address;
 import modelPackage.City;
@@ -82,7 +78,7 @@ public class RegisterWindow extends Window implements Initializable {
         this.userManager = new UserManager();
 
         this.fxmlWindow = new Scene(fxmlWindow.load());
-        this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());
+        this.fxmlWindow.getStylesheets().add(getClass().getResource("/viewPackage/style.css").toExternalForm());
     }
 
     void loadWindow() {

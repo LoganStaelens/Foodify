@@ -7,12 +7,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import viewPackage.Foodify;
 
 public class PopupMessageDialogWindow extends Window {
@@ -31,7 +28,7 @@ public class PopupMessageDialogWindow extends Window {
         super(mainStage, popupStage);
         fxmlLoader.setController(this);
         this.fxmlWindow = new Scene(fxmlLoader.load());  
-        this.fxmlWindow.getStylesheets().add(getClass().getResource("../viewPackage/style.css").toExternalForm());
+        this.fxmlWindow.getStylesheets().add(getClass().getResource("/viewPackage/style.css").toExternalForm());
         this.message = "";
         this.messageType = PopupMessageTypes.INFO;
     }
