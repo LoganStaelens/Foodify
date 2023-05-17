@@ -2,13 +2,18 @@
 
 ## Checklist
 ### SQL
-- [ ] Mise en place SQL server
-- [ ] Creation script table
-- [ ] Insertion items dans les tables
+- [X] Mise en place SQL server
+- [X] Creation script table
+- [X] Insertion items dans les tables
 
 ### JAVA
-- [ ] Mise en place projet Java
-- [ ] Model view pattern
-- [ ] Singleton db connection
-- [ ] Creation du GUI Java FX (optionnel)
-- [ ] ...
+- [X] Mise en place projet Java
+- [X] Model view pattern
+- [X] Singleton db connection
+- [X] Creation du GUI Java FX (optionnel)
+- [X] ...
+
+### IMPORTANT
+- Identifiants de connection administrateur.
+    - email: admin@foodify.com
+    - mdp: foodify
