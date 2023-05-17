@@ -1,3 +1,134 @@
+CREATE TABLE IF NOT EXISTS Country (
+    name varchar(128),
+    PRIMARY KEY (Name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS City (
+    city_id INT NOT NULL AUTO_INCREMENT,
+    country VARCHAR(128) NOT NULL,
+    name VARCHAR(128) NOT NULL,
+    postCode VARCHAR(128) NOT NULL,
+    PRIMARY KEY(city_id),
+    FOREIGN KEY(country) REFERENCES Country(name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS Address (
+    address_id INT NOT NULL AUTO_INCREMENT,
+    city INT NOT NULL,
+    street VARCHAR(128) NOT NULL,
+    number INT NOT NULL,
+    PRIMARY KEY (address_id),
+    FOREIGN KEY(city) REFERENCES City(city_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS Gender (
+    gender CHAR NOT NULL,
+    PRIMARY KEY(gender)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS User (
+    unique_id VARCHAR(36) NOT NULL,
+    address INT NOT NULL,
+    gender CHAR NOT NULL,
+    isAdmin BOOLEAN NOT NULL,
+    firstName VARCHAR(64) NOT NULL,
+    lastName VARCHAR(64) NOT NULL,
+    email VARCHAR(128) NOT NULL,
+    password VARCHAR(64) NOT NULL,
+    birthDate DATE NOT NULL,
+    phoneNumber VARCHAR(32),
+    PRIMARY KEY(unique_id),
+    FOREIGN KEY(address) REFERENCES Address(address_id),
+    FOREIGN KEY(gender) REFERENCES Gender(gender)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS Menu (
+    menu_id INT NOT NULL AUTO_INCREMENT,
+    user VARCHAR(36) NOT NULL,
+    year INT NOT NULL,
+    week INT NOT NULL,
+    PRIMARY KEY (menu_id),
+    FOREIGN KEY(user) REFERENCES User(unique_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS Complexity (
+    complexity VARCHAR(32) NOT NULL,
+    degree INT NOT NULL,
+    PRIMARY KEY (complexity)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS Recipe (
+    recipe_id INT NOT NULL AUTO_INCREMENT,
+    complexity VARCHAR(32) NOT NULL,
+    isVisible BOOLEAN NOT NULL,
+    title VARCHAR(64) NOT NULL,
+    lastUpdate DATETIME NOT NULL,
+    creatorFirstName VARCHAR(64),
+    creatorLastName VARCHAR(64),
+    PRIMARY KEY (recipe_id),
+    FOREIGN KEY (complexity) REFERENCES Complexity(complexity)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS MenuItem (
+    menu_item_id INT NOT NULL AUTO_INCREMENT,
+    menu INT NOT NULL,
+    recipe INT NOT NULL,
+    day INT NOT NULL,
+    PRIMARY KEY (menu_item_id),
+    FOREIGN KEY (menu) REFERENCES Menu(menu_id),
+    FOREIGN KEY (recipe) REFERENCES Recipe(recipe_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS RecipeStep (
+    recipe_step_id INT NOT NULL AUTO_INCREMENT,
+    recipe INT NOT NULL,
+    stepCount INT NOT NULL,
+    title VARCHAR(64) NOT NULL,
+    description VARCHAR(2048) NOT NULL,
+    duration INT NOT NULL,
+    PRIMARY KEY (recipe_step_id),
+    FOREIGN KEY (recipe) REFERENCES Recipe(recipe_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS Tag (
+    name VARCHAR(64) NOT NULL,
+    PRIMARY KEY (name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS TagLink (
+    recipe INT NOT NULL,
+    tag VARCHAR(64) NOT NULL,
+    PRIMARY KEY (recipe, tag),
+    FOREIGN KEY (recipe) REFERENCES Recipe(recipe_id),
+    FOREIGN KEY (tag) REFERENCES Tag(name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS Unit (
+    unit_id INT NOT NULL,
+    name VARCHAR(64) NOT NULL,
+    abbreviation VARCHAR(4) NOT NULL,
+    PRIMARY KEY (unit_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS Ingredient (
+    ingredient_id INT NOT NULL AUTO_INCREMENT,
+    unit INT NOT NULL,
+    name VARCHAR(64) NOT NULL,
+    calories INT NOT NULL,
+    PRIMARY KEY (ingredient_id),
+    FOREIGN KEY (unit) REFERENCES Unit(unit_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS IngredientStack (
+    recipe INT NOT NULL,
+    ingredient INT NOT NULL,
+    amount INT NOT NULL,
+    PRIMARY KEY (recipe, ingredient),
+    FOREIGN KEY (recipe) REFERENCES Recipe(recipe_id),
+    FOREIGN KEY (ingredient) REFERENCES Ingredient(ingredient_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 INSERT INTO complexity (complexity, degree) VALUES 
 ("DEBUTANT", 0),
 ("FACILE", 1),
@@ -940,9 +1071,6 @@ INSERT INTO Ingredient (unit, name, calories) VALUES
 (1, "Pousses de soja", 44),
 (1, "Epinards", 23);
 
-INSERT INTO Ingredient (unit, name, calories) VALUES
-(1, "Epinards", 23);
-
 INSERT INTO Recipe (complexity, isVisible, title, lastUpdate) VALUES
 ("FACILE", true, "Spaghetti bolognaise", NOW());
 
@@ -1005,7 +1133,7 @@ INSERT INTO Recipe (complexity, isVisible, title, lastUpdate) VALUES
 ("FACILE", true, "Tarte courgette, tomates, chèvre", NOW());
 
 INSERT INTO Taglink (recipe, tag) VALUES
-(3, "JAPONAIS");
+(3, "PEU CALORIQUE");
 
 INSERT INTO RecipeStep (recipe, stepCount, title, description, duration) VALUES
 (3, 1, "Préparation", "Préchauffez le four à 180 degrée Celsius. Epeluchez les courgettes et coupez-les en rondelles. Fqites-les cuire à la vapeur. Piquez la pâte et badigeonnez-la de moutarde", 25),
@@ -1023,7 +1151,7 @@ INSERT INTO IngredientStack (recipe, ingredient, amount) VALUES
 (3, 76, 30); #moutarde
 
 INSERT INTO Recipe (complexity, isVisible, title, lastUpdate) VALUES
-("FACILE", true, "Bibimbap", NOW());
+("DIFFICILE", true, "Bibimbap", NOW());
 
 INSERT INTO Taglink (recipe, tag) VALUES
 (4, "COREEN");
@@ -1054,3 +1182,50 @@ INSERT INTO IngredientStack (recipe, ingredient, amount) VALUES
 (4, 636, 25), #sucre blanc
 (4, 492, 30), #huile de sésame
 (4, 596, 15); #graine de sésame
+
+
+INSERT INTO Recipe (complexity, isVisible, title, lastUpdate) VALUES
+("MOYEN", TRUE, "Nouilles chinoises", NOW());
+
+INSERT INTO Taglink (recipe, tag) VALUES
+(5, "CHINOIS");
+
+INSERT INTO RecipeStep (recipe, stepCount, title, description, duration) VALUES
+(5, 1, "Découpe légumes", "Laver et couper les légumes : Les courgettes en demi-rondelles, les poivrons en bâtonnets, le céleri en petits tronçons. Émincer les champignons de Paris. Peler et couper finement l'ail.", 10),
+(5, 2, "Découpe poulet", "Mettre de l'eau à bouillir pour les nouilles. Pendant ce temps, couper le poulet en lanières.", 5),
+(5, 3, "Cuisson légumes", "Dans un wok, ou à défaut dans une sauteuse, faire revenir dans 2 cuillères à soupe d'huile (neutre comme celle de pépin de raisin par exemple), tous les légumes et les champignons. Remuer régulièrement. Lorsque les légumes sont bien tendres, ajouter les petits sachets d'épices qui sont fournis dans les paquets de nouilles (on ne se sert pas de l'huile qui est elle aussi fournie avec).", 5),
+(5, 4, "Cuisson poulet", "Faites cuire le poulet dans un poêle à part avec un peu d'huile. Lorsqu'il est bien doré, déglacer avec la sauce soja. Faire caraméliser légèrement sur feu doux. Puis ajouter le poulet dans le wok avec les légumes. Continuer de cuire à feu doux.", 5),
+(5, 5, "Cuisson nouiles", "Lorsque l'eau boue, plonger les plaques de nouilles pendant le temps indiqué sur l'emballage, en général 3 minutes suffisent. Égoutter les nouilles.", 3),
+(5, 6, "Ajouter tout", "Une fois égouttée, vous pouvez ajouter l'ensemble dans le wok et servir !", 1);
+
+INSERT INTO IngredientStack (recipe, ingredient, amount) VALUES
+(5, 640, 400),
+(5, 223, 350),
+(5, 68, 200),
+(5, 613, 50),
+(5, 639, 80),
+(5, 54, 40),
+(5, 564, 40),
+(5, 638, 60);
+
+INSERT INTO Recipe (complexity, isVisible, title, lastUpdate) VALUES
+("MOYEN", true, "Kimchi", NOW());
+
+INSERT INTO Taglink (recipe, tag) VALUES
+(6, "COREEN");
+
+INSERT INTO RecipeStep (recipe, stepCount, title, description, duration) VALUES
+(6, 1, "Préparation du chou", "Coupez le chou en lamelles dans le sens de la longueur et mettez-le dans un saladier rempli d’eau tiède salée. Saupoudrez le chou de gros sel (à mettre entre chaque feuille). Laissez reposer et dégorger pendant une nuit. Le lendemain, rincez les lamelles de chou à l’eau et égouttez-les.", 10),
+(6, 2, "Découpe légumes", "Coupez le navet et les poireaux en fines lamelles d’environ 5 cm. Mélangez les ingrédients pour faire la pâte d’épices : gingembre,piment rouge, ail,sucre et sauce de poisson. Il faut tout éplucher ou râper afin de faire la pâte.", 15),
+(6, 3, "Ajouter le tout", "Étalez cette pâte entre les feuilles de chou. Déposez les morceaux de chou dans un grand récipient. Saupoudrez avec un peu de sésame grillé. Placez un couvercle ou une assiette sur le récipient, ou fermez-le hermétiquement. Il faut maintenant attendre 4 à 5 jours pour que le kimchi soit prêt. ", 5);
+
+
+INSERT INTO IngredientStack (recipe, ingredient, amount) VALUES
+(6, 87, 120),
+(6, 77, 100),
+(6, 564, 40),
+(6, 62, 15),
+(6, 589, 130),
+(6, 596, 15),
+(6, 636, 20),
+(6, 623, 5);

@@ -29,12 +29,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6dd8bf62-16ea-4f15-b802-62f1ef602e30" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/viewPackage/AdminWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/AdminWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/viewPackage/RegisterWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/RegisterWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/viewPackage/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/res/viewPackage/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllerPackage/PopupAddIngredientWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/PopupAddIngredientWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllerPackage/PopupAddStepWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/PopupAddStepWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllerPackage/RegisterWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllerPackage/RegisterWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Foodify/viewPackage/add_icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewPackage/Foodify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewPackage/Foodify.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewPackage/add_icon.svg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,19 +56,20 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Dev/Foodify/Foodify/Java/Foodify/lib/javafx-sdk-20.0.1/bin&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/Logan/Foodify/Java/Foodify",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Dev\Foodify\Foodify\Java\Foodify\res\viewPackage" />
