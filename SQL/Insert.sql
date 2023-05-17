@@ -930,14 +930,18 @@ INSERT INTO Ingredient (unit, name, calories) VALUES
 (4, "Sauce soja salé", 78),
 (1, "Céléri", 16),
 (1, "Nouilles chinoises", 165),
-(1, "Oeuf", 150),
+(6, "Oeuf", 150),
 (4, "Sauce poisson", 45),
 (1, "Bouillon de volaille", 9),
 (4, "Miel", 433),
-(1, "Pâte feuilletée", 505);
+(1, "Pâte feuilletée", 505),
+(1, "Branche de céléri", 22),
+(1, "Riz rond", 348),
+(1, "Pousses de soja", 44),
+(1, "Epinards", 23);
 
 INSERT INTO Ingredient (unit, name, calories) VALUES
-(1, "Pâte feuilletée", 505);
+(1, "Epinards", 23);
 
 INSERT INTO Recipe (complexity, isVisible, title, lastUpdate) VALUES
 ("FACILE", true, "Spaghetti bolognaise", NOW());
@@ -1017,3 +1021,36 @@ INSERT INTO IngredientStack (recipe, ingredient, amount) VALUES
 (3, 120, 120), #chèvre
 (3, 128, 100), #gruyère
 (3, 76, 30); #moutarde
+
+INSERT INTO Recipe (complexity, isVisible, title, lastUpdate) VALUES
+("FACILE", true, "Bibimbap", NOW());
+
+INSERT INTO Taglink (recipe, tag) VALUES
+(4, "COREEN");
+
+INSERT INTO RecipeStep (recipe, stepCount, title, description, duration) VALUES
+(4, 1, "Préparations Marinade", "Dans un bol mélangez 4càs de sauce soja, 2càs de miel, 2càs d'huile de sésame, 2càs de vinaigre de riz, 4 gousses d'ail écrasé, 2 pincées de poivre", 5),
+(4, 2, "Marinade viande", "Dans un récipient, mélangez les viandes hachées avec tous les ingrédients de la marinade, puis réservez au frais.", 5),
+(4, 3, "Préparation légumes", "Coupez, épépinez et taillez le concombre en lamelles. Pelez et coupez en petits bâtonnets la carotte. Pelez et émincez finement l'oignon. Rincez les épinards et les pousses de soja. pelez et hachez finement les gousses d'ail", 15),
+(4, 4, "Cuisson riz", "Dans une casserole remplie d'eau bouillante, faites cuire le riz selon les indications du paquet.", 20),
+(4, 5, "Préparation sauce", "mélangez 2càs d'huile de sésame, 2càc de Graine de sésame, 6càs de pâte de piment, 2càs de miel liquide ainsi que 4càs d'eau", 1),
+(4, 6, "Cuisson légumes", "Pendant la cuisson du riz, faites revenir les légumes (sauf l'ail et l'oignon) les uns après les autres dans des poêles bien chaudes avec un filet d'huile de sésame. Ajoutez à chacun un peu d'ail et d'oignon ainsi qu'une pincée de sucre blanc. Réservez hors du feu", 10),
+(4, 7, "Cuisson viande", "Dans une autre poêle avec un filet d'huile, faites revenir les viandes avec la marinade. Retirez et réservez hors du feu", 5),
+(4, 8, "Mise en place", "Quand le riz est cuit, égouttez et répartissez-le dans les bols. Versez dans chaque bol 2 cuillères à soupe de sauce et recouvrez d'un jaune d'oeuf entier, au centre, puis répartissez tout autour le mélange de viande et les légumes poêlés, sans les mélanger", 5),
+(4, 9, "Finitions", "Saupoudrez de graines de sésame et servez sans attendre.", 0);
+
+
+INSERT INTO IngredientStack (recipe, ingredient, amount) VALUES
+(4, 647, 400), #riz rond
+(4, 184, 200), #haché de boeuf
+(4, 250, 200), #haché de porc
+(4, 53, 230), #carottes
+(4, 65, 150), #concombres
+(4, 649, 300), #Epinards
+(4, 648, 200), #Pousses de soja
+(4, 603, 150), #Oignons
+(4, 564, 70), #Ail
+(4, 641, 4), #oeufs
+(4, 636, 25), #sucre blanc
+(4, 492, 30), #huile de sésame
+(4, 596, 15); #graine de sésame
