@@ -106,7 +106,7 @@
                               <URL value="@style.css" />
                               <URL value="@style.css" />
                            </stylesheets></ChoiceBox>
-                        <Label contentDisplay="RIGHT" graphicTextGap="81.0" layoutX="28.0" layoutY="72.0" prefHeight="44.0" prefWidth="196.0" text="Visible">
+                        <Label contentDisplay="RIGHT" graphicTextGap="87.0" layoutX="28.0" layoutY="72.0" prefHeight="44.0" prefWidth="196.0" text="Visible">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="15.0" />
                            </font>
@@ -223,6 +223,11 @@
                            </graphic>
                            <font>
                               <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="111.0" layoutY="24.0" prefHeight="24.0" prefWidth="30.0" text="*">
+                           <font>
+                              <Font name="Courier New Bold" size="15.0" />
                            </font>
                         </Label>
                      </children>

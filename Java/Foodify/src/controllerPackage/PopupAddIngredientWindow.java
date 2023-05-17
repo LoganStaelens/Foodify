@@ -100,6 +100,12 @@ public class PopupAddIngredientWindow extends Window implements Initializable {
         if(ingredient != null) {
             try {
                 int quantity = Integer.parseInt(inputQuantity.getText());
+
+                if(quantity <= 0) {
+                    Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "La quantitée n'est pas valide!");
+                    return;
+                }
+
                 ingredient.setQuantity(quantity);
                 this.hide();
                 popupListener.onAddIngredient(ingredient);

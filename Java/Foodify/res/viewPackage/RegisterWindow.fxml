@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,128 +12,144 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="760.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="760.0" style="-fx-background-color: #ebdbcc;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="325.0" layoutY="534.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="26.0" prefWidth="109.0" text="Annuler" />
-      <Label contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="34.0" layoutY="129.0" prefHeight="63.0" prefWidth="223.0" text="Prénom" wrapText="true">
+      <Button layoutX="325.0" layoutY="543.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="26.0" prefWidth="109.0" text="Annuler">
          <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label contentDisplay="RIGHT" graphicTextGap="30.0" layoutX="38.0" layoutY="187.0" prefHeight="63.0" prefWidth="215.0" text="Nom" wrapText="true">
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <Label contentDisplay="RIGHT" graphicTextGap="70.0" layoutX="34.0" layoutY="129.0" prefHeight="63.0" prefWidth="342.0" text="Prénom" wrapText="true">
          <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label contentDisplay="RIGHT" graphicTextGap="25.0" layoutX="34.0" layoutY="241.0" prefHeight="63.0" prefWidth="223.0" text="Email" wrapText="true">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
+            <Font size="15.0" />
          </font>
          <graphic>
-            <TextField fx:id="input_textfield_email" prefHeight="30.0" prefWidth="154.0">
+            <TextField fx:id="input_textfield_first_name" prefHeight="31.0" prefWidth="190.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </TextField>
+         </graphic>
+      </Label>
+      <Label contentDisplay="RIGHT" graphicTextGap="88.0" layoutX="34.0" layoutY="186.0" prefHeight="63.0" prefWidth="322.0" text="Nom" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <TextField fx:id="input_textfield_last_name" prefHeight="31.0" prefWidth="190.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </TextField>
+         </graphic>
+      </Label>
+      <Label contentDisplay="RIGHT" graphicTextGap="86.0" layoutX="34.0" layoutY="241.0" prefHeight="63.0" prefWidth="342.0" text="Email" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <TextField fx:id="input_textfield_email" prefHeight="30.0" prefWidth="190.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </TextField>
          </graphic>
       </Label>
-      <Label contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="34.0" layoutY="305.0" prefHeight="63.0" prefWidth="223.0" text="Numéro de téléphone" wrapText="true">
+      <Label contentDisplay="RIGHT" graphicTextGap="30.0" layoutX="34.0" layoutY="305.0" prefHeight="63.0" prefWidth="309.0" text="Numéro de téléphone" wrapText="true">
          <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
+            <Font size="15.0" />
          </font>
          <graphic>
-            <TextField fx:id="input_textfield_phone_number" prefHeight="30.0" prefWidth="142.0">
+            <TextField fx:id="input_textfield_phone_number" prefHeight="31.0" prefWidth="190.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </TextField>
          </graphic>
       </Label>
-      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="34.0" layoutY="362.0" prefHeight="63.0" prefWidth="223.0" text="Mot de passe" wrapText="true">
+      <Label contentDisplay="RIGHT" graphicTextGap="30.0" layoutX="34.0" layoutY="362.0" prefHeight="63.0" prefWidth="310.0" text="Mot de passe" wrapText="true">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
          <graphic>
-            <TextField fx:id="input_textfield_password" accessibleRole="PASSWORD_FIELD" prefHeight="30.0" prefWidth="144.0">
+            <PasswordField fx:id="input_textfield_password" prefHeight="31.0" prefWidth="190.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </PasswordField>
+         </graphic>
+      </Label>
+      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="34.0" layoutY="418.0" prefHeight="74.0" prefWidth="310.0" text="Confimer mot de passe" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <PasswordField fx:id="input_textfield_verify_password" prefHeight="31.0" prefWidth="190.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </PasswordField>
+         </graphic>
+      </Label>
+      <Label contentDisplay="RIGHT" graphicTextGap="65.0" layoutX="452.0" layoutY="219.0" prefHeight="63.0" prefWidth="298.0" text="Rue" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <TextField fx:id="input_textfield_street" prefHeight="31.0" prefWidth="190.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </TextField>
          </graphic>
       </Label>
-      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="34.0" layoutY="418.0" prefHeight="74.0" prefWidth="223.0" text="Confimer mot de passe" wrapText="true">
+      <Label contentDisplay="RIGHT" graphicTextGap="38.0" layoutX="452.0" layoutY="273.0" prefHeight="63.0" prefWidth="298.0" text="Numéro" wrapText="true">
          <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
+            <Font size="15.0" />
          </font>
          <graphic>
-            <TextField fx:id="input_textfield_verify_password" accessibleRole="PASSWORD_FIELD" prefHeight="30.0" prefWidth="146.0">
+            <TextField fx:id="input_textfield_number" prefHeight="31.0" prefWidth="190.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </TextField>
          </graphic>
       </Label>
-      <ChoiceBox fx:id="input_choice_boc_gender" layoutX="523.0" layoutY="136.0" prefWidth="150.0" />
-      <DatePicker fx:id="input_date_picker_birthDate" layoutX="501.0" layoutY="183.0" promptText="Date de naissance" />
-      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="452.0" layoutY="218.0" prefHeight="63.0" prefWidth="223.0" text="Route" wrapText="true">
+      <Label contentDisplay="RIGHT" graphicTextGap="63.0" layoutX="452.0" layoutY="322.0" prefHeight="63.0" prefWidth="298.0" text="Ville" wrapText="true">
          <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
+            <Font size="15.0" />
          </font>
+         <graphic>
+            <TextField fx:id="input_textfield_city" prefHeight="31.0" prefWidth="190.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </TextField>
+         </graphic>
       </Label>
-      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="452.0" layoutY="274.0" prefHeight="63.0" prefWidth="223.0" text="Numéro" wrapText="true">
+      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="452.0" layoutY="372.0" prefHeight="63.0" prefWidth="280.0" text="Code postal" wrapText="true">
          <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
+            <Font size="15.0" />
          </font>
+         <graphic>
+            <TextField fx:id="input_textfield_post_code" prefHeight="31.0" prefWidth="190.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </TextField>
+         </graphic>
       </Label>
-      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="452.0" layoutY="321.0" prefHeight="63.0" prefWidth="223.0" text="Ville" wrapText="true">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="452.0" layoutY="371.0" prefHeight="63.0" prefWidth="223.0" text="Code postal" wrapText="true">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="459.0" layoutY="424.0" prefHeight="63.0" prefWidth="223.0" text="Pays" wrapText="true">
+      <Label contentDisplay="RIGHT" graphicTextGap="59.0" layoutX="452.0" layoutY="423.0" prefHeight="63.0" prefWidth="286.0" text="Pays" wrapText="true">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
          <graphic>
-            <ChoiceBox fx:id="input_choicebox_country" prefHeight="27.0" prefWidth="153.0" />
+            <ChoiceBox fx:id="input_choicebox_country" prefHeight="30.0" prefWidth="190.0" />
          </graphic>
       </Label>
-      <Button layoutX="325.0" layoutY="496.0" mnemonicParsing="false" onAction="#onButtonCreate" prefHeight="26.0" prefWidth="109.0" text="Créer" />
-      <TextField fx:id="input_textfield_last_name" layoutX="116.0" layoutY="203.0" prefHeight="30.0" prefWidth="133.0">
+      <Button layoutX="325.0" layoutY="496.0" mnemonicParsing="false" onAction="#onButtonCreate" prefHeight="26.0" prefWidth="109.0" text="Créer">
          <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="input_textfield_first_name" layoutX="116.0" layoutY="146.0" prefHeight="30.0" prefWidth="133.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="input_textfield_post_code" layoutX="540.0" layoutY="388.0" prefHeight="30.0" prefWidth="133.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="input_textfield_city" layoutX="540.0" layoutY="338.0" prefHeight="30.0" prefWidth="133.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="input_textfield_number" layoutX="540.0" layoutY="289.0" prefHeight="30.0" prefWidth="133.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="input_textfield_street" layoutX="540.0" layoutY="235.0" prefHeight="30.0" prefWidth="133.0">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </TextField>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
       <Pane layoutX="-6.0" prefHeight="108.0" prefWidth="767.0" style="-fx-background-color: ffcd81;">
          <children>
             <ImageView fitHeight="96.0" fitWidth="94.0" layoutX="7.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
@@ -148,5 +165,86 @@
             <Button contentDisplay="GRAPHIC_ONLY" layoutX="811.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: #00000000;" />
          </children>
       </Pane>
+      <Label contentDisplay="RIGHT" graphicTextGap="60.0" layoutX="452.0" layoutY="128.0" prefHeight="44.0" prefWidth="297.0" text="Sexe">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <ChoiceBox fx:id="input_choice_boc_gender" prefHeight="27.0" prefWidth="190.0" />
+         </graphic>
+      </Label>
+      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="452.0" layoutY="176.0" prefHeight="44.0" prefWidth="280.0" text="Date de naissance" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <DatePicker fx:id="input_date_picker_birthDate" editable="false" prefHeight="27.0" prefWidth="191.0" promptText="Date de naissance" />
+         </graphic>
+      </Label>
+      <Label layoutX="87.0" layoutY="150.0" text="*">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="207.0" text="*">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="71.0" layoutY="262.0" text="*">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="127.0" layoutY="383.0" text="*">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="130.0" layoutY="433.0" text="*">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="486.0" layoutY="139.0" text="*">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="515.0" layoutY="178.0" text="*">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="479.0" layoutY="240.0" text="*">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="508.0" layoutY="294.0" text="*">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="482.0" layoutY="343.0" text="*">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="492.0" layoutY="393.0" text="*">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="486.0" layoutY="444.0" text="*">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="492.0" layoutY="515.0" text="* Champ obligatoire">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

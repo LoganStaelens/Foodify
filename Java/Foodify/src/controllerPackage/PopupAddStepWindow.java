@@ -63,6 +63,11 @@ public class PopupAddStepWindow extends Window {
         try {
             int duration = Integer.parseInt(inputDuration.getText());
 
+            if(duration < 0) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "La durée n'est pas valide!");
+                return;
+            }
+
             this.hide();
             this.popupListener.onAddStep(new RecipeStep(title, description, duration));
         }

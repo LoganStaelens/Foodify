@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modelPackage.Address;
@@ -42,10 +43,10 @@ public class RegisterWindow extends Window implements Initializable {
     private TextField input_textfield_phone_number;
 
     @FXML
-    private TextField input_textfield_password;
+    private PasswordField input_textfield_password;
 
     @FXML
-    private TextField input_textfield_verify_password;
+    private PasswordField input_textfield_verify_password;
 
     @FXML
     private ChoiceBox<String> input_choice_boc_gender;
@@ -209,6 +210,11 @@ public class RegisterWindow extends Window implements Initializable {
                 return;
             }
 
+            if(numberVerify <= 0) {
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Le numéro de rue n'est pas valide!");
+                return;
+            }
+
             if (city.isBlank()) {
                 Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Aucune ville n'a été choisi.");
                 return;
@@ -240,7 +246,7 @@ public class RegisterWindow extends Window implements Initializable {
                     new Address(street, numberVerify, new City(city, postCode, input_choicebox_country.getValue())),
                     passwdHash
                 );
-                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.SUCCESS, "Compte créé ! Veuillez désormais vous connectez.");
+                Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.SUCCESS, "Compte créé ! Veuillez désormais vous connecter.");
                 Foodify.getInstance().setLoginWindow();
             }
             else {
@@ -248,7 +254,7 @@ public class RegisterWindow extends Window implements Initializable {
                     Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "L'adresse mail existe déjà !");
                 }
                 else {
-                    Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Les mots de passes ne correspondent pas");
+                    Foodify.getInstance().setPopupMessageDialogWindow(PopupMessageTypes.WARNING, "Les mot de passes ne correspondent pas");
                 }
             }
             
